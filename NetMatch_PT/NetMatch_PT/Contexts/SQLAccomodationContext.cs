@@ -36,7 +36,6 @@ namespace NetMatch_PT.Contexts
                                 (byte[]) reader["Afbeelding"], reader["Beschrijving"].ToString());
                         }
                     }
-
                     connection.Close();
                 }
                 catch
@@ -46,6 +45,11 @@ namespace NetMatch_PT.Contexts
             }
 
             return null;
+        }
+
+        public List<Accommodation> GetAll()
+        {
+            throw new NotImplementedException();
         }
     }
 }
