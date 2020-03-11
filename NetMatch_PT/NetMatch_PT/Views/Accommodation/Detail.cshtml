@@ -1,0 +1,23 @@
+﻿
+@{
+    Layout = null;
+    @model NetMatch_PT.ViewModels.AccommodationDetailVm;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Detail</title>
+</head>
+<body>
+@Model.Id
+@Model.Title
+<img src="data:image/png;base64,@Model.Image" />
+@Model.Description
+@Model.Price
+@Model.Date
+
+</body>
+</html>
