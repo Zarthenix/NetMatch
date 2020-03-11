@@ -26,19 +26,12 @@ namespace NetMatch_PT.Controllers
 
         public IActionResult Detail(int id)
         {
-            IActionResult returnValue = View();
             Accommodation ac = _accommodationRepo.Detail(id);
-            if (ac == null)
-            {
-                //redirect naar error-page
-            }
-            else
-            {
-                AccommodationDetailVmConverter converter = new AccommodationDetailVmConverter();
-                AccommodationDetailVm vm = converter.ConvertToViewModel(ac);
-                returnValue = View(vm);
-            }
-            return returnValue;
+           
+            AccommodationDetailVmConverter converter = new AccommodationDetailVmConverter(); 
+            AccommodationDetailVm vm = converter.ConvertToViewModel(ac);
+            
+            return View(vm);
         }
     }
 }
