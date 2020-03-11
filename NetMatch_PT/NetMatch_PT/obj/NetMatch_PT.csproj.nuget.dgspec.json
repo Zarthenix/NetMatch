@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\micha\\Desktop\\NetMatch\\NetMatch_PT\\NetMatch_PT\\NetMatch_PT.csproj": {}
+    "B:\\documenten\\proftaak herstart S2\\netmatch\\NetMatch\\NetMatch_PT\\NetMatch_PT\\NetMatch_PT.csproj": {}
   },
   "projects": {
-    "C:\\Users\\micha\\Desktop\\NetMatch\\NetMatch_PT\\NetMatch_PT\\NetMatch_PT.csproj": {
+    "B:\\documenten\\proftaak herstart S2\\netmatch\\NetMatch\\NetMatch_PT\\NetMatch_PT\\NetMatch_PT.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\micha\\Desktop\\NetMatch\\NetMatch_PT\\NetMatch_PT\\NetMatch_PT.csproj",
+        "projectUniqueName": "B:\\documenten\\proftaak herstart S2\\netmatch\\NetMatch\\NetMatch_PT\\NetMatch_PT\\NetMatch_PT.csproj",
         "projectName": "NetMatch_PT",
-        "projectPath": "C:\\Users\\micha\\Desktop\\NetMatch\\NetMatch_PT\\NetMatch_PT\\NetMatch_PT.csproj",
-        "packagesPath": "C:\\Users\\micha\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\micha\\Desktop\\NetMatch\\NetMatch_PT\\NetMatch_PT\\obj\\",
+        "projectPath": "B:\\documenten\\proftaak herstart S2\\netmatch\\NetMatch\\NetMatch_PT\\NetMatch_PT\\NetMatch_PT.csproj",
+        "packagesPath": "C:\\Users\\vinci\\.nuget\\packages\\",
+        "outputPath": "B:\\documenten\\proftaak herstart S2\\netmatch\\NetMatch\\NetMatch_PT\\NetMatch_PT\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\micha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\vinci\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
