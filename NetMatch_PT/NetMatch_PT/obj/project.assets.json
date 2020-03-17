@@ -8048,11 +8048,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "B:\\documenten\\proftaak herstart S2\\netmatch\\NetMatch\\NetMatch_PT\\NetMatch_PT\\NetMatch_PT.csproj",
+      "projectUniqueName": "C:\\Users\\vinci\\OneDrive\\Documenten\\fontys\\netmatch\\NetMatch\\NetMatch_PT\\NetMatch_PT\\NetMatch_PT.csproj",
       "projectName": "NetMatch_PT",
-      "projectPath": "B:\\documenten\\proftaak herstart S2\\netmatch\\NetMatch\\NetMatch_PT\\NetMatch_PT\\NetMatch_PT.csproj",
+      "projectPath": "C:\\Users\\vinci\\OneDrive\\Documenten\\fontys\\netmatch\\NetMatch\\NetMatch_PT\\NetMatch_PT\\NetMatch_PT.csproj",
       "packagesPath": "C:\\Users\\vinci\\.nuget\\packages\\",
-      "outputPath": "B:\\documenten\\proftaak herstart S2\\netmatch\\NetMatch\\NetMatch_PT\\NetMatch_PT\\obj\\",
+      "outputPath": "C:\\Users\\vinci\\OneDrive\\Documenten\\fontys\\netmatch\\NetMatch\\NetMatch_PT\\NetMatch_PT\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -8119,14 +8119,6 @@
           {
             "name": "Microsoft.NETCore.App.Host.win-x64",
             "version": "[3.0.2, 3.0.2]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[3.0.0, 3.0.0]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[3.0.0, 3.0.0]"
           }
         ],
         "frameworkReferences": {

@@ -15,9 +15,11 @@ namespace NetMatch_PT.ViewModels.Converters
                 Id = ac.Id,
                 Title = ac.Title,
                 Description = ac.Description,
-                Date = ac.Date,
                 Price = ac.Price,
-                Image = Convert.ToBase64String(ac.Image)
+                Image = Convert.ToBase64String(ac.Image),
+                Traveltype = ac.Traveltype,
+                Countries = ac.Countries,
+                DateList = ac.DateList                
             };
         }
     }

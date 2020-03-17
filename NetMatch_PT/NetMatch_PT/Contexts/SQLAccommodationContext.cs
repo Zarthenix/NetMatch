@@ -61,7 +61,7 @@ namespace NetMatch_PT.Contexts
             }
             catch
             {
-                throw;
+                return null;
             }
         }
     }

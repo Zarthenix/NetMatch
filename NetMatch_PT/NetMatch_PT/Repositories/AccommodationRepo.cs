@@ -18,9 +18,9 @@ namespace NetMatch_PT.Repositories
             _context = context;
         }
 
-        public Accommodation Detail(int id)
+        public Accommodation GetById(int id)
         {
-            return _context.Detail(id);
+            return _context.GetById(id);
         }
     }
 }

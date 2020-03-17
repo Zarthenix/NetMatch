@@ -26,7 +26,7 @@ namespace NetMatch_PT.Controllers
 
         public IActionResult Detail(int id)
         {
-            Accommodation ac = _accommodationRepo.Detail(id);
+            Accommodation ac = _accommodationRepo.GetById(id);
            
             AccommodationDetailVmConverter converter = new AccommodationDetailVmConverter(); 
             AccommodationDetailVm vm = converter.ConvertToViewModel(ac);
