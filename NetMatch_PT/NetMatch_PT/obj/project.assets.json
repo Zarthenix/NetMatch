@@ -8042,23 +8042,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\vinci\\.nuget\\packages\\": {},
+    "C:\\Users\\nkrui\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vinci\\OneDrive\\Documenten\\fontys\\netmatch\\NetMatch\\NetMatch_PT\\NetMatch_PT\\NetMatch_PT.csproj",
+      "projectUniqueName": "C:\\Users\\nkrui\\Desktop\\Fontys\\Individueel product\\Proftaak\\NetMatch\\NetMatch_PT\\NetMatch_PT\\NetMatch_PT.csproj",
       "projectName": "NetMatch_PT",
-      "projectPath": "C:\\Users\\vinci\\OneDrive\\Documenten\\fontys\\netmatch\\NetMatch\\NetMatch_PT\\NetMatch_PT\\NetMatch_PT.csproj",
-      "packagesPath": "C:\\Users\\vinci\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vinci\\OneDrive\\Documenten\\fontys\\netmatch\\NetMatch\\NetMatch_PT\\NetMatch_PT\\obj\\",
+      "projectPath": "C:\\Users\\nkrui\\Desktop\\Fontys\\Individueel product\\Proftaak\\NetMatch\\NetMatch_PT\\NetMatch_PT\\NetMatch_PT.csproj",
+      "packagesPath": "C:\\Users\\nkrui\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\nkrui\\Desktop\\Fontys\\Individueel product\\Proftaak\\NetMatch\\NetMatch_PT\\NetMatch_PT\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\vinci\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\nkrui\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8118,7 +8118,15 @@
           },
           {
             "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[3.0.2, 3.0.2]"
+            "version": "[3.0.3, 3.0.3]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[3.0.0, 3.0.0]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[3.0.0, 3.0.0]"
           }
         ],
         "frameworkReferences": {
@@ -8129,7 +8137,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
       }
     }
   }
