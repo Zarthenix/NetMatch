@@ -28,6 +28,11 @@ namespace NetMatch_PT.Controllers
             return View();
         }
 
+        public IActionResult ReisBoeken()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

@@ -8,7 +8,7 @@ namespace NetMatch_PT.Contexts.Interfaces
 {
     public interface IAccommodationContext
     {
-        Accommodation GetById(int id);
+        Accommodation Detail(int id);
         List<Accommodation> GetAll();
     }
 }
