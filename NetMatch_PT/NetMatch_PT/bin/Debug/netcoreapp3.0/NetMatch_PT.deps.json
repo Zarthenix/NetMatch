@@ -28,7 +28,6 @@
           "Microsoft.EntityFrameworkCore.Tools": "3.0.0",
           "Microsoft.Extensions.Logging.Debug": "3.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.0.0",
-          "bootstrap": "4.4.1",
           "Microsoft.AspNetCore.Antiforgery": "3.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.0.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.0.0.0",
@@ -319,13 +318,6 @@
           "NetMatch_PT.dll": {}
         }
       },
-      "bootstrap/4.4.1": {
-        "dependencies": {
-          "jQuery": "3.0.0",
-          "popper.js": "1.16.0"
-        }
-      },
-      "jQuery/3.0.0": {},
       "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
         "dependencies": {
           "System.Text.Encodings.Web": "4.5.0"
@@ -997,7 +989,6 @@
           "lib/netstandard1.6/NuGet.Frameworks.dll": {}
         }
       },
-      "popper.js/1.16.0": {},
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
       "runtime.fedora.23-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
       "runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
@@ -3712,20 +3703,6 @@
       "serviceable": false,
       "sha512": ""
     },
-    "bootstrap/4.4.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-/QO9//Z8IYv8VmxTS3VzLaQC3wYnJDNbACnZHgLEeMABYjNuVPToLa6VDP2S4KwU3gUFiXglhQYZ00cddSK0IQ==",
-      "path": "bootstrap/4.4.1",
-      "hashPath": "bootstrap.4.4.1.nupkg.sha512"
-    },
-    "jQuery/3.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-xFfntV19HzCtKdJWOp/XT9PUY3SslokTDDLFJZdBug36j1XVhw1+vPQ/n7Gd5y+jdpesn5B1m1yn1qIUq57jlA==",
-      "path": "jquery/3.0.0",
-      "hashPath": "jquery.3.0.0.nupkg.sha512"
-    },
     "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
       "type": "package",
       "serviceable": true,
@@ -4055,13 +4032,6 @@
       "path": "nuget.frameworks/4.7.0",
       "hashPath": "nuget.frameworks.4.7.0.nupkg.sha512"
     },
-    "popper.js/1.16.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-ZJhaIouJ7dztoRoqj+KA1ADGpEIr+MzCWOkKm/Q6tu3CAauSsc+ZzXsxsD6RClRwieacqE3QNYNpaLU/mkVnWg==",
-      "path": "popper.js/1.16.0",
-      "hashPath": "popper.js.1.16.0.nupkg.sha512"
-    },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -4100,7 +4070,7 @@
     "runtime.native.System.IO.Compression/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-INBPonS5QPEgn7naufQFXJEp3zX6L4bwHgJ/ZH78aBTpeNfQMtf7C6VrAFhlq2xxWBveIOWyFzQjJ8XzHMhdOQ==",
+      "sha512": "sha512-b+V9JC/Ii3sR659flBeaBJww111425tgjcDS1k+hqV4sGh9FALRDBvJnDtQ895gAzpPTUOFDHdqaZ2Et7BpZMg==",
       "path": "runtime.native.system.io.compression/4.3.0",
       "hashPath": "runtime.native.system.io.compression.4.3.0.nupkg.sha512"
     },
@@ -4156,7 +4126,7 @@
     "runtime.rhel.7-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-nyFNiCk/r+VOiIqreLix8yN+q3Wga9+SE8BCgkf+2BwEKiNx6DyvFjCgkfV743/grxv8jHJ8gUK4XEQw7yzRYg==",
+      "sha512": "sha512-T5NvFgmHX0WH4c7lP72krsnk+IJI10vJf2j2twGE+5QBRA4RyRAgD+ZjEgdmpLOjW4B+nZGaadewTCUcR899OQ==",
       "path": "runtime.rhel.7-x64.runtime.native.system.security.cryptography.openssl/4.3.0",
       "hashPath": "runtime.rhel.7-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512"
     },
@@ -4240,7 +4210,7 @@
     "System.Collections.NonGeneric/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-prtjIEMhGUnQq6RnPEYLpFt8AtLbp9yq2zxOSrY7KJJZrw25Fi97IzBqY7iqssbM61Ek5b8f3MG/sG1N2sN5KA==",
+      "sha512": "sha512-LE/oChpRvkSi3U25u0KnJcI44JeDZ1QJCyN4qFDx2uusEypdqR24w7lKYw21eYe5esuCBuc862wRmpF63Yy1KQ==",
       "path": "system.collections.nongeneric/4.3.0",
       "hashPath": "system.collections.nongeneric.4.3.0.nupkg.sha512"
     },
@@ -4275,7 +4245,7 @@
     "System.ComponentModel.TypeConverter/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-16pQ6P+EdhcXzPiEK4kbA953Fu0MNG2ovxTZU81/qsCd1zPRsKc3uif5NgvllCY598k6bI0KUyKW8fanlfaDQg==",
+      "sha512": "sha512-HZiP0DwTHJ+C+rdFqP47nBYUh5283kcwXIGY2zOVVhsJmVI/2tYiX2zNRdjRQRHsTox58Ydkec6h0pWSh8wAsw==",
       "path": "system.componentmodel.typeconverter/4.3.0",
       "hashPath": "system.componentmodel.typeconverter.4.3.0.nupkg.sha512"
     },
