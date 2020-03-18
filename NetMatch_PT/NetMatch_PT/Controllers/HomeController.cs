@@ -26,6 +26,9 @@ namespace NetMatch_PT.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }public IActionResult ReisBoeken()
+        {
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
