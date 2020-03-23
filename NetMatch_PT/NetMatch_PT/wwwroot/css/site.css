@@ -100,3 +100,91 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+/*Home page
+------------------------------------------------- */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+/* Style the header */
+.header {
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Style the top navigation bar */
+/* Create three equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 33%;
+    position:relative;
+}
+
+.columnselectors{
+    float: left;
+    width: 33%;
+    position: relative;
+}
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width:600px) {
+    .column {
+        width: 100%;
+    }
+}
+
+
+/* Responsive layout - 2 columns next to each other while in width range */
+@media screen and (max-width:1440px) and (min-width:600px){
+    .column {
+        width: 50%;
+    }
+}
+
+.accommodationimagehome img{
+    width: 100%;
+    float: left;
+    padding: 15px;
+}
+
+.caption {
+    display: block;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Times New Roman', sans-serif;
+}
+
+.populairheader{
+    font-family: 'Times New Roman';
+    font-size: 2rem;
+    font-weight: bold;
+    text-align:center;
+}
+
+.price{
+    position: absolute;
+    top:10%;
+    right:10%;
+    font-size:20px;
+    font-weight:bold;
+}
+
+.selector-container{
+    text-align:center;
+}
+
+.selectorcontent {
+    display:inline-block;
+}

@@ -2,7 +2,71 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+    <body style="background-color:lightblue">
+        <div class="row">
+            <div class="columnselectors">
+                <div class="selector-container">
+                    <div class="selectorcontent">
+                        <select>
+                            <option>Kies een soort vakantie</option>
+                            <option> Zomervakantie</option>
+                            <option>Wintervakantie</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+                    <div class="columnselectors">
+                        <div class="selector-container">
+                            <div class="selectorcontent">
+                                <select>
+                                    <option>Kies een land</option>
+                                    <option>Spanje</option>
+                                    <option>Griekenland</option>
+                                    <option>Frankrijk</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="columnselectors">
+                        <div class="selector-container">
+                            <div class="selectorcontent">
+                                <input type="date" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="populairheader">
+                    <p> Populaire vakanties</p>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <div class="price">Prijs</div>
+                        <div class="accommodationimagehome">
+                            <a asp-area="" asp-controller="Accommodation" asp-action="Detail" asp-route-id="1"><img src="~/images/Voorbeeld 1.jpg" alt="Image not found" /></a>
+                            <p class="caption">Accommodatie 1</p>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="price">Prijs</div>
+                        <div class="accommodationimagehome">
+                            <a asp-area="" asp-controller="Accommodation" asp-action="Detail" asp-route-id="2"><img src="~/images/Voorbeeld 2.jpg" alt="Image not found" /></a>
+                            <p class="caption">Accommodatie 2</p>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="price">Prijs</div>
+                        <div class="accommodationimagehome">
+                            <a asp-area="" asp-controller="Accommodation" asp-action="Detail" asp-route-id="3"><img src="~/images/Voorbeeld 3.jpg" alt="Image not found" /></a>
+                            <p class="caption">Accommodatie 3</p>
+                        </div>
+                    </div>
+                </div>
+
+</body>
+
