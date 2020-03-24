@@ -1,0 +1,319 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>ReisBoeken</title>
+    </head>
+ 
+
+<div class="Header">  
+    <img class="navBG" src="images/PT_HeaderBG.png" />
+        <h1 style="text-align:center"> Reisboeking </h1>
+</div>
+<body>
+    
+   
+
+    <form>
+
+        <br /> <br /> <br />
+        <div class="GegevensReiziger">
+            <div class="PersoonlijkeDetails">
+                <label>Voornaam:</label>
+                <Input type="text" Name="Name" Size=15 Maxlength=15>
+                <br />
+                <label>Achternaam:</label><br /><Input type="text" Name="Achternaam" Size=15 Maxlength=15>
+                <br />
+                <label>Woonplaats:</label><br /><Input type="text" Name="Woonplaats" Size=15 Maxlength=15>
+                <br />
+                <label>Straat:</label><br /><Input type="text" Name="Straat" Size=15 Maxlength=15>
+                <br />
+                <label>Geboortedatum:</label><br /><Input type="text" Name="Nationaliteit" Size=15 Maxlength=15>
+                <br />
+                <label>Achternaam:</label><br /><Input type="text" Name="Achternaam" Size=15 Maxlength=15>
+                <br />
+                <label>Woonplaats:</label><br /><Input type="text" Name="Woonplaats" Size=15 Maxlength=15>
+                <br />
+                <label>Straat:</label><br /><Input type="text" Name="Straat" Size=15 Maxlength=15>
+                <br />
+                <label>Nationaliteit:</label><br /><Input type="text" Name="Nationaliteit" Size=15 Maxlength=15>
+            </div>
+        </div>
+
+        <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />  <br /> <br /> <br /> <br /> <br /> <br /> <br />
+        <div class="Reis-boeking">
+            <center><h2 style="font-family:Cambria"> Reisgezelschap </h2></center>
+            <div class="VolwassenenTextenValue">
+                <label>Aantal Volwassenen:  </label><select name="Aantal-volwassenen" class="volwassenen" id="aantalVolwassenen">
+                    <option value="1">
+                        1
+                    </option>
+                    <option value="2">
+                        2
+                    </option>
+                    <option value="3">
+                        3
+                    </option>
+                    <option value="4">
+                        4
+                    </option>
+                    <option value="5">
+                        5
+                    </option>
+                    <option value="6">
+                        6
+                    </option>
+                    <option value="7">
+                        7
+                    </option>
+                    <option value="8">
+                        8
+                    </option>
+                    <option value="9">
+                        9
+                    </option>
+                    <option value="10">
+                        10+
+                    </option>
+                </select>
+            </div> <div class="col"></div> <div class="col"></div>
+            <br /> <br />
+            <div class="KinderenTextenValue">
+                <label>Aantal kinderen:  </label><select name="Aantal-kinderen" class="kinderen" id="aantalKinderen">
+                    <option value="1">
+                        1
+                    </option>
+                    <option value="2">
+                        2
+                    </option>
+                    <option value="3">
+                        3
+                    </option>
+                    <option value="4">
+                        4
+                    </option>
+                    <option value="5">
+                        5
+                    </option>
+                    <option value="6">
+                        6
+                    </option>
+                    <option value="7">
+                        7
+                    </option>
+                    <option value="8">
+                        8
+                    </option>
+                    <option value="9">
+                        9
+                    </option>
+                    <option value="10">
+                        10+
+                    </option>
+                </select>
+            </div> <div class="col"></div> <div class="col"></div>
+            <br /> <br />
+            <div class="KamersTextenValue">
+                <div class="col-1">
+                    <label>Aantal Kamers:  </label><select name="Aantal-kamers" class="kamers" id="aantalKamers">
+                        <option value="1">
+                            1
+                        </option>
+                        <option value="2">
+                            2
+                        </option>
+                        <option value="3">
+                            3
+                        </option>
+                        <option value="4">
+                            4
+                        </option>
+                        <option value="5">
+                            5
+                        </option>
+                        <option value="6">
+                            6
+                        </option>
+                        <option value="7">
+                            7
+                        </option>
+                        <option value="8">
+                            8
+                        </option>
+                        <option value="9">
+                            9
+                        </option>
+                        <option value="10">
+                            10+
+                        </option>
+                    </select>
+                </div> <div class="col"></div> <div class="col"></div>
+            </div>
+            <br /> <br />
+            <center>
+                <button class="btnReisgezelschap" style="" value="">Reisgezelschap opslaan</button>
+            </center>
+        </div>
+
+        <br /> <br />
+        <div class="Periode-div">
+            <center><h2 style="font-family:Cambria"> Periode </h2></center>
+            <div class="Vertrek-Datum">
+                <label>Vertrekperiode vanaf: </label><select id="DropDownVertrekDatum" name="VertrekDatum">
+                    <option selected="selected" value="2020-05-19">mei 2020</option>
+                    <option value="2020-03-01">maart 2020</option>
+                    <option value="2020-04-01">april 2020</option>
+                    <option value="2020-05-01">mei 2020</option>
+                    <option value="2020-06-01">juni 2020</option>
+                    <option value="2020-07-01">juli 2020</option>
+                    <option value="2020-08-01">augustus 2020</option>
+                    <option value="2020-09-01">september 2020</option>
+                    <option value="2020-10-01">oktober 2020</option>
+                    <option value="2020-11-01">november 2020</option>
+                    <option value="2020-12-01">december 2020</option>
+                    <option value="2021-01-01">januari 2021</option>
+                    <option value="2021-02-01">februari 2021</option>
+                    <option value="2021-03-01">maart 2021</option>
+                    <option value="2021-04-01">april 2021</option>
+                    <option value="2021-05-01">mei 2021</option>
+                    <option value="2021-06-01">juni 2021</option>
+                    <option value="2021-07-01">juli 2021</option>
+                    <option value="2021-08-01">augustus 2021</option>
+                    <option value="2021-09-01">september 2021</option>
+                    <option value="2021-10-01">oktober 2021</option>
+                </select>
+            </div>
+            <br /> <br />
+            <div class="reis-tijd">
+                <label for="Reisduur">Reisduur: </label><select id="DropdownReisDuur" name="Reisduur">
+                    <option value="6">6 dgn (4 nachten)</option>
+                    <option value="7">7 dgn (5 nachten)</option>
+                    <option value="8">8 dgn (6 nachten)</option>
+                    <option selected="selected" value="9">9 dgn (7 nachten)</option>
+                    <option value="10">10 dgn (8 nachten)</option>
+                    <option value="11">11 dgn (9 nachten)</option>
+                    <option value="12">12 dgn (10 nachten)</option>
+                    <option value="13">13 dgn (11 nachten)</option>
+                    <option value="14">14 dgn (12 nachten)</option>
+                    <option value="15">15 dgn (13 nachten)</option>
+                    <option value="16">16 dgn (14 nachten)</option>
+                    <option value="17">17 dgn (15 nachten)</option>
+                    <option value="18">18 dgn (16 nachten)</option>
+                    <option value="19">19 dgn (17 nachten)</option>
+                    <option value="20">20 dgn (18 nachten)</option>
+                    <option value="21">21 dgn (19 nachten)</option>
+                    <option value="22">22 dgn (20 nachten)</option>
+                    <option value="23">23 dgn (21 nachten)</option>
+                    <option value="24">24 dgn (22 nachten)</option>
+                </select>
+            </div>
+        </div>
+
+
+    </form>
+</body>
+</html>
+
+<style>
+    .Header{
+        background-color: cornflowerblue;
+        background-image: url("");
+        width: 1900px;
+        height: 100px;
+        padding-top: 0px;
+        text-align:center;
+    }
+    .GegevensReiziger{
+         
+         position:absolute;
+         margin-left: 770px;
+        font-family: Cambria;
+    }
+
+    .PersoonlijkeDetails{
+        position:absolute;
+        margin-left: 100px;
+    }
+
+    .Reis-boeking {
+  background-color: cornflowerblue;
+  width: 1800px;
+height: 210px;
+position: absolute;
+margin-left: 50px;
+margin-right: 0px;
+margin-top: 50px;
+
+}
+   .Periode-div{
+  background-color: cornflowerblue;
+  width: 1800px;
+height: 200px;
+position: absolute;
+margin-left: 50px;
+margin-top: 300px;
+
+   }
+    #DropDownVertrekDatum{
+       position: absolute;
+        margin-left: 50px;
+        
+    }
+    .Vertrek-Datum{
+        position: absolute;
+        margin-left: 770px;
+        font-family: Cambria;
+    }
+    #DropdownReisDuur{
+ 
+        position: absolute;
+        margin-left: 134px;
+    }
+    
+    .reis-tijd{
+            position: absolute;
+        margin-left: 770px;
+        font-family: Cambria;
+    }
+
+    #aantalVolwassenen{
+        position: absolute;
+        margin-left: 82px;
+    }
+    #aantalKinderen{
+        margin-left: 106px;
+    }
+    #aantalKamers{
+        
+        margin-left: 115px;
+    }
+    .VolwassenenTextenValue{
+        position: absolute;
+        margin-left: 770px;
+        font-family: Cambria;
+    }
+    .KamersTextenValue{
+        position: absolute;
+        margin-left: 770px;
+        font-family: Cambria;
+    }
+    .KinderenTextenValue{
+        position: absolute;
+        margin-left: 770px;
+        font-family: Cambria;
+    }
+ 
+    .btnReisgezelschap{
+        display:inline-block;
+    }
+    
+
+    
+</style>
