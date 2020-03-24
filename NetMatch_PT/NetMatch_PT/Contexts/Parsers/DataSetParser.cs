@@ -33,5 +33,22 @@ namespace NetMatch_PT.Contexts.Parsers
                 Telefoonnummer = (string)set.Tables[0].Rows[rowIndex][8]
             };
         }
+        public static TravelAgent DataSetToTravelAgent(DataSet set, int rowIndex)
+        {
+            return new TravelAgent((int)set.Tables[0].Rows[rowIndex][0])
+            {
+                Email = (string)set.Tables[0].Rows[rowIndex][1],
+                Password = (string)set.Tables[0].Rows[rowIndex][2]
+            };
+        }
+        public static TravelCompany DataSetToTravelCompany(DataSet set, int rowIndex)
+        {
+            return new TravelCompany((int)set.Tables[0].Rows[rowIndex][0])
+            {
+                FirstName = (string)set.Tables[0].Rows[rowIndex][1],
+                LastName = (string)set.Tables[0].Rows[rowIndex][2],
+                BirthDate = (DateTime)set.Tables[0].Rows[rowIndex][3]
+            };
+        }
     }
 }

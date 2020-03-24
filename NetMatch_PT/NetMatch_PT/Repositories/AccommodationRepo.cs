@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using NetMatch_PT.Contexts;
 using NetMatch_PT.Contexts.Interfaces;
 using NetMatch_PT.Models;
+using NetMatch_PT.Contexts.IContext;
 
 namespace NetMatch_PT.Repositories
 {

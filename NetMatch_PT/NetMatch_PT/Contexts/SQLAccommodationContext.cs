@@ -13,7 +13,6 @@ namespace NetMatch_PT.Contexts
 {
     public class SQLAccommodationContext : SQLBaseContext, IAccommodationContext
     {
-        private readonly string _connectionString;
 
         public SQLAccommodationContext(IConfiguration configuration) : base(configuration)
         {
