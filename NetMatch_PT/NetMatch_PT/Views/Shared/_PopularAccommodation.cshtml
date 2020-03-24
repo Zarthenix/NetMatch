@@ -1,0 +1,9 @@
+﻿@model NetMatch_PT.ViewModels.AccommodationDetailVm
+
+<div class="column">
+    <div class="price" style="">€@Model.Price</div>
+    <div class="accommodationimagehome">
+        <a asp-area="" asp-controller="Accommodation" asp-action="Detail" asp-route-id="@Model.Id"><img src="data:image/png;base64,@Model.Image" alt="Accommodation Image." /></a>
+        <p class="caption">@Model.Title</p>
+    </div>
+</div>

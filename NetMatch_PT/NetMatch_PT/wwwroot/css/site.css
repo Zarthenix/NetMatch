@@ -162,8 +162,10 @@ body {
 .caption {
     display: block;
     text-align: center;
-    font-size: 20px;
-    font-family: 'Times New Roman', sans-serif;
+    font-size: 40px;
+    color: black;
+    font-weight: bold;
+    font-family: Helvetica;
 }
 
 .populairheader{
@@ -173,12 +175,13 @@ body {
     text-align:center;
 }
 
-.price{
+.price {
     position: absolute;
-    top:10%;
-    right:10%;
-    font-size:20px;
-    font-weight:bold;
+    top: 10%;
+    right: 10%;
+    font-weight: bold;
+    color: white;
+    font-size: 35px;
 }
 
 .selector-container{

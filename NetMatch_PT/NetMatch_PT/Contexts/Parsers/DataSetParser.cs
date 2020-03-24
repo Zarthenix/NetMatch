@@ -13,11 +13,10 @@ namespace NetMatch_PT.Contexts.Parsers
         {
             return new Accommodation((int)set.Tables[0].Rows[rowIndex][0])
             {
-                
                 Title = (string)set.Tables[0].Rows[rowIndex][1],
                 Description = (string)set.Tables[0].Rows[rowIndex][2],
                 Price = (decimal)set.Tables[0].Rows[rowIndex][3],
-                Image = (byte[])set.Tables[0].Rows[rowIndex][4]
+                Image = (byte[])set.Tables[0].Rows[rowIndex][4],
             };
         }
         public static Customer DataSetToCustomer(DataSet set, int rowIndex)
