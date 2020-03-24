@@ -21,7 +21,7 @@ namespace NetMatch_PT.Contexts.IContext
             List<TravelAgent> TravelAgentList = new List<TravelAgent>();
             try
             {
-                string sql = "SELECT TravelAgentId, Email, Password";
+                string sql = "SELECT TravelAgentId, Email, Password FROM TravelAgent";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
 
@@ -45,7 +45,7 @@ namespace NetMatch_PT.Contexts.IContext
         {
             try
             {
-                string sql = "SELECT Email, Password WHERE TravelAgentId = @TravelAgentId";
+                string sql = "SELECT Email, Password FROM TravelAgent WHERE TravelAgentId = @TravelAgentId";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
                     new KeyValuePair<string, string>("TravelAgentId", id.ToString())

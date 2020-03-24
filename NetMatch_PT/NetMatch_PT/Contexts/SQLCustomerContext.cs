@@ -21,7 +21,7 @@ namespace NetMatch_PT.Contexts
             List<Customer> CustomerList = new List<Customer>();
             try
             {
-                string sql = "SELECT CustomerId, FirstName, LastName, Address, Woonplaats, Postcode, Email, GeboorteDatum, Telefoonnummer";
+                string sql = "SELECT CustomerId, FirstName, LastName, Address, Woonplaats, Postcode, Email, GeboorteDatum, Telefoonnummer FROM Customer";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
 
@@ -46,7 +46,7 @@ namespace NetMatch_PT.Contexts
         {
             try
             {
-                string sql = "SELECT Firstname, Lastname, Address, Woonplaats, Postcode, Email, Geboortedatum, Telefoonnummer WHERE CustomerID = @CustomerID";
+                string sql = "SELECT Firstname, Lastname, Address, Woonplaats, Postcode, Email, Geboortedatum, Telefoonnummer FROM Customer WHERE CustomerID = @CustomerID";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
                     new KeyValuePair<string,string>("CustomerID", id.ToString())
