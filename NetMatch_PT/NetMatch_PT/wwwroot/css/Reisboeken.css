@@ -1,0 +1,221 @@
+﻿
+
+
+#btnToevoegen1{
+    position:absolute;
+    width:100px;
+    height:35px;
+    margin-left:20px;
+   
+}
+#btnToevoegen{
+    position:absolute;
+    width:100px;
+    height:35px;
+    margin-left: 20px;
+}
+
+#btnheader {
+    width: 50px;
+    height: 25px;
+}
+
+#aanhefCh {
+    position: absolute;
+    margin-left: 20px;
+}
+
+#telefoonnr {
+    position: absolute;
+    margin-left: 20px;
+}
+
+.nationality {
+    position: absolute;
+    margin-left: 20px;
+}
+
+#aanhef {
+    position: absolute;
+    margin-left: 20px;
+}
+
+#StrReiziger {
+    position: absolute;
+    margin-left: 20px;
+}
+
+#HuisnrReiziger {
+    position: absolute;
+    margin-left: 208px;
+}
+
+#PcReiziger {
+    position: absolute;
+    margin-left: 208px;
+}
+
+#WpReiziger {
+    position: absolute;
+    margin-left: 20px;
+}
+
+#AchternaamReiziger {
+    position: absolute;
+    margin-left: 208px;
+}
+
+#NameReiziger {
+    position: absolute;
+    margin-left: 20px;
+}
+
+.Reiziger1Box {
+    position: absolute;
+    width: 500px;
+    height: 400px;
+    background-color: transparent;
+    border: groove;
+    border-color: white;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+.Reiziger2Box {
+    position: absolute;
+    width: 500px;
+    height: 400px;
+    background-color: transparent;
+    border: double;
+    border-color: white;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+.Reiziger1 {
+    position: absolute;
+    margin-left: 730px;
+    font-family: Cambria;
+}
+
+.Reiziger2 {
+    position: absolute;
+    margin-left: 730px;
+    font-family: Cambria;
+    margin-top: 560px;
+    border-color: black;
+    border: 50px;
+}
+
+.postcode {
+    position: absolute;
+    margin-left: 5px;
+    width: 80px;
+}
+
+.huisnr {
+    position: absolute;
+    margin-left: 5px;
+    width: 55px;
+}
+
+.Header {
+    background-color: cornflowerblue;
+    background-image: url("");
+    width: 1900px;
+    height: 100px;
+    padding-top: 0px;
+    text-align: center;
+}
+
+.GegevensReiziger {
+    position: absolute;
+    margin-left: 730px;
+    font-family: Cambria;
+}
+
+.PersoonlijkeDetails {
+    position: absolute;
+    margin-left: 100px;
+}
+
+.Reis-boeking {
+    background-color: cornflowerblue;
+    width: 2000px;
+    height: 1010px;
+    position: absolute;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 50px;
+}
+
+.Periode-div {
+    background-color: cornflowerblue;
+    width: 2000px;
+    height: 200px;
+    position: absolute;
+    margin-left: 0px;
+    margin-top: 600px;
+}
+
+#DropDownVertrekDatum {
+    position: absolute;
+    margin-left: 50px;
+}
+
+.Vertrek-Datum {
+    position: absolute;
+    margin-left: 770px;
+    font-family: Cambria;
+}
+
+#DropdownReisDuur {
+    position: absolute;
+    margin-left: 134px;
+}
+
+.reis-tijd {
+    position: absolute;
+    margin-left: 770px;
+    font-family: Cambria;
+}
+
+#aantalVolwassenen {
+    position: absolute;
+    margin-left: 82px;
+}
+
+#aantalKinderen {
+    margin-left: 106px;
+}
+
+#aantalKamers {
+    margin-left: 115px;
+}
+
+.VolwassenenTextenValue {
+    position: absolute;
+    margin-left: 770px;
+    font-family: Cambria;
+}
+
+.KamersTextenValue {
+    position: absolute;
+    margin-left: 770px;
+    font-family: Cambria;
+}
+
+.KinderenTextenValue {
+    position: absolute;
+    margin-left: 770px;
+    font-family: Cambria;
+}
+
+.btnReisgezelschap {
+    display: inline-block;
+}
+
+#periodeTitle{
+    position: absolute;
+    margin-left: 860px;
+}
