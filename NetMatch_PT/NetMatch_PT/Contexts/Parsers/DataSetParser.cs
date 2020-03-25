@@ -33,6 +33,20 @@ namespace NetMatch_PT.Contexts.Parsers
                 Telefoonnummer = (string)set.Tables[0].Rows[rowIndex][8]
             };
         }
+        public static Travel DataSetToTravel(DataSet set, int rowIndex)
+        {
+            return new Travel((int)set.Tables[0].Rows[rowIndex][0])
+            {
+                ReisagentID = (int)set.Tables[0].Rows[rowIndex][1],
+                AccomodationID = (int)set.Tables[0].Rows[rowIndex][2],
+                CustomerID = (int)set.Tables[0].Rows[rowIndex][3],
+                Discount = (bool)set.Tables[0].Rows[rowIndex][4],
+                DepartureDate = (DateTime)set.Tables[0].Rows[rowIndex][5],
+                Insurance = (string)set.Tables[0].Rows[rowIndex][6],
+                Transport = (string)set.Tables[0].Rows[rowIndex][7],
+                Price = (decimal)set.Tables[0].Rows[rowIndex][8]
+            };
+        }
         public static TravelAgent DataSetToTravelAgent(DataSet set, int rowIndex)
         {
             return new TravelAgent((int)set.Tables[0].Rows[rowIndex][0])
