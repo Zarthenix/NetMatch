@@ -20,7 +20,7 @@ namespace NetMatch_PT.Contexts
             List<Travel> TravelList = new List<Travel>();
             try
             {
-                string sql = "SELECT TravelId, ReisagentID, AccomodationID, CustomerID, Discount, DepartureDate, Insurance, Transport, price";
+                string sql = "SELECT TravelId, ReisagentID, AccomodationID, CustomerID, Discount, DepartureDate, Insurance, Transport, price FROM Travel";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
 
@@ -45,7 +45,7 @@ namespace NetMatch_PT.Contexts
         {
             try
             {
-                string sql = "SELECT ReisagentID, AccomodationID, CustomerID, Discount, DepartureDate, Insurance, Transport, price WHERE TravelID = @TravelID";
+                string sql = "SELECT ReisagentID, AccomodationID, CustomerID, Discount, DepartureDate, Insurance, Transport, price FROM Travel WHERE TravelID = @TravelID";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
                     new KeyValuePair<string,string>("TravelID", id.ToString())
@@ -58,6 +58,30 @@ namespace NetMatch_PT.Contexts
             catch
             {
                 return null;
+            }
+        }
+
+        public long Insert(Travel t)
+        {
+            try
+            {
+                string sql = "INSERT INTO Travel(ReisagentID, AccommodationID, CustomerID, Discount, DepartureDate, Insurance, Transport, Price) VALUES (@ReisagentID, @AccommodationID, @CustomerID, @Discount, @DepartureDate, @Insurance, @Transport, @Price)";
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
+                {
+                    new KeyValuePair<string, string>("ReisagentID", t.ReisagentID.ToString()),
+                    new KeyValuePair<string, string>("AccommodationID", t.AccomodationID.ToString()),
+                    new KeyValuePair<string, string>("CustomerID", t.CustomerID.ToString()),
+                    new KeyValuePair<string, string>("Discount", t.Discount.ToString()),
+                    new KeyValuePair<string, string>("DepartureDate", t.DepartureDate.ToString()),
+                    new KeyValuePair<string, string>("Transport", t.Transport),
+                    new KeyValuePair<string, string>("Price", t.Price.ToString())
+                };
+                long results = ExecuteInsert(sql, parameters);
+                return results;
+            }
+            catch
+            {
+                throw;
             }
         }
 
