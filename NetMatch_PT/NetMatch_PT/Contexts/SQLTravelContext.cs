@@ -61,7 +61,7 @@ namespace NetMatch_PT.Contexts
             }
         }
 
-        public long Insert(Travel t)
+        public long insert(Travel t)
         {
             try
             {
