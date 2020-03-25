@@ -1,8 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    @model List<NetMatch_PT.ViewModels.AccommodationDetailVm>
 }
 
-    <body style="background-color:lightblue">
+    <div style="background-color: lightblue; height: 100%; width: 100%;">
         <div class="row">
             <div class="columnselectors">
                 <div class="selector-container">
@@ -17,56 +18,36 @@
             </div>
 
 
-                    <div class="columnselectors">
-                        <div class="selector-container">
-                            <div class="selectorcontent">
-                                <select>
-                                    <option>Kies een land</option>
-                                    <option>Spanje</option>
-                                    <option>Griekenland</option>
-                                    <option>Frankrijk</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="columnselectors">
-                        <div class="selector-container">
-                            <div class="selectorcontent">
-                                <input type="date" />
-                            </div>
-                        </div>
+            <div class="columnselectors">
+                <div class="selector-container">
+                    <div class="selectorcontent">
+                        <select>
+                            <option>Kies een land</option>
+                            <option>Spanje</option>
+                            <option>Griekenland</option>
+                            <option>Frankrijk</option>
+                        </select>
                     </div>
                 </div>
-
-
-                <div class="populairheader">
-                    <p> Populaire vakanties</p>
-                </div>
-                <div class="row">
-                    <div class="column">
-                        <div class="price">Prijs</div>
-                        <div class="accommodationimagehome">
-                            <a asp-area="" asp-controller="Accommodation" asp-action="Detail" asp-route-id="1"><img src="~/images/Voorbeeld 1.jpg" alt="Image not found" /></a>
-                            <p class="caption">Accommodatie 1</p>
-                        </div>
-                    </div>
-
-                    <div class="column">
-                        <div class="price">Prijs</div>
-                        <div class="accommodationimagehome">
-                            <a asp-area="" asp-controller="Accommodation" asp-action="Detail" asp-route-id="2"><img src="~/images/Voorbeeld 2.jpg" alt="Image not found" /></a>
-                            <p class="caption">Accommodatie 2</p>
-                        </div>
-                    </div>
-
-                    <div class="column">
-                        <div class="price">Prijs</div>
-                        <div class="accommodationimagehome">
-                            <a asp-area="" asp-controller="Accommodation" asp-action="Detail" asp-route-id="3"><img src="~/images/Voorbeeld 3.jpg" alt="Image not found" /></a>
-                            <p class="caption">Accommodatie 3</p>
-                        </div>
+            </div>
+            <div class="columnselectors">
+                <div class="selector-container">
+                    <div class="selectorcontent">
+                        <input type="date" />
                     </div>
                 </div>
+            </div>
+        </div>
 
-</body>
 
+        <div class="populairheader">
+            <p> Populaire vakanties</p>
+        </div>
+        <div class="row">
+            @foreach (var a in Model)
+            {
+                @await Html.PartialAsync("_PopularAccommodation", a);
+            }
+            </div>
+
+    </div>

@@ -21,7 +21,7 @@ namespace NetMatch_PT.Contexts
         {
             try
             {
-                string sql = "SELECT Title, Description, Price, Image WHERE AccommodationID = @AccommodationID";
+                string sql = "SELECT AccommodationID, Title, [Description], Price, [Image] FROM [Accommodation] WHERE AccommodationID = @AccommodationID";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
                     new KeyValuePair<string,string>("AccommodationID", id.ToString())
@@ -43,7 +43,7 @@ namespace NetMatch_PT.Contexts
             List<Accommodation> accommodationList = new List<Accommodation>();
             try
             {
-                string sql = "SELECT AccommodationID, Title, Description, Price, Image";
+                string sql = "SELECT AccommodationID, Title, Description, Price, Image FROM [Accommodation]";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>
                 {
 
