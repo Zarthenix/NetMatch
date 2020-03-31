@@ -26,5 +26,6 @@ namespace NetMatch_PT.Repositories
         {
             return _context.GetById(id);
         }
-       
+
+    }
 }

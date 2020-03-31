@@ -12,5 +12,6 @@ namespace NetMatch_PT.Contexts
         
         Travel GetById(int id);
         List<Travel> GetAll();
+        long insert(Travel t);
     }
 }
