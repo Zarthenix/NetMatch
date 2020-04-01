@@ -18,13 +18,15 @@ namespace NetMatch_PT.Repositories
         {
             _context = context;
         }
+
         public List<Travel> GetAll()
         {
             return _context.GetAll();
         }
+
         public Travel GetById(int id)
         {
             return _context.GetById(id);
         }
-       
+    }
 }

@@ -1,0 +1,85 @@
+﻿body {
+    height: 100vh;
+    width: 100vw;
+}
+
+.accomodation-title {
+    font-size: 45px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, sans-serif;
+    color: black;
+    max-width: 80%;
+    margin-left: 10%;
+    text-align: center;
+}
+
+.accommodation-img-container {
+    height: auto;
+    max-width: 80%;
+    object-fit: contain;
+    margin: auto;
+    margin-left: 10%;
+}
+
+.accommodation-img img {
+    height: auto;
+    max-width: 50%;
+    object-fit: contain;
+}
+
+.price-position {
+    position: relative;
+    z-index: 999;
+    margin: 0 auto;
+    bottom: 0%;
+    left: 25%;
+    font-size: 4vw;
+    font-family: bold;
+    text-align: right;
+    color: black;
+    max-width: 20%;
+    height: auto;
+    margin-top: 2%;
+}
+
+.accommodation-desc {
+    font-size: 16px;
+    max-width: 80%;
+    font-family: 'Times New Roman';
+    margin-top: 2%;
+    margin-left: 10%
+}
+
+.btn-booking {
+    color: black;
+    background-color: white;
+    border-color: #1861ac;
+    border: none;
+    text-align: center;
+    font-size: 16px;
+    width: 20%;
+    margin-left: 70%;
+    margin-top: 2%;
+}
+
+#combobox {
+    z-index: 999;
+    background-color: white;
+    color: black;
+    border: solid 1px black;
+    padding: 5px;
+    cursor: pointer;
+    max-width: 20%;
+    margin-left: 70%;
+    max-height: 245px;
+    overflow-y: scroll;
+}
+
+    #combobox div {
+        padding: 10px;
+        border-bottom: solid 1px #cccccc;
+    }
+
+        #combobox div:hover {
+            background-color: #cccccc;
+        }
