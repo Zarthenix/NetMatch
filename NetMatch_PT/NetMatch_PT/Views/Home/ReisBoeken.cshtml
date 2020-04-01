@@ -35,6 +35,9 @@
     <form>
 
         <div class="GegevensReiziger">
+
+
+
             <h3 style="text-align:center; font-size:25px;">Naam/adres van de aanmelder/hoofdboeker</h3>
             <p style="font-style: oblique;">* Verplicht veld</p>
             <br />
@@ -255,10 +258,16 @@
 
             </div>
         </div>
+        <div class="randomVierkant">
+            <p>alleeeeeeee</p>
+        </div>
+
 
         <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />  <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /><br />
 
         <div style="" class="Reis-boeking">
+
+
 
             <h3 style="text-align:center;">Reisgezelschap</h3>
             <p style="font-style:oblique; text-align:center;">*Verplichte veld</p>
@@ -694,21 +703,40 @@
                 <br /><Input type="text" Name="nr" placeholder="Telefoonnummer" id="telefoonnr" Size=15 Maxlength=15>
                 <br /><br /><button class="btn-outline-primary" id="btnToevoegen1"> Toevoegen </button>
                 <br /><br />
-                      <div class="popup" onclick="myFunction()">
-                          Click me!
-                          <span class="popuptext" id="myPopup">Popup text...</span>
-                      </div>
+                <div class="popup" onclick="myFunction()">
+                    Click me!
+                    <span class="popuptext" id="myPopup">Popup text...</span>
+                </div>
             </div>
         </div>
 
         <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /><br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /><br /> <br /> <br /> <br />
-       
-            <div class="Periode-div">
-                
-        <h2 id="periodeTitle" style="font-family:Cambria"> Bagage </h2>
-      <br /><br /><br />
-            
 
+        <div class="reisagent-div">
+
+            <center> <h2 id="reisAgentTitle" style="font-family:Cambria"> Reisagent </h2></center>
+            <br />
+            <center>
+                <p>
+                    5% korting
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </p>
+                <br />
+                <p>
+                    <h2>Hoe te handelen?</h2>
+                    Wil je in aanmerking komen voor<br />
+                    de agentenkorting? Stuur dan, na het definitief maken <br />
+                    van jouw boeking, een mail naar sales@cyouat.nl o.v.v. <br />
+                    jouw reserveringsnummer. Vanaf dat moment gaan wij kijken wat wij <br />
+                    voor jou kunnen en mogen betekenen.<br />
+                </p>
+            </center>
+            <br /><br />
+            <a class="btn-outline-primary" id="btnBoekingOpslaan" href="/Home/PDFboeking" > Boeking opslaan </a>
+        </div>
 
     </form>
 </body>
