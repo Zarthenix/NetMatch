@@ -21,11 +21,8 @@ namespace NetMatch_PT.Contexts
             try
             {
                 string sql = "SELECT TravelId, ReisagentID, AccomodationID, CustomerID, Discount, DepartureDate, Insurance, Transport, price FROM Travel";
-                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
-                {
-
-                };
-                DataSet results = ExecuteSql(sql, parameters);
+              
+                DataSet results = ExecuteSql(sql, new List<KeyValuePair<string, string>>());
 
                 for (int x = 0; x < results.Tables[0].Rows.Count; x++)
                 {
@@ -61,7 +58,7 @@ namespace NetMatch_PT.Contexts
             }
         }
 
-        public long insert(Travel t)
+        public long Insert(Travel t)
         {
             try
             {

@@ -1,0 +1,88 @@
+﻿@{
+    Layout = null;
+}
+@{
+    ViewData["Title"] = "PDFboeking";
+}
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>PDF Bevestiging</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/Reisboeken.css" />
+    <script src="https://kit.fontawesome.com/590950580f.js" crossorigin="anonymous"></script>
+
+    <!-- jQuery library -->
+    <script src="js/jquery.min.js"></script>
+
+    <!-- jsPDF library -->
+    <script src="js/jsPDF/dist/jspdf.min.js"></script>
+    <script src="js/jsPDF/jspdf.plugin.from_html.js"></script>
+    <script src="js/jsPDF/dist/jspdf.min.js"></script>
+    <script src="js/jsPDF/dist/jspdf.min.js"></script>
+    <script>
+        function pdfGenerate() {
+        var doc = new jsPDF();
+
+        doc.text(20, 20, 'Hello world!');
+        doc.text(20, 30, 'This is client-side Javascript to generate a PDF.');
+
+        // Add new page
+        doc.addPage();
+        doc.text(20, 20, 'Visit CodexWorld.com');
+
+        // Save the PDF
+        doc.save('document.pdf');
+        }
+    </script>
+</head>
+
+
+<body>
+
+    <header class="Header">
+        <div id="myMenu">
+            <div class="myWrapper">
+                <nav>
+                    <a href="/"><img id="imgComp" src="../images/PT_CompName.png" height="100" width="250" /></a>
+
+                </nav>
+            </div>
+        </div>
+    </header>
+    <br />
+
+
+    <form>
+
+        <div class="GegevensReiziger">
+
+
+        </div>
+
+
+        
+        <div style="" class="Reis-boeking">
+
+        </div>
+        <br />
+        <div class="Reiziger2">
+        
+        </div>
+
+        <center><button onclick="pdfGenerate();" class="btn-primary">Download bevestiging</button></center>
+
+        <div class="reisagent-div">
+            
+            
+        </div>
+
+    </form>
+</body>
+</html>
+
+

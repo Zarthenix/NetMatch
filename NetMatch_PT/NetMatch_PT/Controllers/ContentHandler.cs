@@ -16,10 +16,8 @@ namespace NetMatch_PT.Controllers
             {
                 return obj.GetValue(key).ToObject(typeof(T));
             }
-            else
-            {
-                return null;
-            }
+
+            return null;
         }
     }
 }

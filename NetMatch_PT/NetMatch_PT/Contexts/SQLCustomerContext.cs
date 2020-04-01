@@ -22,11 +22,8 @@ namespace NetMatch_PT.Contexts
             try
             {
                 string sql = "SELECT CustomerId, FirstName, LastName, Address, Woonplaats, Postcode, Email, GeboorteDatum, Telefoonnummer FROM Customer";
-                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
-                {
-
-                };
-                DataSet results = ExecuteSql(sql, parameters);
+           
+                DataSet results = ExecuteSql(sql, new List<KeyValuePair<string, string>>());
 
                 for (int x = 0; x < results.Tables[0].Rows.Count; x++)
                 {

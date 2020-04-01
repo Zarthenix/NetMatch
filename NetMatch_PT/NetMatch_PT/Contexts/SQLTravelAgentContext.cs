@@ -18,22 +18,18 @@ namespace NetMatch_PT.Contexts.IContext
         }
         public List<TravelAgent> GetAll()
         {
-            List<TravelAgent> TravelAgentList = new List<TravelAgent>();
+            List<TravelAgent> travelAgentList = new List<TravelAgent>();
             try
             {
                 string sql = "SELECT TravelAgentId, Email, Password FROM TravelAgent";
-                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
-                {
-
-                };
-                DataSet results = ExecuteSql(sql, parameters);
+                DataSet results = ExecuteSql(sql, new List<KeyValuePair<string, string>>());
 
                 for (int x = 0; x < results.Tables[0].Rows.Count; x++)
                 {
                     TravelAgent ta = DataSetParser.DataSetToTravelAgent(results, x);
-                    TravelAgentList.Add(ta);
+                    travelAgentList.Add(ta);
                 }
-                return TravelAgentList;
+                return travelAgentList;
             }
             catch
             {

@@ -16,7 +16,7 @@ namespace NetMatch_PT.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private AccommodationRepo _accoRepo;
-        private AccommodationDetailVmConverter accoConverter = new AccommodationDetailVmConverter();
+        private AccommodationDetailVmConverter _accoConverter = new AccommodationDetailVmConverter();
 
         public HomeController(ILogger<HomeController> logger, AccommodationRepo accoRepo)
         {
@@ -33,7 +33,7 @@ namespace NetMatch_PT.Controllers
                 Accommodation ac = _accoRepo.GetById(i);
                 if (ac != null)
                 { 
-                    accommodations.Add(accoConverter.ConvertToViewModel(_accoRepo.GetById(i)));
+                    accommodations.Add(_accoConverter.ConvertToViewModel(_accoRepo.GetById(i)));
                 }
             }
             return View(accommodations);
@@ -47,7 +47,12 @@ namespace NetMatch_PT.Controllers
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult PDFboeking()
+        {
+            return View();
+        }
+
+    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
