@@ -16,73 +16,90 @@
     <link rel="stylesheet" href="~/css/Reisboeken.css" />
     <script src="https://kit.fontawesome.com/590950580f.js" crossorigin="anonymous"></script>
 
+
     <!-- jQuery library -->
     <script src="js/jquery.min.js"></script>
 
     <!-- jsPDF library -->
     <script src="js/jsPDF/dist/jspdf.min.js"></script>
-    <script src="js/jsPDF/jspdf.plugin.from_html.js"></script>
-    <script src="js/jsPDF/dist/jspdf.min.js"></script>
-    <script src="js/jsPDF/dist/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <script>
-        function pdfGenerate() {
-        var doc = new jsPDF();
+        function HTMLtoPDF() {
+            var doc = new jsPDF();
+            doc.fromHTML($('#GegevensReiziger').get(0), 20, 20, {
+                'width': 500
+            });
 
-        doc.text(20, 20, 'Hello world!');
-        doc.text(20, 30, 'This is client-side Javascript to generate a PDF.');
-
-        // Add new page
-        doc.addPage();
-        doc.text(20, 20, 'Visit CodexWorld.com');
-
-        // Save the PDF
-        doc.save('document.pdf');
+            doc.save('Bevestiging.pdf')
         }
     </script>
 </head>
 
 
 <body>
-
     <header class="Header">
         <div id="myMenu">
             <div class="myWrapper">
                 <nav>
                     <a href="/"><img id="imgComp" src="../images/PT_CompName.png" height="100" width="250" /></a>
-
                 </nav>
             </div>
         </div>
     </header>
+
     <br />
 
+    <div id="GegevensReiziger">
+        <center>
+            <p>
+                Cursus viverra vitae lectus felis vulputate sem curabitur mollis conubia?
+            </p>
+            <p>
+                Curabitur curae; netus fermentum nullam scelerisque platea ad platea aliquet!
+            </p>
+            <p>
+                Ornare egestas per nisl venenatis leo vitae penatibus quisque augue.
+            </p>
+            <p>
+                Nisi lobortis ullamcorper vehicula iaculis non nec ultrices, rhoncus laoreet.
+            </p>
+            <p>
+                Placerat vivamus adipiscing libero enim, aenean euismod cras in aptent.
+            </p>
+            <p>
+                Non facilisi nisi laoreet curabitur tortor luctus nostra pharetra urna!
+            </p>
+            <p>
+                Lorem sociis, erat inceptos justo proin duis felis libero sit.
+            </p>
+            <p>
+                Convallis dui posuere leo porttitor, mattis vel feugiat cum condimentum!
+            </p>
+            <p>
+                Turpis lectus torquent auctor pretium pulvinar purus netus per netus.
+            </p>
+            <p>
+                wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww.
+            </p>
+        </center>
+    </div>
 
-    <form>
+    <center><a class="btn-outline-primary" href="javascript:HTMLtoPDF()">Download PDF</a></center>
 
-        <div class="GegevensReiziger">
+    <br /> <br /> <br /> <br /> <br /> <br /><br /> <br /> <br /> <br /> <br /> <br /><br /> <br /> <br /> <br /> <br /> <br /><br /> <br /> <br /> <br /> <br /> <br />
+
+    <div style="" class="pdfDownload-div">
 
 
-        </div>
-
-
-        
-        <div style="" class="Reis-boeking">
-
-        </div>
-        <br />
-        <div class="Reiziger2">
-        
-        </div>
-
-        <center><button onclick="pdfGenerate();" class="btn-primary">Download bevestiging</button></center>
-
-        <div class="reisagent-div">
-            
-            
-        </div>
-
-    </form>
+    </div>
+    <br />
 </body>
+
+
 </html>
 
 

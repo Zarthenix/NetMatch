@@ -285,3 +285,30 @@ input:checked + .slider:before {
     border:medium;
     border-color: cornflowerblue;
 }
+.pdfDownload-div {
+    position: absolute;
+    width: 2000px;
+    height: 200px;
+    background-color: cornflowerblue;
+    margin-bottom: 1000px ;
+    margin-left: 0px;
+    margin-top: 0px;
+}
+/* Style buttons */
+#btnPdf {
+    background-color: DodgerBlue;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    position: absolute;
+    width: 150px;
+    height: 50px;
+    margin-left: 1200px;
+}
+
+   /* Darker background on mouse-over */
+    #btnPdf:hover {
+        background-color: royalblue;
+    }
+
