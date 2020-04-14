@@ -52,10 +52,7 @@ namespace NetMatch_PT.Controllers
             return View();
         }
 
-        public IActionResult FullSearch(string search)
-        {
-            return null;
-        }
+      
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
