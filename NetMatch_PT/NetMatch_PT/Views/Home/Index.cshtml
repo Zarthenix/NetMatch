@@ -3,51 +3,52 @@
     @model List<NetMatch_PT.ViewModels.AccommodationDetailVm>
 }
 
-    <div style="background-color: lightblue; height: 100%; width: 100%;">
-        <div class="row">
-            <div class="columnselectors">
-                <div class="selector-container">
-                    <div class="selectorcontent">
-                        <select>
-                            <option>Kies een soort vakantie</option>
-                            <option> Zomervakantie</option>
-                            <option>Wintervakantie</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="columnselectors">
-                <div class="selector-container">
-                    <div class="selectorcontent">
-                        <select>
-                            <option>Kies een land</option>
-                            <option>Spanje</option>
-                            <option>Griekenland</option>
-                            <option>Frankrijk</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="columnselectors">
-                <div class="selector-container">
-                    <div class="selectorcontent">
-                        <input type="date" />
-                    </div>
-                </div>
+<div class="col-md-12" style="margin-bottom: 30px;">
+    <div class="row justify-content-around">
+        <div>
+            <button type="button" class="btn btn-primary dropdown-toggle dropdownButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Kies een soort vakantie
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Zomervakantie</a>
+                <a class="dropdown-item" href="#">Wintervakantie</a>
             </div>
         </div>
 
-
-        <div class="populairheader">
-            <p> Populaire vakanties</p>
-        </div>
-        <div class="row">
-            @foreach (var a in Model)
-            {
-                @await Html.PartialAsync("_PopularAccommodation", a);
-            }
+        <div>
+            <button type="button" class="btn btn-primary dropdown-toggle dropdownButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Kies een land
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Spanje</a>
+                <a class="dropdown-item" href="#">Griekenland</a>
+                <a class="dropdown-item" href="#">Frankrijk</a>
             </div>
+        </div>
 
+        <div>
+            <button type="button" class="btn btn-primary dropdown-toggle dropdownButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Kies een datum
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">1 April 2020</a>
+                <a class="dropdown-item" href="#">2 April 2020</a>
+                <a class="dropdown-item" href="#">3 April 2020</a>
+            </div>
+        </div>
     </div>
+</div>
+
+<div style="background-color: white; border:5px solid cornflowerblue" class="col-md-12">
+    <div class="populairheader">
+        <p> Populaire vakanties</p>
+    </div>
+
+    <div class="row justify-content-around">
+        @foreach (var a in Model)
+        {
+            @await Html.PartialAsync("_PopularAccommodation", a)
+            ;
+        }
+    </div>
+</div>
