@@ -13,7 +13,16 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/Reisboeken.css" />
+    <script src="/path/to/jquery.cookie.js"></script>
     <script src="https://kit.fontawesome.com/590950580f.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(window).load(function () {
+            //Read the cookie value 
+            var passedval = $.cookie('hourdiffvalue');
+
+            //if you want to remove after reading the cookie then you can use the below code
+            $.removeCookie('hourdiffvalue'); // => true
+        });</script>
 </head>
 
 
@@ -32,7 +41,7 @@
     <br />
 
 
-    <form>
+    <form action="" >
 
         <div class="GegevensReiziger">
 
@@ -44,7 +53,7 @@
             <div class="PersoonlijkeDetails">
                 <label>Aanhef:</label><br /><select><option value="1"> Heer </option> <option value="2"> Mevrouw </option></select>
                 <br />
-                <label>Voornaam:*</label><br /><Input type="text" Name="Name" Size=15 Maxlength=15>
+                <label>Voornaam:*</label><br /><Input id="name" type="text" Name="Name" Size=15 Maxlength=15>
                 <br />
                 <label>Achternaam:*</label><br /><Input type="text" Name="Achternaam" Size=15 Maxlength=15>
                 <br />
@@ -258,6 +267,13 @@
 
             </div>
         </div>
+    </form>
+
+    <script type="text/javascript">
+        var Voornaam = document.getElementById("name").value;
+        $.cookie('Voornaam', '1', { expires: 7, path: '/' });
+    </script>
+
         <div class="randomVierkant">
             <p>alleeeeeeee</p>
         </div>
@@ -737,8 +753,7 @@
             <br /><br />
             <a class="btn-outline-primary" id="btnBoekingOpslaan" href="/Home/PDFboeking"> Boeking opslaan </a>
         </div>
-
-    </form>
+    
 </body>
 </html>
 
