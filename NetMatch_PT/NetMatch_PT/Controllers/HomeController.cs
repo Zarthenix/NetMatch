@@ -33,7 +33,7 @@ namespace NetMatch_PT.Controllers
                 Accommodation ac = _accoRepo.GetById(i);
                 if (ac != null)
                 { 
-                    accommodations.Add(_accoConverter.ConvertToViewModel(_accoRepo.GetById(i)));
+                    accommodations.Add(_accoConverter.ModelToViewModel(_accoRepo.GetById(i)));
                 }
             }
             return View(accommodations);
