@@ -60,5 +60,32 @@ namespace NetMatch_PT.Contexts
                 throw;
             }
         }
+
+        public List<Accommodation> Search(string SearchTerm)
+        {
+            List<Accommodation> accommodationList = new List<Accommodation>();
+            try
+            {
+                string sql = "SELECT AccommodationID, Title, Description, Price , Image FROM Accommodation WHERE CHARINDEX(@SearchTerm, Title) > 0 ORDER BY Title";
+
+                List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
+                {
+                    new KeyValuePair<string, string>("SearchTerm", SearchTerm),
+                };
+
+                DataSet results = ExecuteSql(sql, parameters);
+
+                for(int x = 0; x < results.Tables[0].Rows.Count; x++)
+                {
+                    Accommodation a = DataSetParser.DataSetToAccommodation(results, x);
+                    accommodationList.Add(a);
+                }
+                return accommodationList;
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }

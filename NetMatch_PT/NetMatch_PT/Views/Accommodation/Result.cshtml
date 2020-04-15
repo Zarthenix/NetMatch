@@ -1,0 +1,21 @@
+﻿@using NetMatch_PT.ViewModels
+@model NetMatch_PT.ViewModels.AccommodationVm
+
+@{
+    ViewData["Title"] = "Result";
+}
+
+<h2>Result</h2>
+<div class="container">
+    @foreach (AccommodationDetailVm item in Model.AccommodationDetailViewModels)
+    {
+        <div>
+            <a href='@Url.Action("Detail", "Accommodation", new { id = item.Id })'>
+                <div class="container">
+                    @Html.DisplayFor(modelItem => item.Title)
+                </div>
+            </a>
+        </div>
+    }
+</div>
+
