@@ -1,33 +1,104 @@
-﻿
+﻿@model NetMatch_PT.ViewModels.AccommodationDetailVm;
 @{
-    <link rel="stylesheet" href="\css\AccomodationStyle.css" />
-    @model NetMatch_PT.ViewModels.AccommodationDetailVm;
+    ViewData["Title"] = "Voorbeeld Accommodatie";
+    <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" href="~/css/AccommodationStyle.css" />
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
 }
 
-<div class="accomodation-title">
-    @Model.Title
-</div>
+<body style="background-color:lightblue;">
+    <div class="parent">
+        <div class="childcentre">
 
-<div class="accommodation-img-container">
-    <div class="accommodation-img">
-        <img src="data:image/png;base64,@Model.Image" />
+            <div class="accommodation-title">@Model.Title</div>
+
+            <div class="accommodation-img-container">
+
+                <div class="accommodation-img">
+                    <div class="price-position">@Model.Price</div>
+                    <img src="data:image/jpeg;base64, @Model.Image" />
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="column" style="margin-left:25%;">
+
+                    <div class="childcentre">
+                        <div class="accommodation-description">@Model.Description</div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="childcentre">
+                        <select>
+                            <option>Kies een datum</option>
+                            <option>Datum 1</option>
+                            <option>Datum 2</option>
+                            <option>Datum 3</option>
+                        </select>
+
+                        <div style="margin-top:25%;">
+
+
+
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                        </div>
+                                        <div class="modal-footer">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <a class="btn btn-info openModal" data-href="/Accommodation/DatePicker">Toon Boekings opties</a>
+
+                            @*<button id="clickbutton">CLICK</button>*@
+
+                            <form asp-action="DatePicker" asp-controller="Accommodation" method="POST" data-ajax="true" data-ajax-update="#myModal">
+                                <!-- form content-->
+                            </form>
+
+                            @*<script>
+                                $(document).ready(function () {
+                                    $("#clickbutton").click(function(){
+                                        e.preventDefault();
+                                        $.ajax({
+                                            url: '@Url.Action("DatePicker", "Accommodation")',
+                                            type: "POST",
+                                            success: successFunc,
+                                            error: errorFunc
+                                        }).done(function (msg) {
+                                            $("#showModal").html(msg);
+                                            $("#myModal").modal();
+                                        })
+                                    });
+                                });
+                                                        </script>*@
+
+                            <script>$(document).ready(function () {
+                                    // Fill modal with content from link href
+                                    $(".openModal").on("click", function (e) {
+                                        var link = $(this).data("href");
+                                        $('#myModal .modal-body').load(link);
+                                        $('#myModal').modal("show");
+                                    });
+                                })</script>
+
+
+                            <a asp-area="" asp-controller="Home" asp-action="Reisboeken"><input type="button" value="boeken" /></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="price-position">@Model.Price</div>
-</div>
-
-<div>
-    <div class="accommodation-desc">
-        @Model.Description
-    </div>
-
-    <div id="combobox" style="">
-        @*<ul>
-                @foreach(var Date in @Model.Dates)
-                {
-                    <li>@Model.Date</li>
-                }
-            </ul>*@
-    </div>
-</div>
-
-<input type="submit" value="Book" class="btn-booking" />
+</body>

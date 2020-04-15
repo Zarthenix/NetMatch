@@ -34,5 +34,26 @@ namespace NetMatch_PT.Controllers
             
             return View(vm);
         }
+
+        public IActionResult Example()
+        {
+            return View();
+        }
+
+
+        public IActionResult DatePicker()
+        {
+            return PartialView();
+        }
+
+        public IActionResult TravelCompanyPicker()
+        {
+            return PartialView();
+        }
+
+        public IActionResult Receipt()
+        {
+            return PartialView();
+        }
     }
 }

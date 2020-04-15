@@ -1,0 +1,32 @@
+﻿@{
+    <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+}
+
+<div class="modal-header">
+    <h3>Dit is een bonnetje</h3>
+</div>
+
+<div class="modal-body">
+    <div class="alert alert-warning">
+        <span class="glyphicon glyphicon-warning-sign"></span>
+    Betaalinfo
+    </div>
+</div>
+
+<div class="modal-footer">
+    <a class="btn btn-info Previous" data-href="/Accommodation/TravelCompanyPicker">Terug</a>
+    <a asp-area="" asp-controller="Home" asp-action="Reisboeken"><input type="button" value="boeken" /></a>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // Fill modal with content from link href
+        $(".Previous").on("click", function (e) {
+            var link = $(this).data("href");
+            $('#myModal').modal("show");
+            $('#myModal .modal-body').load(link);
+        });
+    })
+</script>
