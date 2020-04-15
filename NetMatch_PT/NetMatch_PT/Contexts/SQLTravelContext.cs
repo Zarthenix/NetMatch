@@ -82,6 +82,11 @@ namespace NetMatch_PT.Contexts
             }
         }
 
+        public long insert(Travel t)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool Update(Travel c)
         {
             try
