@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Voorbeeld Accommodatie";
+    <link rel="stylesheet" href="~/css/AccommodationStyle.css" />
+}
+
+<body style="background-color:lightblue;">
+    <div class="parent">
+        <div class="childcentre">
+
+            <div class="accommodation-title">Test accommodatie</div>
+
+            <div class="accommodation-img-container">
+
+                <div class="accommodation-img">
+                    <div class="price-position">Test Prijs</div>
+                    <img src="~/images/Voorbeeld 1.jpg" />
+                </div>
+                </div>
+
+            <div class="row">
+
+                <div class="column" style="margin-left:25%;">
+
+                    <div class="childcentre">
+                            <div class="accommodation-description" >
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="childcentre">
+                        <select>
+                            <option>Kies een datum</option>
+                            <option>Datum 1</option>
+                            <option>Datum 2</option>
+                            <option>Datum 3</option>
+                        </select>
+
+                        <div style="margin-top:25%;">
+                            <a asp-area="" asp-controller="Home" asp-action="Index"><input type="button" value="boeken" /></a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+    </div>
+</body>

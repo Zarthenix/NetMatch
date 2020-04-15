@@ -52,5 +52,26 @@ namespace NetMatch_PT.Controllers
             vm.AccommodationDetailViewModels = _accommodationDetailVmConverter.ModelsToViewModels(Accommodations);
             return View(vm);
         }
+
+        public IActionResult Example()
+        {
+            return View();
+        }
+
+
+        public IActionResult DatePicker()
+        {
+            return PartialView();
+        }
+
+        public IActionResult TravelCompanyPicker()
+        {
+            return PartialView();
+        }
+
+        public IActionResult Receipt()
+        {
+            return PartialView();
+        }
     }
 }
