@@ -30,7 +30,7 @@ namespace NetMatch_PT.Controllers
             Accommodation ac = _accommodationRepo.GetById(id);
            
             AccommodationDetailVmConverter converter = new AccommodationDetailVmConverter(); 
-            AccommodationDetailVm vm = converter.ConvertToViewModel(ac);
+            AccommodationDetailVm vm = converter.ModelToViewModel(ac);
             
             return View(vm);
         }
