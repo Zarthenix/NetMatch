@@ -16,8 +16,10 @@
 </div>
 
 <div class="modal-footer">
-    <a class="btn btn-info Previous" data-href="/Accommodation/TravelCompanyPicker">Terug</a>
-    <a asp-area="" asp-controller="Home" asp-action="Reisboeken"><input type="button" value="boeken" /></a>
+    <a asp-action="TravelCompanyPicker" asp-controller="Accommodation" method="get" data-ajax="true" data-ajax-update="#myModal">
+        <input type="button" class="btn btn-primary" value="Terug" />
+    </a>
+    <a asp-area="" asp-controller="Home" asp-action="Reisboeken"><input type="button" class="btn btn-primary" value="boeken" /></a>
 </div>
 
 <script>

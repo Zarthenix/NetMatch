@@ -12,11 +12,15 @@
 </div>
 
 <div class="modal-footer">
-    <a class="btn btn-info DatePicker" data-href="/Accommodation/DatePicker">Terug</a>
-    <a class="btn btn-info Receipt" data-href="/Accommodation/Receipt">Doorgaan</a>
+    <a asp-action="DatePicker" asp-controller="Accommodation" method="get" data-ajax="true" data-ajax-update="#myModal" class="btn btn-primary">
+        <input type="button" class="btn btn-primary" value="Terug" />
+    </a>
+    <a asp-action="Receipt" asp-controller="Accommodation" method="get" data-ajax="true" data-ajax-update="#myModal" class="btn btn-primary">
+        <input type="button" class="btn btn-primary" value="Volgende" />
+    </a>
 </div>
 
-<script>
+@*<script>
     $(document).ready(function () {
         // Fill modal with content from link href
         $(".Receipt").on("click", function (e) {
@@ -34,4 +38,4 @@
             $('#myModal .modal-body').load(link);
         });
     })
-</script>
+</script>*@

@@ -59,39 +59,23 @@
                             </div>
 
 
-                            <a class="btn btn-info openModal" data-href="/Accommodation/DatePicker">Toon Boekings opties</a>
+                            <input type="button" class="btn btn-primary" value="Boekingopties" id="OptionsBtn" />
 
-                            @*<button id="clickbutton">CLICK</button>*@
+                            <a class="openModal" asp-action="DatePicker" asp-controller="Accommodation" method="get" data-ajax="true" data-ajax-update="#myModal">Modal</a>
 
-                            <form asp-action="DatePicker" asp-controller="Accommodation" method="POST" data-ajax="true" data-ajax-update="#myModal">
-                                <!-- form content-->
-                            </form>
 
-                            @*<script>
-                                $(document).ready(function () {
-                                    $("#clickbutton").click(function(){
-                                        e.preventDefault();
-                                        $.ajax({
-                                            url: '@Url.Action("DatePicker", "Accommodation")',
-                                            type: "POST",
-                                            success: successFunc,
-                                            error: errorFunc
-                                        }).done(function (msg) {
-                                            $("#showModal").html(msg);
-                                            $("#myModal").modal();
-                                        })
-                                    });
+                            <script>
+                                $('.openModal').on('click', function () {
+                                    $('#myModal').modal({ show: true });
                                 });
-                                                        </script>*@
+                            </script>
 
-                            <script>$(document).ready(function () {
-                                    // Fill modal with content from link href
-                                    $(".openModal").on("click", function (e) {
-                                        var link = $(this).data("href");
-                                        $('#myModal .modal-body').load(link);
-                                        $('#myModal').modal("show");
-                                    });
-                                })</script>
+                            <script>
+                                $("#OptionsBtn").click(function () {
+                                    $('#myModal').load("/Accommodation/DatePicker");
+                                    $('#myModal').modal("show");
+                                });
+                            </script>
 
 
                             <a asp-area="" asp-controller="Home" asp-action="Reisboeken"><input type="button" value="boeken" /></a>
