@@ -7,7 +7,7 @@ using NetMatch_PT.Models;
 
 namespace NetMatch_PT.ViewModels
 {
-    public class AccommodationDetailVm
+    public class AccommodationDetailVm : SearchVm
     {
         public int Id { get; set; }
         public string Title { get; set; }

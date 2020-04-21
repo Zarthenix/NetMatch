@@ -14,10 +14,12 @@ namespace NetMatch_PT.Controllers
     public class AccommodationController : Controller
     {
         private readonly AccommodationRepo _accommodationRepo;
+        private readonly AccommodationDetailVmConverter _accommodationDetailVmConverter;
 
-        public AccommodationController(AccommodationRepo accRepo)
+        public AccommodationController(AccommodationRepo accRepo, AccommodationDetailVmConverter vmConverter)
         {
             _accommodationRepo = accRepo;
+            _accommodationDetailVmConverter = vmConverter;
         }
 
         public IActionResult Index()
@@ -28,10 +30,26 @@ namespace NetMatch_PT.Controllers
         public IActionResult Detail(int id)
         {
             Accommodation ac = _accommodationRepo.GetById(id);
-           
-            AccommodationDetailVmConverter converter = new AccommodationDetailVmConverter(); 
+
+            AccommodationDetailVmConverter converter = new AccommodationDetailVmConverter();
             AccommodationDetailVm vm = converter.ModelToViewModel(ac);
-            
+
+            return View(vm);
+        }
+        public IActionResult Search(string SearchTerm)
+        {
+            return RedirectToAction("Result", new { SearchTerm });
+        }
+        public IActionResult Result(string SearchTerm)
+        {
+            if(SearchTerm == null)
+            {
+                return RedirectToAction("Detail", "Home");
+            }
+            AccommodationVm vm = new AccommodationVm();
+            List<Accommodation> Accommodations = new List<Accommodation>();
+            Accommodations = _accommodationRepo.Search(SearchTerm);
+            vm.AccommodationDetailViewModels = _accommodationDetailVmConverter.ModelsToViewModels(Accommodations);
             return View(vm);
         }
 

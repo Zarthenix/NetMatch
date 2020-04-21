@@ -10,5 +10,6 @@ namespace NetMatch_PT.Contexts.Interfaces
     {
         Accommodation GetById(int id);
         List<Accommodation> GetAll();
+        List<Accommodation> Search(string SearchTerm);
     }
 }

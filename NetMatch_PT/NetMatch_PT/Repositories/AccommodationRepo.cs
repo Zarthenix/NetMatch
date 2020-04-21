@@ -23,5 +23,9 @@ namespace NetMatch_PT.Repositories
         {
             return _context.GetById(id);
         }
+        public List<Accommodation> Search(string SearchTerm)
+        {
+            return _context.Search(SearchTerm);
+        }
     }
 }
