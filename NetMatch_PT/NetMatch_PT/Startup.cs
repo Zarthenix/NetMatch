@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using NetMatch_PT.Contexts;
 using NetMatch_PT.Contexts.Interfaces;
 using NetMatch_PT.Repositories;
+using NetMatch_PT.ViewModels.Converters;
 
 namespace NetMatch_PT
 {
@@ -29,6 +30,8 @@ namespace NetMatch_PT
             services.AddTransient<IAccommodationContext, SQLAccommodationContext>();
 
             services.AddScoped<AccommodationRepo>();
+
+            services.AddScoped<AccommodationDetailVmConverter>();
 
             services.AddControllersWithViews();
         }

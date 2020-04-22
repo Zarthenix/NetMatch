@@ -31,7 +31,13 @@ namespace NetMatch_PT.ViewModels.Converters
 
         public List<AccommodationDetailVm> ModelsToViewModels(List<Accommodation> models)
         {
-            return null;
+            List<AccommodationDetailVm> result = new List<AccommodationDetailVm>();
+
+            foreach(Accommodation a in models)
+            {
+                result.Add(ModelToViewModel(a));
+            }
+            return result;
         }
 
         public List<Accommodation> ViewModelsToModels(List<AccommodationDetailVm> viewModels)
