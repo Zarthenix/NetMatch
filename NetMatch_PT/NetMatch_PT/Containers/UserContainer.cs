@@ -20,7 +20,7 @@ namespace NetMatch_PT.Containers
         public  UserContainer(IConfiguration configuration)
         {
             users = new List<User>();
-            _connectionString = configuration.GetConnectionString("DefaultConnection");
+            _connectionString = "Server=mssql.fhict.local;Database=dbi407655_netmatch;User Id=dbi407655_netmatch;Password=Netmatch;";
         }
 
         public void Create(string email, string password)
@@ -38,7 +38,7 @@ namespace NetMatch_PT.Containers
 
             SqlConnection connection = new SqlConnection(_connectionString);
             connection.Open();
-            string q = $"INSERT INTO dbo.Users (Email, Password) VALUES (@Email, @Password)";
+            string q = "INSERT INTO dbo.Users (Email, Password) VALUES (@Email, @Password)";
             SqlCommand command = new SqlCommand(q);
 
             command.Parameters.AddWithValue("@Email", user.Email);
@@ -47,7 +47,7 @@ namespace NetMatch_PT.Containers
 
             command.ExecuteNonQuery();
 
-            q = $"SELECT Id FROM dbo.Users WHERE Email = @Email";
+            q = "SELECT Id FROM dbo.Users WHERE Email = @Email";
             command = new SqlCommand(q);
 
             command.Parameters.AddWithValue("@Email", user.Email);
@@ -69,7 +69,7 @@ namespace NetMatch_PT.Containers
 
             SqlConnection connection = new SqlConnection(_connectionString);
             connection.Open();
-                string q = $"DELETE FROM dbo.Users WHERE Id = @Id";
+                string q = "DELETE FROM dbo.Users WHERE Id = @Id";
                 SqlCommand command = new SqlCommand(q);
 
                 command.Parameters.AddWithValue("@Id", user.Id);
@@ -84,7 +84,7 @@ namespace NetMatch_PT.Containers
         {
             SqlConnection connection = new SqlConnection(_connectionString);
             connection.Open();
-            string q = $"SELECT * FROM dbo.Users";
+            string q = "SELECT * FROM dbo.Users";
                 SqlCommand command = new SqlCommand(q);
 
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(command);

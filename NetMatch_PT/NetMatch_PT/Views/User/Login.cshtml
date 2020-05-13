@@ -6,9 +6,10 @@
 <center>
 <h1>Login</h1>
 
-<form asp-action="Login" asp-controller="User" method="get">
-    <input type="text" asp-for="@Model.Email" />
-    <input type="password" asp-for="@Model.Password" />
+<form asp-action="Login" method="post">
+    <input type="text" name="Email" asp-for="@Model.Email" />
+    <input type="password"name="Password" asp-for="@Model.Password" />
     <input type="submit" value="Login" />
+    <h1>@Html.ViewData["Message"]</h1>
 </form>
 </center>
