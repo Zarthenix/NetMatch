@@ -5,9 +5,7 @@ using System.Threading.Tasks;
 
 namespace NetMatch_PT.ViewModels
 {
-    public abstract class SearchVm
+    public class FullSearchVm : SearchVm
     {
-        public string SearchTerm { get; set; }
-
     }
 }

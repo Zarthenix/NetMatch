@@ -44,7 +44,7 @@ namespace NetMatch_PT.Contexts
             List<Accommodation> accommodationList = new List<Accommodation>();
             try
             {
-                string sql = "SELECT AccommodationID, Title, Description, Price, Image FROM [Accommodation]";
+                string sql = "SELECT AccommodationID, Title, Description, Image, Country FROM [Accommodation]";
                 
                 DataSet results = ExecuteSql(sql, new List<KeyValuePair<string, string>>());
 

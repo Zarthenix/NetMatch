@@ -27,5 +27,10 @@ namespace NetMatch_PT.Repositories
         {
             return _context.Search(SearchTerm);
         }
+
+        public List<Accommodation> GetAll()
+        {
+            return _context.GetAll();
+        }
     }
 }

@@ -15,7 +15,7 @@ namespace NetMatch_PT.ViewModels
         public decimal Price { get; set; }
         public string Image { get; set; }
         public TravelTypes Traveltype { get; set; }
-        public Countries Countries { get; set; }
-        public List<AccommodationDate> DateList { get; set; }
+        public Countries Country { get; set; }
+        public List<DateTime> DateList { get; set; }
     }
 }
