@@ -12,9 +12,21 @@
         <div>
             <a href='@Url.Action("Detail", "Accommodation", new { id = item.Id })'>
                 <div class="container">
-                    @Html.DisplayFor(modelItem => item.Title)
-                </div>
-            </a>
+                    <div class="container">
+                        <div class="accommodation-img">
+                            <img src="data:image/jpeg;base64, @item.Image" />
+                        </div>
+                        @Html.DisplayFor(modelItem => item.Title)
+                        <br>
+                        @Html.DisplayFor(modelItem => item.Description)
+                        <br>
+                        @Html.DisplayFor(modelItem => item.Countries)
+                        <br>
+                        @Html.DisplayFor(modelItem => item.DateList)
+                        <br>
+                        @Html.DisplayFor(modelItem => item.Price)€
+                    </div>
+</a>
         </div>
     }
 </div>
