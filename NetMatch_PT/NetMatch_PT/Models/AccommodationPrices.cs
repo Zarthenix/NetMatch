@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace NetMatch_PT.Models
 {
-    public class AccommodationDate
+    public class AccommodationPrices
     {
         public DateTime Date { get; set; }
-        public int AccommodationID { get; set; }
+        public decimal Price { get; set; }
     }
 }

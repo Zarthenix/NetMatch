@@ -14,15 +14,13 @@ namespace NetMatch_PT.Models
         public decimal Price { get; set; }
         public byte[] Image { get; set; }
         public TravelTypes Traveltype { get; set; }
-        public Countries Countries { get; set; }
-        public List<AccommodationDate> DateList { get; set; }
+        public Countries Country { get; set; }
+        public List<AccommodationPrices> DatePrices { get; set; } = new List<AccommodationPrices>();
 
-        public Accommodation(int id, string title,
-            decimal price, byte[] image, string description)
+        public Accommodation(int id, string title, byte[] image, string description)
         {
             Id = id;
             Title = title;
-            Price = price;
             Image = image;
             Description = description;
         }

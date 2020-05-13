@@ -19,8 +19,8 @@ namespace NetMatch_PT.ViewModels.Converters
                 Price = model.Price,
                 Image = Convert.ToBase64String(model.Image),
                 Traveltype = model.Traveltype,
-                Countries = model.Countries,
-                DateList = model.DateList                
+                Country = model.Country,
+                             
             };
         }
 

@@ -7,6 +7,8 @@ namespace NetMatch_PT.ViewModels
 {
     public class AccommodationVm : SearchVm
     {
-        public List<AccommodationDetailVm> AccommodationDetailViewModels { get; set; } = new List<AccommodationDetailVm>();
+        public List<AccommodationDetailVm> SelectedAccommodations { get; set; } = new List<AccommodationDetailVm>();
+
+        public List<AccommodationDetailVm> UnselectedAccommodations { get; set; } = new List<AccommodationDetailVm>();
     }
 }
