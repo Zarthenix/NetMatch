@@ -1,8 +1,9 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,6 +12,9 @@ using NetMatch_PT.Contexts;
 using NetMatch_PT.Contexts.Interfaces;
 using NetMatch_PT.Repositories;
 using NetMatch_PT.ViewModels.Converters;
+using NetMatch_PT.Containers.Interfaces;
+using NetMatch_PT.Containers;
+using Microsoft.AspNetCore.Http;
 
 namespace NetMatch_PT
 {
@@ -27,6 +31,7 @@ namespace NetMatch_PT
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IAccommodationContext, SQLAccommodationContext>();
+            services.AddTransient<IUserContainer, UserContainer>();
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddScoped<AccommodationRepo>();
