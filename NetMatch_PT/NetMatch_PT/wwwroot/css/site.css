@@ -77,6 +77,11 @@ main {
     box-sizing: border-box;
 }
 
+.quickSearch {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
 
 /* Create three equal columns that floats next to each other */
 .column {

@@ -16,11 +16,10 @@ namespace NetMatch_PT.ViewModels.Converters
                 Id = model.Id,
                 Title = model.Title,
                 Description = model.Description,
-                Price = model.Price,
                 Image = Convert.ToBase64String(model.Image),
                 Traveltype = model.Traveltype,
                 Country = model.Country,
-                             
+                DatePrices = model.DatePrices
             };
         }
 

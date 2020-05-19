@@ -37,49 +37,6 @@ namespace NetMatch_PT.Controllers
             return View(vm);
         }
 
-        public IActionResult Result(string SearchTerm)
-        {
-            List <Accommodation> accommodations = _accommodationRepo.GetAll();
-            AccommodationVm vm = new AccommodationVm();
-
-            if (SearchTerm == string.Empty)
-            {
-                vm.SelectedAccommodations = _accommodationDetailVmConverter.ModelsToViewModels(accommodations);
-                return View(vm);
-            }
-
-            List<Accommodation>[] filteredAccommodations = GetSearchResultLists(accommodations, SearchTerm);
-            vm.SelectedAccommodations = _accommodationDetailVmConverter.ModelsToViewModels(filteredAccommodations[0]);
-            vm.UnselectedAccommodations = _accommodationDetailVmConverter.ModelsToViewModels(filteredAccommodations[1]);
-            
-            return View(vm);
-        }
-
-        private List<Accommodation>[] GetSearchResultLists(List<Accommodation> accommodations, string search)
-        {
-            List<Accommodation>[] results = new List<Accommodation>[2];
-
-            List<Accommodation> tempSelectedAccommodations = new List<Accommodation>();
-            tempSelectedAccommodations.AddRange(accommodations.Where(n => n.Country.ToString().Contains(search)));
-            tempSelectedAccommodations.AddRange(accommodations.Where(n => n.Title.Contains(search)));
-            tempSelectedAccommodations.AddRange(accommodations.Where(n => n.Description.Contains(search)));
-
-            results[0] = tempSelectedAccommodations;
-
-            List<Accommodation> tempUnselectedAccommodations = new List<Accommodation>();
-
-            foreach (Accommodation a in accommodations)
-            {
-                if (!tempSelectedAccommodations.Contains(a))
-                {
-                    tempUnselectedAccommodations.Add(a);
-                }
-            }
-
-            results[1] = tempUnselectedAccommodations;
-
-            return results;
-        }
 
         public IActionResult Example()
         {

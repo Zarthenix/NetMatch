@@ -1,5 +1,5 @@
 ﻿@using NetMatch_PT.ViewModels
-@model NetMatch_PT.ViewModels.AccommodationVm
+@model List<AccommodationDetailVm>
 
 @{
     ViewData["Title"] = "Result";
@@ -7,7 +7,7 @@
 
 <h2>Result</h2>
 <div class="container">
-    @foreach (AccommodationDetailVm item in Model.AccommodationDetailViewModels)
+    @foreach (AccommodationDetailVm item in Model)
     {
         <div>
             <a href='@Url.Action("Detail", "Accommodation", new { id = item.Id })'>

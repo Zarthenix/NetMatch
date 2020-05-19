@@ -1,42 +1,42 @@
-﻿@{
+﻿@using NetMatch_PT.Models.Enums
+@{
     ViewData["Title"] = "Home Page";
-    @model List<NetMatch_PT.ViewModels.AccommodationDetailVm>
+    @model NetMatch_PT.ViewModels.HomepageVm
 }
 
-<div class="col-md-12" style="margin-bottom: 30px;">
-    <div class="row justify-content-around">
-        <div>
-            <button type="button" class="btn btn-primary dropdown-toggle dropdownButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Kies een soort vakantie
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Zomervakantie</a>
-                <a class="dropdown-item" href="#">Wintervakantie</a>
+<div class="col-md-12 quickSearch">
+    <form class="form-inline" method="get" asp-action="QuickSearch" asp-controller="Search">
+        <div class="form-row"> 
+            <div class="col">
+                <select asp-for="@Model.SearchVm.TravelType" class="form-control" placeholder="test">
+                    <option value="null" selected disabled>Reistype</option>
+                    @foreach (int x in Enum.GetValues(typeof(TravelTypes)))
+                    {
+                        <option value="@x">@Enum.GetName(typeof(TravelTypes), x)</option>
+                    }
+                </select>
             </div>
-        </div>
-
-        <div>
-            <button type="button" class="btn btn-primary dropdown-toggle dropdownButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Kies een land
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Spanje</a>
-                <a class="dropdown-item" href="#">Griekenland</a>
-                <a class="dropdown-item" href="#">Frankrijk</a>
+            <div class="col">
+                <select asp-for="@Model.SearchVm.Country" class="form-control">
+                    <option value="null" selected disabled>Land</option>
+                    @foreach (int x in Enum.GetValues(typeof(Countries)))
+                    {
+                        <option value="@x">@Enum.GetName(typeof(Countries), x)</option>
+                    }
+                </select>
             </div>
-        </div>
-
-        <div>
-            <button type="button" class="btn btn-primary dropdown-toggle dropdownButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Kies een datum
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">1 April 2020</a>
-                <a class="dropdown-item" href="#">2 April 2020</a>
-                <a class="dropdown-item" href="#">3 April 2020</a>
+            <div class="col">
+                <select asp-for="@Model.SearchVm.Month" class="form-control">
+                    <option value="null" selected disabled>Maand</option>
+                    @foreach (int x in Enum.GetValues(typeof(Months)))
+                    {
+                        <option value="@x">@Enum.GetName(typeof(Months), x)</option>
+                    }
+                </select>
             </div>
+            <input class="btn btn-info" type="submit" value="Zoeken"/>
         </div>
-    </div>
+    </form>
 </div>
 
 <div style="background-color: white; border:5px solid cornflowerblue" class="col-md-12">
@@ -45,7 +45,7 @@
     </div>
 
     <div class="row justify-content-around">
-        @foreach (var a in Model)
+        @foreach (var a in Model.Accommodations)
         {
             @await Html.PartialAsync("_PopularAccommodation", a)
             ;

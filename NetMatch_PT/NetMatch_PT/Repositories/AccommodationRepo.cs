@@ -7,6 +7,7 @@ using NetMatch_PT.Contexts;
 using NetMatch_PT.Contexts.Interfaces;
 using NetMatch_PT.Models;
 using NetMatch_PT.Contexts.IContext;
+using NetMatch_PT.ViewModels;
 
 namespace NetMatch_PT.Repositories
 {
@@ -23,9 +24,14 @@ namespace NetMatch_PT.Repositories
         {
             return _context.GetById(id);
         }
-        public List<Accommodation> Search(string SearchTerm)
+        public List<Accommodation> Search(string searchTerm)
         {
-            return _context.Search(SearchTerm);
+            return _context.Search(searchTerm);
+        }
+
+        public List<Accommodation> QuickSearch(SearchVm search)
+        {
+            return _context.QuickSearch(search);
         }
 
         public List<Accommodation> GetAll()

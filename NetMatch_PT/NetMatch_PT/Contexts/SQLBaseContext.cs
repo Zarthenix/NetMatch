@@ -20,16 +20,16 @@ namespace NetMatch_PT.Contexts
             try
             {
                 SqlConnection connection = new SqlConnection(_connectionString);
-                SqlDataAdapter Adapter = new SqlDataAdapter();
+                SqlDataAdapter adapter = new SqlDataAdapter();
                 SqlCommand command = connection.CreateCommand();
 
                 command.Parameters.AddRange(GetParameters(parameters));
                 command.CommandText = sql;
 
-                Adapter.SelectCommand = command;
+                adapter.SelectCommand = command;
 
                 connection.Open();
-                Adapter.Fill(data);
+                adapter.Fill(data);
                 connection.Close();
 
                 return data;
@@ -61,6 +61,7 @@ namespace NetMatch_PT.Contexts
             }
         }
 
+       
         private SqlParameter[] GetParameters(List<KeyValuePair<string, string>> parameters)
         {
             SqlParameter[] retVal = new SqlParameter[parameters.Count];
@@ -68,7 +69,7 @@ namespace NetMatch_PT.Contexts
             {
                 SqlParameter param = new SqlParameter
                 {
-                    ParameterName = "@" + kvp.Key,
+                    ParameterName = kvp.Key,
                     Value = kvp.Value
                 };
                 retVal[parameters.IndexOf(kvp)] = param;

@@ -46,7 +46,7 @@ namespace NetMatch_PT.Contexts
                 string sql = "SELECT Firstname, Lastname, Address, Woonplaats, Postcode, Email, Geboortedatum, Telefoonnummer FROM Customer WHERE CustomerID = @CustomerID";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
-                    new KeyValuePair<string,string>("CustomerID", id.ToString())
+                    new KeyValuePair<string,string>("@CustomerID", id.ToString())
                 };
 
                 DataSet results = ExecuteSql(sql, parameters);
@@ -67,14 +67,14 @@ namespace NetMatch_PT.Contexts
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
-                    new KeyValuePair<string, string>("firstname", c.FirstName),
-                    new KeyValuePair<string, string>("lastname", c.LastName),
-                    new KeyValuePair<string, string>("address", c.Address),
-                    new KeyValuePair<string, string>("woonplaats", c.Woonplaats),
-                    new KeyValuePair<string, string>("postcode", c.Postcode),
-                    new KeyValuePair<string, string>("email", c.Email),
-                    new KeyValuePair<string, string>("geboortedatum", c.Geboortedatum.ToString()),
-                    new KeyValuePair<string, string>("telefoonnummer", c.Telefoonnummer)
+                    new KeyValuePair<string, string>("@firstname", c.FirstName),
+                    new KeyValuePair<string, string>("@lastname", c.LastName),
+                    new KeyValuePair<string, string>("@address", c.Address),
+                    new KeyValuePair<string, string>("@woonplaats", c.Woonplaats),
+                    new KeyValuePair<string, string>("@postcode", c.Postcode),
+                    new KeyValuePair<string, string>("@email", c.Email),
+                    new KeyValuePair<string, string>("@geboortedatum", c.Geboortedatum.ToString()),
+                    new KeyValuePair<string, string>("@telefoonnummer", c.Telefoonnummer)
                 };
                 ExecuteSql(sql, parameters);
                 return true;

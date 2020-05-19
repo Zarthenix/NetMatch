@@ -36,7 +36,13 @@ namespace NetMatch_PT.Controllers
                     accommodations.Add(_accoConverter.ModelToViewModel(_accoRepo.GetById(i)));
                 }
             }
-            return View(accommodations);
+
+            HomepageVm vm = new HomepageVm
+            {
+                Accommodations = accommodations,
+                SearchVm = new SearchVm()
+            };
+            return View(vm);
         }
 
         public IActionResult Privacy()
