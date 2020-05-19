@@ -1,9 +1,8 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,10 +27,21 @@ namespace NetMatch_PT
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IAccommodationContext, SQLAccommodationContext>();
+            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddScoped<AccommodationRepo>();
 
             services.AddScoped<AccommodationDetailVmConverter>();
+
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.Cookie.Name = ".FlyMeAt.Session";
+                options.IdleTimeout = TimeSpan.FromSeconds(300);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
 
             services.AddControllersWithViews();
         }
@@ -55,6 +65,8 @@ namespace NetMatch_PT
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
