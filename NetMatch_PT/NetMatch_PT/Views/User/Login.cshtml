@@ -1,0 +1,15 @@
+﻿@using NetMatch_PT.Models
+@model NetMatch_PT.Models.User;
+@{
+    ViewData["Title"] = "Login";
+}
+<center>
+<h1>Login</h1>
+
+<form asp-action="Login" method="post">
+    <input type="text" name="Email" asp-for="@Model.Email" />
+    <input type="password"name="Password" asp-for="@Model.Password" />
+    <input type="submit" value="Login" />
+    <h1>@Html.ViewData["Message"]</h1>
+</form>
+</center>

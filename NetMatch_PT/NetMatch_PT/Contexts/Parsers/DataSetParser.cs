@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using NetMatch_PT.Models;
 using System.Data;
+using Microsoft.CodeAnalysis.CSharp;
+using NetMatch_PT.Models.Enums;
 
 namespace NetMatch_PT.Contexts.Parsers
 {
@@ -15,8 +17,8 @@ namespace NetMatch_PT.Contexts.Parsers
             {
                 Title = (string)set.Tables[0].Rows[rowIndex][1],
                 Description = (string)set.Tables[0].Rows[rowIndex][2],
-                Price = (decimal)set.Tables[0].Rows[rowIndex][3],
-                Image = (byte[])set.Tables[0].Rows[rowIndex][4],
+                Image = (byte[])set.Tables[0].Rows[rowIndex][3],
+                Country = (Countries)Convert.ToInt32(set.Tables[0].Rows[rowIndex][4])
             };
         }
         public static Customer DataSetToCustomer(DataSet set, int rowIndex)

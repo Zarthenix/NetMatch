@@ -1,11 +1,12 @@
 ﻿@{
     Layout = null;
-}
-@{
+    @model NetMatch_PT.ViewModels.TravelDetailVm
     ViewData["Title"] = "PDFboeking";
 }
-@model Customer;
-<!DOCTYPE html>
+
+
+
+
 
 <html>
 
@@ -21,7 +22,7 @@
     <!-- jQuery library -->
     <script src="js/jquery.min.js"></script>
 
-    
+
     <!-- jsPDF library -->
     <script src="js/jsPDF/dist/jspdf.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js"></script>
@@ -33,8 +34,13 @@
         function HTMLtoPDF(l) {
             var doc = new jsPDF();
 
+
+            doc.setFont("helvetica");
+            doc.setFontType("bold");
+            doc.setFontSize(9);
+
             doc.fromHTML($('#toPDF').get(0), 20, 20, {
-                'width': 700
+                'width': 1000
             });
 
             doc.save('Bevestiging_Factuur.pdf')
@@ -55,52 +61,87 @@
     </header>
 
     <br />
-
     <script src="/path/to/jquery.cookie.js"></script>
-   
-    <script type="text/javascript">
+    <script>
+        var fname = localStorage['firstName'];
+        var lname = localStorage['lastName'];
+        var birthdate = localStorage['birthDate'];
+        var wplaats = localStorage['wplaats'];
+        var huisnr = localStorage['huisnr'];
+        var straat = localStorage['strnaam'];
+        var postcode = localStorage['postcode'];
+        var email = localStorage['email'];
+        var telefoonnr = localStorage['telnr'];
+        var nationaliteit = localStorage['nationality'];
 
-        $(window).load(function () {
-            //Read the cookie value
-            var passedval = $.cookie('Voornaam');
-
-            //if you want to remove after reading the cookie then you can use the below code
-            $.removeCookie('Voornaam'); // => true
-        });
+        @*var Prijs = @Model.Price;
+        var prijsMetKorting = Prijs;*@
     </script>
 
     <div id="toPDF">
-
         <center><h1>Factuur bevestiging</h1></center>
-        <center><h3>cyouat</h3></center>
-     
-        <p> Voornaam: <script>document.write(passedval);</script></p>
-        <p> Achternaam: </p>
-        <p> Geboortedatum:  </p>
-        <p> Woonplaats:  </p>
-        <p> Adres: </p>
-        <p> Postcode: </p>
-        <p> Telefoonnummer: </p>
+        <br />
+        <center>
+            <p>
+                Voornaam:
+                <script>document.write(fname)</script>
+            </p>
+            <p>
+                Achternaam:
+                <script>document.write(lname)</script>
+            </p>
+            <p>
+                Geboortedatum:
+                <script>document.write(birthdate)</script>
+            </p>
+            <p>
+                Nationaliteit:
+                <script>document.write(nationaliteit)</script>
+            </p>
+            <p>
+                Woonplaats:
+                <script>document.write(wplaats)</script>,&nbsp;
+                <script>document.write(postcode)</script>
+            </p>
+            <p>
+                Adres:
+                <script>document.write(straat)</script>,&nbsp;
+                <script>document.write(huisnr)</script>
+            </p>
+            <p>
+                Telefoonnummer:
+                <script>document.write(telefoonnr)</script>
+            </p>
+            <p>
+                E-mail:
+                <script>document.write(email)</script>
+            </p>
 
-        <table style="height: 160px; width: 598px;">
-            <tbody>
-                <tr>
-                    <td style="width: 180px;">Bestemming&nbsp;</td>
-                    <td style="width: 180px;">&nbsp;Reis datum</td>
-                    <td style="width: 180px;">Aantal reizigers&nbsp;</td>
-                    <td style="width: 180px;">&nbsp;Prijs</td>
-
-                </tr>
-                <tr>
-                    <td style="width: 150px;"></td>
-                    <td style="width: 150px;"></td>
-                    <td style="width: 150px;"></td>
-                    <td style="width: 150px;"></td>
-                </tr>
-            </tbody>
-        </table>
-        <!-- DivTable.com -->
-
+            <br /><br /><br />
+            <table style="height: 160px; width: 100%; font-size:9px;" class="table">
+                <tbody>
+                    <tr class="thead-dark">
+                        <td style="width: 180px;">Bestemming&nbsp;</td>
+                        <td style="width: 180px;">&nbsp;Reis datum</td>
+                        <td style="width: 180px;">Aantal reizigers&nbsp;</td>
+                        <td style="width: 180px;">&nbsp;Prijs</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 150px;"></td>
+                        <td style="width: 150px;"></td>
+                        <td style="width: 150px;"></td>
+                        <td style="width: 150px;"> <script>document.write(prijsMetKorting)</script></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 150px;"></td>
+                        <td style="width: 150px;"></td>
+                        <td style="width: 150px;"></td>
+                        <td style="width: 150px;"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- DivTable.com -->
+        </center>
 
     </div>
 
@@ -114,9 +155,13 @@
     </div>
     <br />
 </body>
-
-
 </html>
+<script>
+    var inputTest = localStorage['firstName'];
+    localStorage.removeItem('firstName');
+
+    alert('Inserted Data ' + inputTest);
+</script>
 <style>
     /*.height {
         min-height: 200px;
