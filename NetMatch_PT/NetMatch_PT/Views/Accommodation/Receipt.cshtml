@@ -1,34 +1,77 @@
-﻿@{
+﻿@model NetMatch_PT.ViewModels.TravelOptionsVm
+
+@{
     <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+
 }
 
-<div class="modal-header">
-    <h3>Dit is een bonnetje</h3>
-</div>
 
 <div class="modal-body">
-    <div class="alert alert-warning">
-        <span class="glyphicon glyphicon-warning-sign"></span>
-    Betaalinfo
+    @if (Model.AccommodationId != 0)
+    {
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <p> Aantal reisgenoten:</p>
+            </div>
+            <div class="col-6">
+                <p> @Model.TravelPartners</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <p> Aantal Volwassenen:</p>
+            </div>
+            <div class="col-6">
+                <p> @Model.Adults</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <p> Aantal Kinderen:</p>
+            </div>
+            <div class="col-6">
+                <p> @Model.Children</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <p> Gekozen vertrekdatum:</p>
+            </div>
+            <div class="col-6">
+                <p> @Model.Date.Date</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <p> Aantal kamers:</p>
+            </div>
+            <div class="col-6">
+                <p> @Model.Rooms</p>
+            </div>
+        </div>
+
+        <div class="form-group" hidden="hidden">
+            <input asp-for="AccommodationId" class="form-control" />
+        </div>
     </div>
+    }
+    else
+    {
+        <div>
+            <h2> Nog geen reisopties geselecteerd</h2>
+        </div>
+    }
 </div>
+
 
 <div class="modal-footer">
-    <a asp-action="TravelCompanyPicker" asp-controller="Accommodation" method="get" data-ajax="true" data-ajax-update="#myModal">
-        <input type="button" class="btn btn-primary" value="Terug" />
-    </a>
     <a asp-area="" asp-controller="Home" asp-action="Reisboeken"><input type="button" class="btn btn-primary" value="boeken" /></a>
+    <a asp-area="" asp-controller="Home" asp-action="Index"> Home</a>
 </div>
 
-<script>
-    $(document).ready(function () {
-        // Fill modal with content from link href
-        $(".Previous").on("click", function (e) {
-            var link = $(this).data("href");
-            $('#myModal').modal("show");
-            $('#myModal .modal-body').load(link);
-        });
-    })
-</script>
+
