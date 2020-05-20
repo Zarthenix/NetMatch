@@ -30,6 +30,16 @@ namespace NetMatch_PT.Controllers
             List<Accommodation> results = string.IsNullOrEmpty(searchTerm) ? 
                 _accRepo.GetAll() : _accRepo.Search(searchTerm);
 
+            if (results.Count == 0)
+            {
+                ViewData["result"] = (string) ContentHandler.GetJson<string>("searchResultNotFound");
+            }
+            else
+            {
+                string resultText = (string)ContentHandler.GetJson<string>("searchResultFound");
+                ViewData["result"] = resultText.Replace('/', (char)results.Count);
+            }
+
             return View("Result", _accConverter.ModelsToViewModels(results));
         }
 
@@ -43,6 +53,16 @@ namespace NetMatch_PT.Controllers
             }
             else { 
                 accommodations = _accRepo.QuickSearch(svm.SearchVm);
+            }
+
+            if (accommodations.Count == 0)
+            {
+                ViewData["result"] = (string)ContentHandler.GetJson<string>("searchResultNotFound");
+            }
+            else
+            {
+                string resultText = (string)ContentHandler.GetJson<string>("searchResultFound");
+                ViewData["result"] = resultText.Replace('/', (char)accommodations.Count);
             }
 
             return View("Result", _accConverter.ModelsToViewModels(accommodations));
