@@ -62,7 +62,7 @@ namespace NetMatch_PT.Controllers
             else
             {
                 string resultText = (string)ContentHandler.GetJson<string>("searchResultFound");
-                ViewData["result"] = resultText.Replace('/', (char)accommodations.Count);
+                ViewData["result"] = resultText.Replace('/', (char)accommodations.Count); //TO-DO
             }
 
             return View("Result", _accConverter.ModelsToViewModels(accommodations));
