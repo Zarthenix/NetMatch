@@ -4,10 +4,11 @@
 @{
     Layout = null;
 }
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Identity
+@model User
 
 <!DOCTYPE html>
-
-
 <html>
 
 <head>
@@ -18,14 +19,14 @@
     <link rel="stylesheet" href="~/css/Reisboeken.css" />
     <script src="/path/to/jquery.cookie.js"></script>
     <script src="https://kit.fontawesome.com/590950580f.js" crossorigin="anonymous"></script>
-    <script type="text/javascript">
+    @*<script type="text/javascript">
         $(window).load(function () {
             //Read the cookie value
             var passedval = $.cookie('hourdiffvalue');
 
             //if you want to remove after reading the cookie then you can use the below code
             $.removeCookie('hourdiffvalue'); // => true
-        });</script>
+        });</script>*@
 </head>
 
 
@@ -43,9 +44,6 @@
     </header>
     <br />
 
-
-
-
     <div class="GegevensReiziger">
 
         <h3 style="text-align:center; font-size:25px;">Naam/adres van de aanmelder/hoofdboeker</h3>
@@ -53,8 +51,6 @@
         <br />
 
         <div class="PersoonlijkeDetails">
-
-
             <div>
                 <label>Aanhef:</label><br /><select><option value="1"> Heer </option> <option value="2"> Mevrouw </option></select>
                 <br />
@@ -273,16 +269,13 @@
                 <button class="btn-primary" type="submit" id="btnToevoegen" onclick=""> Doorgaan</button>
                 <br /> <br /><br /><br /><br /><br />
             </div>
-
         </div>
-
     </div>
-    <br /><br /><br /><br /><br />
 
+    <br /><br /><br /><br /><br />
     <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /><br />
 
     <div style="" class="Reis-boeking">
-
         <h3 style="text-align:center;">Reisgezelschap</h3>
         <p style="font-style:oblique; text-align:center;">*Verplichte veld</p>
         <div class="Reiziger1">
@@ -725,68 +718,82 @@
     </div>
 
     <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /><br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /><br /> <br /> <br /> <br />
-    @*@if (User.IsInRole("Reisagent"))
-    {*@
-       
 
-    <div class="reisagent-div">
 
-        <center> <h2 id="reisAgentTitle" style="font-family:Cambria"> Reisagent </h2></center>
-        <br />
-        <center>
-            <p>
 
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="kortingChecked">
-                    <label class="form-check-label" for="materialUnchecked">5% korting</label>
-                </div>
-            </p>
-            <br />
-            <p>
-                <h2>Hoe te handelen?</h2>
-                Wil je in aanmerking komen voor<br />
-                de agentenkorting? Stuur dan, na het definitief maken <br />
-                van jouw boeking, een mail naar sales@cyouat.nl o.v.v. <br />
-                jouw reserveringsnummer. Vanaf dat moment gaan wij kijken wat wij <br />
-                voor jou kunnen en mogen betekenen.<br />
-            </p>
-        </center>
-        <br /><br />
-        <a class="btn-outline-primary" id="btnBoekingOpslaan" onclick="store_data()" href="/Home/PDFboeking"> Boeking opslaan </a>
-    </div>
 
-    
-    <script type="text/javascript">
-        var fname = document.getElementById('firstName');
-        var lname = document.getElementById('lastName');
-        var birthdate = document.getElementById('birthDate');
-        var woonplaats = document.getElementById('wplaats');
-        var adres = document.getElementById('strnaam');
-        var huisnr = document.getElementById('huisnr');
-        var postcode = document.getElementById('postcode');
-        var telefoonnr = document.getElementById('telnr');
-        var email = document.getElementById('email');
-        var nationaliteit = document.getElementById('nationality');
+    @if (User.Identity.IsAuthenticated)
+    {
+        <form action="/Home/PDFBoeking">
+            <div class="reisagent-div">
+                <center> <h2 id="reisAgentTitle" style="font-family:Cambria"> Reisagent </h2></center>
+                <center>
+                    <p>
 
-        add.addEventListener('click', function (e) {
-            store_data();
-        });
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="kortingChecked">
+                            <label class="form-check-label" for="materialUnchecked">5% korting</label>
+                        </div>
 
-        function store_data() { // Store value from input field to local store
-            localStorage.setItem('firstName', fname.value);
-            localStorage.setItem('lastName', lname.value);
-            localStorage.setItem('birthDate', birthdate.value);
-            localStorage.setItem('wplaats', woonplaats.value);
-            localStorage.setItem('strnaam', adres.value);
-            localStorage.setItem('huisnr', huisnr.value);
-            localStorage.setItem('postcode', postcode.value);
-            localStorage.setItem('email', email.value);
-            localStorage.setItem('telnr', telefoonnr.value);
-            localStorage.setItem('nationality', nationaliteit.value);
-        }
+                    </p>
+                    <br />
+                    <p>
+                        <h2>Hoe te handelen?</h2>
+                        Wil je in aanmerking komen voor<br />
+                        de agentenkorting? Stuur dan, na het definitief maken <br />
+                        van jouw boeking, een mail naar sales@cyouat.nl o.v.v. <br />
+                        jouw reserveringsnummer. Vanaf dat moment gaan wij kijken wat wij <br />
+                        voor jou kunnen en mogen betekenen.<br />
+                    </p>
+                </center>
 
-    </script>
+                <button class="btn-outline-primary" id="btnBoekingOpslaan" onclick="store_data()" href="/Home/PDFboeking"> Boeking opslaan </button>
+
+            </div>
+        </form>
+    }
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <form action="/Home/PDFBoeking">
+            <button class="btn-outline-primary" id="btnBoekingOpslaan" onclick="store_data()" href="/Home/PDFboeking" style="margin-top:410px"> Boeking opslaan </button>
+        </form>
+    }
+
+    <br />
+    <footer>
+    </footer>
+
 
 </body>
 </html>
+<script type="text/javascript">
+    var fname = document.getElementById('firstName');
+    var lname = document.getElementById('lastName');
+    var birthdate = document.getElementById('birthDate');
+    var woonplaats = document.getElementById('wplaats');
+    var adres = document.getElementById('strnaam');
+    var huisnr = document.getElementById('huisnr');
+    var postcode = document.getElementById('postcode');
+    var telefoonnr = document.getElementById('telnr');
+    var email = document.getElementById('email');
+    var nationaliteit = document.getElementById('nationality');
+
+    add.addEventListener('click', function (e) {
+        store_data();
+    });
+
+    function store_data() { // Store value from input field to local store
+        localStorage.setItem('firstName', fname.value);
+        localStorage.setItem('lastName', lname.value);
+        localStorage.setItem('birthDate', birthdate.value);
+        localStorage.setItem('wplaats', woonplaats.value);
+        localStorage.setItem('strnaam', adres.value);
+        localStorage.setItem('huisnr', huisnr.value);
+        localStorage.setItem('postcode', postcode.value);
+        localStorage.setItem('email', email.value);
+        localStorage.setItem('telnr', telefoonnr.value);
+        localStorage.setItem('nationality', nationaliteit.value);
+    }
+</script>
+
 

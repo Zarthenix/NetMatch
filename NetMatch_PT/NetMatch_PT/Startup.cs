@@ -14,6 +14,8 @@ using NetMatch_PT.Repositories;
 using NetMatch_PT.ViewModels.Converters;
 using NetMatch_PT.Containers.Interfaces;
 using NetMatch_PT.Containers;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace NetMatch_PT
 {
@@ -31,13 +33,30 @@ namespace NetMatch_PT
         {
             services.AddTransient<IAccommodationContext, SQLAccommodationContext>();
             services.AddTransient<IUserContainer, UserContainer>();
+            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddScoped<AccommodationRepo>();
 
             services.AddScoped<AccommodationDetailVmConverter>();
 
+            services.AddDistributedMemoryCache();
+
+            services.AddSession(options =>
+            {
+                options.Cookie.Name = ".FlyMeAt.Session";
+                options.IdleTimeout = TimeSpan.FromSeconds(300);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
+
             services.AddControllersWithViews();
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options => {
+            options.LoginPath = "/User/Login";
+            options.Cookie.Name = "Reisagentcookie";
+            });
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -57,7 +76,10 @@ namespace NetMatch_PT
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
