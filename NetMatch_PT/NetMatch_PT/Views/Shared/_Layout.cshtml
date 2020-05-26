@@ -16,15 +16,16 @@
             <div class="row headerRow">
                 <div class="col-md-3 headerSearchBar">
                     <form asp-action="Result" asp-controller="Accommodation" method="get" class="form-inline">
-                        <input type="text" class="form-control" name="SearchTerm" placeholder="Zoeken.."/>
+                        <input type="text" class="form-control" name="SearchTerm" placeholder="Zoeken.." />
                         <button type="submit" class="btn btn-primary" style="margin-left: 5px;"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
                 <div class="col-md-6">
                     <div class="row justify-content-center logoRow">
-                        <div class="navLogoContainer" >
+                        <div class="navLogoContainer">
                             <a href="/Home/Index">
-                                <div class="navLogoImg"></div></a>
+                                <div class="navLogoImg"></div>
+                            </a>
                         </div>
                     </div>
                     <div class="row justify-content-center">
@@ -48,9 +49,13 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Contact</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/User/Login">Login reisagent</a>
-                                </li>
+                                @if (!User.Identity.IsAuthenticated)
+                                {
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/User/Login">Login reisagent</a>
+                                    </li>
+                                }
+
                             </ul>
                         </nav>
                     </div>
@@ -61,6 +66,17 @@
                     Zaterdag 10:00 - 15:00<br />
                     Zondag gesloten
                 </div>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div>
+                        @if (User.Identity.Name != "")
+                        {
+                            <h1>I'm logged in with @User.Identity.Name</h1>
+                            @Html.ActionLink("Log out", "Logout", new { })
+                        }
+                    </div>
+                }
+
             </div>
         </div>
 
