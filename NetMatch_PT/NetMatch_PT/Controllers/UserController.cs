@@ -15,7 +15,6 @@ using MySqlX.XDevAPI;
 using NetMatch_PT.Containers.Interfaces;
 using NetMatch_PT.Contexts.IContext;
 using NetMatch_PT.Models;
-using RestSharp;
 
 namespace NetMatch_PT.Controllers
 {
