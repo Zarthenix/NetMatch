@@ -112,15 +112,17 @@ namespace NetMatch_PT.Contexts
 
             string sql =
                 "SELECT [AccommodationId], [Title], [Description], [Image], " +
-                "[Country] FROM [Accommodation] " +
-                "WHERE ([Title] LIKE '@search' OR [Description] LIKE @search) AND [Country] = @country";
+                "[Country] FROM [Accommodation]";
 
-            List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
+            List<KeyValuePair<string,string>> parameters = new List<KeyValuePair<string, string>>();
+
+
+            if (sm.Country != null)
             {
-                new KeyValuePair<string, string>("@search", "%" + sm.Search + "%"),
-                new KeyValuePair<string, string>("@country", Convert.ToInt32(sm.Country).ToString())
-            };
-
+                sql += "WHERE [Country] = @country";
+                parameters.Add(new KeyValuePair<string, string>("@country", Convert.ToInt32(sm.Country).ToString()));
+            }
+           
 
             DataSet results = ExecuteSql(sql, parameters);
 

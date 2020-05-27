@@ -1,13 +1,49 @@
-﻿@using NetMatch_PT.ViewModels
-@model List<AccommodationDetailVm>
+﻿@using NetMatch_PT.Models.Enums
+@using NetMatch_PT.ViewModels
+@model SearchResultVm
 
 @{
     ViewData["Title"] = "Result";
 }
 
-<h2>@ViewData["result"]</h2>
+<h2 style="text-align:center">@ViewData["result"]</h2>
 <div class="container">
-    @foreach (AccommodationDetailVm item in Model)
+    <div class="col-md-12 quickSearch" style="margin-top: 2%;">
+        <form class="form-inline" method="get" asp-action="QuickSearch" asp-controller="Search">
+            <div class="form-row"> 
+                <div class="col">
+                    <select asp-for="@Model.SearchVm.TravelType" class="form-control" placeholder="test">
+                        <option value="null" selected disabled>Reistype</option>
+                        @foreach (int x in Enum.GetValues(typeof(TravelTypes)))
+                        {
+                            <option value="@x">@Enum.GetName(typeof(TravelTypes), x)</option>
+                        }
+                    </select>
+                </div>
+                <div class="col">
+                    <select asp-for="@Model.SearchVm.Country" class="form-control">
+                        <option value="null" selected disabled>Land</option>
+                        @foreach (int x in Enum.GetValues(typeof(Countries)))
+                        {
+                            <option value="@x">@Enum.GetName(typeof(Countries), x)</option>
+                        }
+                    </select>
+                </div>
+                <div class="col">
+                    <select asp-for="@Model.SearchVm.Month" class="form-control">
+                        <option value="null" selected disabled>Maand</option>
+                        @foreach (int x in Enum.GetValues(typeof(Months)))
+                        {
+                            <option value="@x">@Enum.GetName(typeof(Months), x)</option>
+                        }
+                    </select>
+                </div>
+                <input class="btn btn-info" type="submit" value="Zoeken"/>
+            </div>
+        </form>
+    </div>
+
+    @foreach (AccommodationDetailVm item in Model.results)
     {
         <div class="card mb-3" style="background-color: rgba(77, 138, 235, 0.3);">
             <a href='@Url.Action("Detail", "Accommodation", new {id = item.Id})' style="text-decoration: none;">

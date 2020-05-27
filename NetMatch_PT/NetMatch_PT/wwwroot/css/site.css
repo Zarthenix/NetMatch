@@ -5,13 +5,21 @@ body {
 
 /*Main*/
 main {
-    margin-top: 3%;
+    margin-top: 4%;
 }
 
+.border-box {
+    border: 5px solid cornflowerblue;
+}
+
+.border-box-small {
+    border: 3px solid cornflowerblue;
+}
 /* Header */
 .headerContainer {
     height: 15vh;
     background-color: rgba(75, 136, 235, 0.8);
+    width: 100vw;
 }
 
 .headerRow {

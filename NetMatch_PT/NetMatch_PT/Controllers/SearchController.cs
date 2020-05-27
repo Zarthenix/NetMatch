@@ -37,10 +37,13 @@ namespace NetMatch_PT.Controllers
             else
             {
                 string resultText = (string)ContentHandler.GetJson<string>("searchResultFound");
-                ViewData["result"] = resultText.Replace('/', (char)results.Count);
+                ViewData["result"] = resultText.Replace("/", results.Count.ToString());
             }
 
-            return View("Result", _accConverter.ModelsToViewModels(results));
+            SearchResultVm vm = new SearchResultVm();
+            vm.results = _accConverter.ModelsToViewModels(results);
+
+            return View("Result", vm);
         }
 
         [HttpGet]
@@ -62,10 +65,13 @@ namespace NetMatch_PT.Controllers
             else
             {
                 string resultText = (string)ContentHandler.GetJson<string>("searchResultFound");
-                ViewData["result"] = resultText.Replace('/', (char)accommodations.Count); //TO-DO
+                ViewData["result"] = resultText.Replace("/", accommodations.Count.ToString()); //TO-DO
             }
 
-            return View("Result", _accConverter.ModelsToViewModels(accommodations));
+            SearchResultVm vm = new SearchResultVm();
+            vm.results = _accConverter.ModelsToViewModels(accommodations);
+
+            return View("Result", vm);
         }
 
 

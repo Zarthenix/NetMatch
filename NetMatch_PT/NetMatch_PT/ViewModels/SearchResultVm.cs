@@ -8,6 +8,7 @@ namespace NetMatch_PT.ViewModels
 {
     public class SearchResultVm
     {
-        public List<Accommodation> results { get; set; }
+        public List<AccommodationDetailVm> results { get; set; }
+        public SearchVm SearchVm { get; set; } = new SearchVm();
     }
 }
