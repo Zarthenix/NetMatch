@@ -5,7 +5,10 @@ using System.Threading.Tasks;
 
 namespace NetMatch_PT.ViewModels
 {
-    public class FullSearchVm : SearchVm
+    public class HomepageVm
     {
+        public List<AccommodationDetailVm> Accommodations { get; set; }
+
+        public SearchVm SearchVm { get; set; }
     }
 }

@@ -15,8 +15,8 @@
             <div class="headerBackground"></div>
             <div class="row headerRow">
                 <div class="col-md-3 headerSearchBar">
-                    <form asp-action="Result" asp-controller="Accommodation" method="get" class="form-inline">
-                        <input type="text" class="form-control" name="SearchTerm" placeholder="Zoeken.." />
+                    <form asp-action="FullSearch" asp-controller="Search" method="get" class="form-inline">
+                        <input type="text" class="form-control" name="searchTerm" placeholder="Zoeken.."/>
                         <button type="submit" class="btn btn-primary" style="margin-left: 5px;"><i class="fa fa-search"></i></button>
                     </form>
                 </div>

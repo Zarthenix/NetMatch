@@ -45,7 +45,7 @@ namespace NetMatch_PT.Contexts
                 string sql = "SELECT FirstName, LastName, BirthDate FROM TravelCompany WHERE TravelCompanyId = @TravelCompanyId ";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
-                    new KeyValuePair<string, string>("TravelCompanyId", id.ToString())
+                    new KeyValuePair<string, string>("@TravelCompanyId", id.ToString())
                 };
 
                 DataSet results = ExecuteSql(sql, parameters);
@@ -66,9 +66,9 @@ namespace NetMatch_PT.Contexts
                 string sql = "INSERT INTO TravelCompany(FirstName, LastName, BirthDate) VALUES (@FirstName, @LastName, @BirthDate)";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
-                    new KeyValuePair<string, string>("FirstName", tc.FirstName),
-                    new KeyValuePair<string, string>("LastName", tc.LastName),
-                    new KeyValuePair<string, string>("BirthDate", tc.BirthDate.ToString())
+                    new KeyValuePair<string, string>("@FirstName", tc.FirstName),
+                    new KeyValuePair<string, string>("@LastName", tc.LastName),
+                    new KeyValuePair<string, string>("@BirthDate", tc.BirthDate.ToString())
                 };
                 long results = ExecuteInsert(sql, parameters);
                 return results;

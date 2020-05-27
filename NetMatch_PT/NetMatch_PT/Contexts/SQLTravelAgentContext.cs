@@ -44,7 +44,7 @@ namespace NetMatch_PT.Contexts.IContext
                 string sql = "SELECT Email, Password FROM TravelAgent WHERE TravelAgentId = @TravelAgentId";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
-                    new KeyValuePair<string, string>("TravelAgentId", id.ToString())
+                    new KeyValuePair<string, string>("@TravelAgentId", id.ToString())
                 };
                 DataSet results = ExecuteSql(sql, parameters);
                 TravelAgent ta = DataSetParser.DataSetToTravelAgent(results, 0);

@@ -45,7 +45,7 @@ namespace NetMatch_PT.Contexts
                 string sql = "SELECT ReisagentID, AccomodationID, CustomerID, Discount, DepartureDate, Insurance, Transport, price FROM Travel WHERE TravelID = @TravelID";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
-                    new KeyValuePair<string,string>("TravelID", id.ToString())
+                    new KeyValuePair<string,string>("@TravelID", id.ToString())
                 };
 
                 DataSet results = ExecuteSql(sql, parameters);
@@ -65,13 +65,13 @@ namespace NetMatch_PT.Contexts
                 string sql = "INSERT INTO Travel(ReisagentID, AccommodationID, CustomerID, Discount, DepartureDate, Insurance, Transport, Price) VALUES (@ReisagentID, @AccommodationID, @CustomerID, @Discount, @DepartureDate, @Insurance, @Transport, @Price)";
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
-                    new KeyValuePair<string, string>("ReisagentID", t.ReisagentID.ToString()),
-                    new KeyValuePair<string, string>("AccommodationID", t.AccomodationID.ToString()),
-                    new KeyValuePair<string, string>("CustomerID", t.CustomerID.ToString()),
-                    new KeyValuePair<string, string>("Discount", t.Discount.ToString()),
-                    new KeyValuePair<string, string>("DepartureDate", t.DepartureDate.ToString()),
-                    new KeyValuePair<string, string>("Transport", t.Transport),
-                    new KeyValuePair<string, string>("Price", t.Price.ToString())
+                    new KeyValuePair<string, string>("@ReisagentID", t.ReisagentID.ToString()),
+                    new KeyValuePair<string, string>("@AccommodationID", t.AccomodationID.ToString()),
+                    new KeyValuePair<string, string>("@CustomerID", t.CustomerID.ToString()),
+                    new KeyValuePair<string, string>("@Discount", t.Discount.ToString()),
+                    new KeyValuePair<string, string>("@DepartureDate", t.DepartureDate.ToString()),
+                    new KeyValuePair<string, string>("@Transport", t.Transport),
+                    new KeyValuePair<string, string>("@Price", t.Price.ToString())
                 };
                 long results = ExecuteInsert(sql, parameters);
                 return results;
@@ -95,14 +95,14 @@ namespace NetMatch_PT.Contexts
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {
-                    new KeyValuePair<string, string>("ReisagentID", c.ReisagentID.ToString()),
-                    new KeyValuePair<string, string>("AccomodationID", c.AccomodationID.ToString()),
-                    new KeyValuePair<string, string>("CustomerID", c.CustomerID.ToString()),
-                    new KeyValuePair<string, string>("Discount", c.Discount.ToString()),
-                    new KeyValuePair<string, string>("DepartureDate", c.DepartureDate.ToString()),
-                    new KeyValuePair<string, string>("Insurance", c.Insurance),
-                    new KeyValuePair<string, string>("Transport", c.Transport),
-                    new KeyValuePair<string, string>("Price", c.Price.ToString())
+                    new KeyValuePair<string, string>("@ReisagentID", c.ReisagentID.ToString()),
+                    new KeyValuePair<string, string>("@AccomodationID", c.AccomodationID.ToString()),
+                    new KeyValuePair<string, string>("@CustomerID", c.CustomerID.ToString()),
+                    new KeyValuePair<string, string>("@Discount", c.Discount.ToString()),
+                    new KeyValuePair<string, string>("@DepartureDate", c.DepartureDate.ToString()),
+                    new KeyValuePair<string, string>("@Insurance", c.Insurance),
+                    new KeyValuePair<string, string>("@Transport", c.Transport),
+                    new KeyValuePair<string, string>("@Price", c.Price.ToString())
                 };
                 ExecuteSql(sql, parameters);
                 return true;

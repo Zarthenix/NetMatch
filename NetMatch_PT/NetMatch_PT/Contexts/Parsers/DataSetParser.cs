@@ -21,6 +21,16 @@ namespace NetMatch_PT.Contexts.Parsers
                 Country = (Countries)Convert.ToInt32(set.Tables[0].Rows[rowIndex][4])
             };
         }
+
+        public static AccommodationPrices DataSetToAccommodationPrices(DataSet set, int rowIndex)
+        {
+            return new AccommodationPrices()
+            {
+                Date = Convert.ToDateTime(set.Tables[0].Rows[rowIndex][0]),
+                Price = (decimal) set.Tables[0].Rows[rowIndex][1]
+            };
+        }
+
         public static Customer DataSetToCustomer(DataSet set, int rowIndex)
         {
             return new Customer((int)set.Tables[0].Rows[rowIndex][0])

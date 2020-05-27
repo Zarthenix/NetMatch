@@ -1,7 +1,9 @@
 {
-"popularAccommodations" : [
-							1,
-							3,
-							4
-						  ]
+	"popularAccommodations": [
+		1,
+		3,
+		4
+	],
+	"searchResultFound": "We hebben / resultaten gevonden die overeenkomen met uw zoekopdracht",
+	"searchResultNotFound": "Geen resultaten gevonden." 
 }

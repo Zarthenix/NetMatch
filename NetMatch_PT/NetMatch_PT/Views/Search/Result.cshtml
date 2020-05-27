@@ -1,0 +1,32 @@
+﻿@using NetMatch_PT.ViewModels
+@model List<AccommodationDetailVm>
+
+@{
+    ViewData["Title"] = "Result";
+}
+
+<h2>@ViewData["result"]</h2>
+<div class="container">
+    @foreach (AccommodationDetailVm item in Model)
+    {
+        <div class="card mb-3" style="background-color: rgba(77, 138, 235, 0.3);">
+            <a href='@Url.Action("Detail", "Accommodation", new {id = item.Id})' style="text-decoration: none;">
+                <img class="card-img-top" src="data:image/png;base64,@item.Image" alt=@item.Title foto/>
+                <div class="card-body">
+                    <h5 class="card-title">@item.Title</h5>
+                    <p class="card-text"><small class="text-muted">@item.Country.ToString()</small></p>
+                    <p class="card-text">@item.Description</p>
+                    <p class="card-text">
+                        <ul class="list-group">
+                            @foreach (var d in item.DatePrices)
+                            {
+                                <li class="list-group-item">@d.Date - @d.Price</li>
+                            }
+                        </ul>
+                    </p>
+                </div>
+            </a>
+        </div>
+    }
+</div>
+

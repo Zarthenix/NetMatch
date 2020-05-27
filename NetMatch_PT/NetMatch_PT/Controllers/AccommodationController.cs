@@ -119,8 +119,8 @@ namespace NetMatch_PT.Controllers
             results[1] = tempUnselectedAccommodations;
 
             return results;
-        }
-
+        }
+
         public IActionResult TravelOptions(int id)
         {
             TravelOptionsVm vm = new TravelOptionsVm(id);
