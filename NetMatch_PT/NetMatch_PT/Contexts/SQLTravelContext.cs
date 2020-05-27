@@ -91,7 +91,7 @@ namespace NetMatch_PT.Contexts
         {
             try
             {
-                string sql = "UPDATE Travel SET ReisagentID = @ReisagentID, AccomodationID = @AccomodationID, CustomerID = @CustomerID, Discount = @Discount, DepartureDate = @DepartureDate, Insurance = @Insurance, Transport = @Transport, Price = @Price";
+                string sql = "UPDATE Travel SET ReisagentID = @ReisagentID, AccomodationID = @AccomodationID, CustomerID = @CustomerID, Discount = @Discount, DepartureDate = @DepartureDate, Transport = @Transport, Price = @Price";
 
                 List<KeyValuePair<string, string>> parameters = new List<KeyValuePair<string, string>>()
                 {

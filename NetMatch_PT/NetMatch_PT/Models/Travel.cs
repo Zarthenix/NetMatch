@@ -14,9 +14,10 @@ namespace NetMatch_PT.Models
         public int ReisagentID { get; set; }
         public int AccomodationID { get; set; }
         public int CustomerID { get; set; }
+        public int Rooms { get; set; }
+        public int Kids { get; set; }
         public bool Discount { get; set; }
         public DateTime DepartureDate { get; set; }
-        public string Insurance { get; set; }
         public string Transport { get; set; }
 
         public Travel(int id, int reisagentid,
@@ -29,7 +30,6 @@ namespace NetMatch_PT.Models
             CustomerID = customerid;
             Discount = discount;
             DepartureDate = departuredate;
-            Insurance = insurance;
             Transport = transport;
         }
         public Travel (int id)

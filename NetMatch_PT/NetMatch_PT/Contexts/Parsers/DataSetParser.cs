@@ -54,9 +54,8 @@ namespace NetMatch_PT.Contexts.Parsers
                 CustomerID = (int)set.Tables[0].Rows[rowIndex][3],
                 Discount = (bool)set.Tables[0].Rows[rowIndex][4],
                 DepartureDate = (DateTime)set.Tables[0].Rows[rowIndex][5],
-                Insurance = (string)set.Tables[0].Rows[rowIndex][6],
-                Transport = (string)set.Tables[0].Rows[rowIndex][7],
-                Price = (decimal)set.Tables[0].Rows[rowIndex][8]
+                Transport = (string)set.Tables[0].Rows[rowIndex][6],
+                Price = (decimal)set.Tables[0].Rows[rowIndex][7]
             };
         }
         public static TravelAgent DataSetToTravelAgent(DataSet set, int rowIndex)

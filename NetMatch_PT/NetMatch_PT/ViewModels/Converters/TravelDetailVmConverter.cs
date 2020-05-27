@@ -19,7 +19,6 @@ namespace NetMatch_PT.ViewModels.Converters
                 Price = tr.Price,
                 Discount = tr.Discount,
                 DepartureDate = tr.DepartureDate,
-                Insurance = tr.Insurance,
                 Transport = tr.Transport
             };
         }
