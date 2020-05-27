@@ -100,7 +100,6 @@ namespace NetMatch_PT.Contexts
                     new KeyValuePair<string, string>("@CustomerID", c.CustomerID.ToString()),
                     new KeyValuePair<string, string>("@Discount", c.Discount.ToString()),
                     new KeyValuePair<string, string>("@DepartureDate", c.DepartureDate.ToString()),
-                    new KeyValuePair<string, string>("@Insurance", c.Insurance),
                     new KeyValuePair<string, string>("@Transport", c.Transport),
                     new KeyValuePair<string, string>("@Price", c.Price.ToString())
                 };
