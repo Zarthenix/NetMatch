@@ -5,6 +5,24 @@
 @{
     ViewData["Title"] = "Result";
 }
+    <style>
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        background-color: #ffffff;
+    }
+
+        .grid-item {
+            background-color: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            font-size: 30px;
+            text-align: center;
+            max-height: 500px;
+            max-width: 500px;
+            overflow: auto;
+        }
+    </style>
 
 <h2 style="text-align:center">@ViewData["result"]</h2>
 <div class="container">
@@ -42,27 +60,29 @@
             </div>
         </form>
     </div>
-
-    @foreach (AccommodationDetailVm item in Model.results)
-    {
-        <div class="card mb-3" style="background-color: rgba(77, 138, 235, 0.3);">
-            <a href='@Url.Action("Detail", "Accommodation", new {id = item.Id})' style="text-decoration: none;">
-                <img class="card-img-top" src="data:image/png;base64,@item.Image" alt=@item.Title foto/>
-                <div class="card-body">
-                    <h5 class="card-title">@item.Title</h5>
-                    <p class="card-text"><small class="text-muted">@item.Country.ToString()</small></p>
-                    <p class="card-text">@item.Description</p>
-                    <p class="card-text">
-                        <ul class="list-group">
-                            @foreach (var d in item.DatePrices)
-                            {
-                                <li class="list-group-item">@d.Date - @d.Price</li>
-                            }
-                        </ul>
-                    </p>
+    <div class="grid-container">
+            @foreach (AccommodationDetailVm item in Model.results)
+            {
+            <div class="grid-item">
+                <div class="card mb-3" style="background-color: rgba(77, 138, 235, 0.3);">
+                    <a href='@Url.Action("Detail", "Accommodation", new {id = item.Id})' style="text-decoration: none;">
+                        <img class="card-img-top" src="data:image/png;base64,@item.Image" alt=@item.Title foto />
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Title</h5>
+                            <p class="card-text"><small class="text-muted">@item.Country.ToString()</small></p>
+                            <p class="card-text">@item.Description</p>
+                            <p class="card-text">
+                                <ul class="list-group">
+                                    @foreach (var d in item.DatePrices)
+                                    {
+                                        <li class="list-group-item">@d.Date - @d.Price</li>
+                                    }
+                                </ul>
+                            </p>
+                        </div>
+                    </a>
                 </div>
-            </a>
-        </div>
+            </div>
     }
+    </div>
 </div>
-
