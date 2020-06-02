@@ -4,6 +4,22 @@
     @model NetMatch_PT.ViewModels.HomepageVm
 }
 
+<style>
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        background-color: rgba(75, 136, 235, 0.8);
+    }
+
+    .grid-item {
+        background-color: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        font-size: 30px;
+        text-align: center;
+    }
+</style>
+
 <div class="col-md-12 quickSearch">
     <form class="form-inline" method="get" asp-action="QuickSearch" asp-controller="Search">
         <div class="form-row"> 
@@ -43,12 +59,15 @@
     <div class="populairheader">
         <p> Populaire vakanties</p>
     </div>
-
-    <div class="row justify-content-around">
-        @foreach (var a in Model.Accommodations)
-        {
-            @await Html.PartialAsync("_PopularAccommodation", a)
-            ;
-        }
+    <div class="grid-container">
+        <div class="grid-item">
+            <div class="row justify-content-around">
+                @foreach (var a in Model.Accommodations)
+                {
+                    @await Html.PartialAsync("_PopularAccommodation", a)
+                    ;
+                }
+            </div>
+        </div>
     </div>
 </div>
