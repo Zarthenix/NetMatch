@@ -34,7 +34,7 @@ namespace NetMatch_PT.Controllers
             {
                 Accommodation ac = _accoRepo.GetById(i);
                 if (ac != null)
-                { 
+                {
                     accommodations.Add(_accoConverter.ModelToViewModel(_accoRepo.GetById(i)));
                 }
             }
@@ -50,12 +50,18 @@ namespace NetMatch_PT.Controllers
         public IActionResult Privacy()
         {
             return View();
-        }public IActionResult ReisBoeken()
+        }
+        public IActionResult ReisBoeken()
         {
             return View();
         }
 
         public IActionResult PDFboeking()
+        {
+            return View();
+        }
+
+        public IActionResult Contactpagina()
         {
             return View();
         }
