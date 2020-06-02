@@ -1,0 +1,32 @@
+﻿@using NetMatch_PT.Models
+@model NetMatch_PT.Models.User;
+@{
+    ViewData["Title"] = "Login";
+}
+<head>
+    <link rel="stylesheet" media="screen" href="~/css/LoginPagina.css" />
+</head>
+
+<center>
+    <h1>Login</h1>
+    <div class="box">
+        <form asp-action="Login" method="post">
+            <input type="text" name="Email" asp-for="@Model.Email" placeholder="Email"/>
+            <input type="password" name="Password" asp-for="@Model.Password" placeholder="Password" />
+            <input type="submit" onclick="CheckNullOrEmpty()" value="Login" />
+            <h1>@Html.ViewData["Message"]</h1>
+        </form>
+</center>
+</div>
+
+<script>
+    function CheckNullOrEmpty() {
+        var emailText = document.getElementById("Email").value;
+        var wachtwoordText = document.getElementById("Password").value;
+        var emailLength = emailText.length;
+        var wachtwoordLength = wachtwoordText.length;
+        if (emailLength == 0 || wachtwoordLength == 0) {
+            alert("Wachtwoord en Email moeten ingevuld worden!");
+        }
+    }
+</script>
