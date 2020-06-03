@@ -60,17 +60,16 @@ namespace NetMatch_PT.Controllers
         }
 
         [HttpGet]
-        public IActionResult TravelOptions(int id)
+        public IActionResult TravelOptions(int id, DateTime bookingsdate)
         {
             ViewData["Description"] = (string)ContentHandler.GetJson<string>("TravelCompanyPickerDescription");
-            TravelOptionsVm vm = new TravelOptionsVm(id);
+            TravelOptionsVm vm = new TravelOptionsVm(id, bookingsdate);
             if (_session.GetObjectFromJson<TravelOptionsVm>("TravelOptions") != null)
             {
-                vm = _travelOptionsVmConverter.ModelTViewoModel(_session.GetObjectFromJson<TravelOptions>("TravelOptions"));
+                vm = (_session.GetObjectFromJson<TravelOptionsVm>("TravelOptions"));
+                vm.SelectDate = bookingsdate;
             }
-            vm.AccommodationId = id;
             vm.Accommodation = _accommodationDetailVmConverter.ModelToViewModel(_accommodationRepo.GetById(id));
-            //vm.SelectDate = bookingsdate;
             return PartialView(vm);
         }
 

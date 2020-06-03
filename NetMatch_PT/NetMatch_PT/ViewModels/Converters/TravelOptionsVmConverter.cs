@@ -11,7 +11,7 @@ namespace NetMatch_PT.ViewModels.Converters
     {
         public TravelOptions ViewModelToModel(TravelOptionsVm vm)
         {
-            return new TravelOptions(vm.AccommodationId, vm.Adults, vm.Children, vm.Rooms);
+            return new TravelOptions(vm.AccommodationId, vm.Adults, vm.SelectDate, vm.Children, vm.Rooms);
         }
 
         public TravelOptionsVm ModelTViewoModel(TravelOptions to)
@@ -21,7 +21,8 @@ namespace NetMatch_PT.ViewModels.Converters
                 AccommodationId = to.AccommodationId,
                 Rooms = to.Rooms,
                 Children = to.Children,
-                Adults = to.Adults
+                Adults = to.Adults,
+                SelectDate = to.Date
             };
         }
     }

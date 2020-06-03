@@ -28,11 +28,11 @@
 
                     <div class="col-md-4 offset-md-1">
                         <h3>Datums:</h3>
-                        <select id="dateSelector">
+                        <select id="dateSelector" onchange="GetSelectedValue()">
                             <option value="null" selected disabled>Kies een datum</option>
                             @foreach (var item in Model.DatePrices)
                             {
-                                <option value="@item.Date">@item.Date</option>
+                                <option value="@item.Date">@item.Date.ToShortDateString()</option>
                             }
                         </select>
                     </div>
@@ -41,7 +41,7 @@
 
             <div class="col-md-12" style="margin-top: 3%; margin-bottom: 3%;">
                 <div class="row justify-content-around">
-                    <button class="btn btn-primary">
+                    <button class="btn btn-primary" id="Optionsbtn">
                         <a href="javascript:void(0);" class="GetAll" style="font-size:16pt; color: white; text-decoration: none; ">Boekingsopties</a>
                     </button>
 
@@ -91,15 +91,17 @@
 
 
 <script>
-    var ajaxCallURL = '/Accommodation/TravelOptions/@Model.Id';
+    var ajaxCallURL = '/Accommodation/TravelOptions';
         $(function () {
             $(".GetAll").click(function () {
-                var selectedValue = document.getElementById("dateSelector").value;
-                var $buttonClicked = $(this);
                 var options = { "backdrop": "true", keyboard: true };
                 $.ajax({
                     type: "GET",
                     url: ajaxCallURL,
+                    data: {
+                        id: @Model.Id,
+                        bookingsdate: GetSelectedValue()
+                    },
                     contentType: "application/json; charset=utf-8",
                     success: function (data) {
                         $('#myModalContent').html(data);
@@ -117,4 +119,20 @@
         });
 </script>
 
+<script>
+    $(function checkinput() {
+        var sel = document.getElementById("dateSelector")
+        if (sel.options[sel.selectedIndex] >= 1) {
+            $('.Optionsbtn').('.enableOnInput').prop('disabled', false);
+            return true;
+        };
+    });
+</script>
 
+<script>
+    function GetSelectedValue() {
+        var e = document.getElementById("dateSelector");
+        var result = e.options[e.selectedIndex].value;
+        return result;
+    }
+</script>

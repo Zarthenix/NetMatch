@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,6 +14,8 @@ namespace NetMatch_PT.ViewModels
         [Required]
         public int AccommodationId { get; set; }
         public AccommodationDetailVm Accommodation { get; set; }
+        [Required]
+        [DataType(DataType.DateTime)]
         public DateTime SelectDate { get; set; }
         [Required]
         [Range(1, 1, ErrorMessage = "Reisgezelschap moet altijd uit 2 volwassenen bestaan")]

@@ -18,13 +18,20 @@ namespace NetMatch_PT.Models
         public int Children { get; set; }
 
 
-        public TravelOptions(int id, int adults, int children, int rooms)
+        public TravelOptions(int id, int adults, DateTime date, int children, int rooms)
         {
             AccommodationId = id;
             Adults = adults;
             Children = children;
             Rooms = rooms;
             TravelPartners = adults + children;
+            Date = date;
+        }
+
+        public TravelOptions(int id, DateTime date)
+        {
+            AccommodationId = id;
+            Date = date;
         }
     }
 }
