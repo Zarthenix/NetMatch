@@ -66,6 +66,16 @@ namespace NetMatch_PT.Controllers
             return View();
         }
 
+        public IActionResult Overonspagina()
+        {
+            return View();
+        }
+
+        public IActionResult Partnerpagina()
+        {
+            return View();
+        }
+
         [HttpGet]
         public async Task<IActionResult> Logout()
         {
