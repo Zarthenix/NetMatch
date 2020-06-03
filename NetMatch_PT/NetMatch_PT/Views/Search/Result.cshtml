@@ -5,30 +5,33 @@
 @{
     ViewData["Title"] = "Result";
 }
-    <style>
+<style>
     .grid-container {
         display: grid;
         grid-template-columns: auto auto auto;
         background-color: #ffffff;
     }
 
-        .grid-item {
-            background-color: #ffffff;
-            border: 1px solid rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            font-size: 30px;
-            text-align: center;
-            max-height: 500px;
-            max-width: 500px;
-            overflow: auto;
-        }
-    </style>
+    .grid-item {
+        background-color: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        font-size: 30px;
+        text-align: center;
+        max-height: 500px;
+        max-width: 500px;
+        overflow: auto;
+        box-sizing: border-box;
+        box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+        margin:10px;
+    }
+</style>
 
 <h2 style="text-align:center">@ViewData["result"]</h2>
 <div class="container">
     <div class="col-md-12 quickSearch" style="margin-top: 2%;">
         <form class="form-inline" method="get" asp-action="QuickSearch" asp-controller="Search">
-            <div class="form-row"> 
+            <div class="form-row">
                 <div class="col">
                     <select asp-for="@Model.SearchVm.TravelType" class="form-control" placeholder="test">
                         <option value="null" selected disabled>Reistype</option>
@@ -56,13 +59,13 @@
                         }
                     </select>
                 </div>
-                <input class="btn btn-info" type="submit" value="Zoeken"/>
+                <input class="btn btn-info" type="submit" value="Zoeken" />
             </div>
         </form>
     </div>
     <div class="grid-container">
-            @foreach (AccommodationDetailVm item in Model.results)
-            {
+        @foreach (AccommodationDetailVm item in Model.results)
+        {
             <div class="grid-item">
                 <div class="card mb-3" style="background-color: rgba(77, 138, 235, 0.3);">
                     <a href='@Url.Action("Detail", "Accommodation", new {id = item.Id})' style="text-decoration: none;">
@@ -83,6 +86,6 @@
                     </a>
                 </div>
             </div>
-    }
+        }
     </div>
 </div>
