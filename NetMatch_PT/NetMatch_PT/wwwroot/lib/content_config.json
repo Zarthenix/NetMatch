@@ -5,5 +5,7 @@
 		4
 	],
 	"searchResultFound": "We hebben / resultaten gevonden die overeenkomen met uw zoekopdracht",
-	"searchResultNotFound": "Geen resultaten gevonden." 
+	"searchResultNotFound": "Geen resultaten gevonden.",
+	"TravelCompanyPickerDescription":  "Vul hier de opmaak van uw reisgezelschap in, de combinatie van volwassenen/kinderen en kamers dient te voldoen aan een aantal voorwaarde"
+		
 }

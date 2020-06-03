@@ -6,72 +6,89 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
 
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-
 }
 
+<modal-content>
+    <modal-header>
+        @*<div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeButton">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Bonnetje</h4>
+        </div>*@
+    </modal-header>
+    <modal-body>
+        @if (Model.AccommodationId != 0)
+        {
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <p> Aantal reisgenoten:</p>
+                    </div>
+                    <div class="col-6">
+                        <p> @(Model.Adults + @Model.Children)</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <p> Aantal Volwassenen:</p>
+                    </div>
+                    <div class="col-6">
+                        <p> @Model.Adults</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <p> Aantal Kinderen:</p>
+                    </div>
+                    <div class="col-6">
+                        <p> @Model.Children</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <p> Gekozen vertrekdatum:</p>
+                    </div>
+                    <div class="col-6">
+                        <p> @Model.SelectDate.Date</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <p> Aantal kamers:</p>
+                    </div>
+                    <div class="col-6">
+                        <p> @Model.Rooms</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <p> Accommodatie:</p>
+                    </div>
+                    <div class="col-6">
+                        <p> @Model.Accommodation.Title</p>
 
-<div class="modal-body">
-    @if (Model.AccommodationId != 0)
-    {
-    <div class="container">
-        <div class="row">
-            <div class="col-6">
-                <p> Aantal reisgenoten:</p>
-            </div>
-            <div class="col-6">
-                <p> @Model.TravelPartners</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6">
-                <p> Aantal Volwassenen:</p>
-            </div>
-            <div class="col-6">
-                <p> @Model.Adults</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6">
-                <p> Aantal Kinderen:</p>
-            </div>
-            <div class="col-6">
-                <p> @Model.Children</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6">
-                <p> Gekozen vertrekdatum:</p>
-            </div>
-            <div class="col-6">
-                <p> @Model.Date.Date</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6">
-                <p> Aantal kamers:</p>
-            </div>
-            <div class="col-6">
-                <p> @Model.Rooms</p>
-            </div>
-        </div>
+                    </div>
+                </div>
 
-        <div class="form-group" hidden="hidden">
-            <input asp-for="AccommodationId" class="form-control" />
-        </div>
-    </div>
-    }
-    else
-    {
-        <div>
-            <h2> Nog geen reisopties geselecteerd</h2>
-        </div>
-    }
-</div>
+                <div class="form-group" hidden="hidden">
+                    <input asp-for="AccommodationId" class="form-control" />
+                </div>
+            </div>
+        }
+        else
+        {
+            <div>
+                <h2> Nog geen reisopties geselecteerd</h2>
+            </div>
+        }
+    </modal-body>
+</modal-content>
 
-
-<div class="modal-footer">
-    <a asp-area="" asp-controller="Home" asp-action="Reisboeken"><input type="button" class="btn btn-primary" value="boeken" /></a>
-    <a asp-area="" asp-controller="Home" asp-action="Index"> Home</a>
-</div>
-
-
+<script>
+    $(document).ready(function () {
+        $('#closeButton').click(function () {
+            location.reload(true);
+        });
+    });
+</script>

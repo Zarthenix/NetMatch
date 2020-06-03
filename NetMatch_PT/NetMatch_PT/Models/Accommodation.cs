@@ -27,6 +27,11 @@ namespace NetMatch_PT.Models
         {
             Id = id;
         }
+
+        public Accommodation()
+        {
+
+        }
     }
 
 }

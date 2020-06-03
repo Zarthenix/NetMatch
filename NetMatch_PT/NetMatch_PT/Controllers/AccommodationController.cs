@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -45,41 +46,39 @@ namespace NetMatch_PT.Controllers
         }
 
 
-        public IActionResult Example()
-        {
-            HttpContext.Session.SetString("Title", "Test Sessie Title");
-            return View();
-        }
-
         public IActionResult Receipt()
         {
-            TravelOptionsVm vm = new TravelOptionsVm();
+            TravelOptionsVm to = new TravelOptionsVm();
 
-            if (_session.GetObjectFromJson<TravelOptions>("TravelOptions") != null)
+            if (_session.GetObjectFromJson<TravelOptionsVm>("TravelOptions") != null)
             {
-                vm = _travelOptionsVmConverter.ModelTViewoModel(_session.GetObjectFromJson<TravelOptions>("TravelOptions"));
+                to = (_session.GetObjectFromJson<TravelOptionsVm>("TravelOptions"));
+                to.Accommodation = _accommodationDetailVmConverter.ModelToViewModel(_accommodationRepo.GetById(to.AccommodationId));
             }
-            return View(vm);
+
+            return PartialView(to);
         }
 
-
-
-
+        [HttpGet]
         public IActionResult TravelOptions(int id)
         {
+            ViewData["Description"] = (string)ContentHandler.GetJson<string>("TravelCompanyPickerDescription");
             TravelOptionsVm vm = new TravelOptionsVm(id);
-            if (_session.GetObjectFromJson<TravelOptions>("TravelOptions") != null)
+            if (_session.GetObjectFromJson<TravelOptionsVm>("TravelOptions") != null)
             {
                 vm = _travelOptionsVmConverter.ModelTViewoModel(_session.GetObjectFromJson<TravelOptions>("TravelOptions"));
-                vm.AccommodationId = id;
             }
             vm.AccommodationId = id;
+            vm.Accommodation = _accommodationDetailVmConverter.ModelToViewModel(_accommodationRepo.GetById(id));
+            //vm.SelectDate = bookingsdate;
             return PartialView(vm);
         }
 
         [HttpPost]
         public IActionResult TravelOptions(TravelOptionsVm vm)
         {
+            vm.Accommodation = _accommodationDetailVmConverter.ModelToViewModel(_accommodationRepo.GetById(vm.AccommodationId));
+
             if (!ModelState.IsValid)
             {
                 return PartialView(vm);
@@ -99,10 +98,9 @@ namespace NetMatch_PT.Controllers
                 ModelState.AddModelError("Volwassenen met een kind", "Volwassenen moeten een kamer delen en een kind moet op een aparte kamer");
                 return PartialView(vm);
             }
-            TravelOptions to = _travelOptionsVmConverter.ViewModelToModel(vm);
-            _session.SetObjectAsJson("TravelOptions", to);
 
-            return RedirectToAction("Receipt");
+            _session.SetObjectAsJson("TravelOptions", vm);
+            return RedirectToAction("Receipt", vm);
         }
     }
 }
