@@ -34,6 +34,39 @@ h2 {
     overflow: auto;
 }
 
-.tekst p {
-    margin-left: 30px;
+    .tekst p {
+        margin-left: 30px;
+    }
+
+.tekst1 {
+    text-align: left;
+    background: #fff;
+    border-radius: 2px;
+    display: inline-block;
+    height: 500px;
+    margin: 1rem;
+    position: relative;
+    width: 1040px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    overflow: auto;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    background-color: #ffffff;
+}
+
+.grid-item {
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+    height: 300px;
+    width: 500px;
+    overflow: auto;
+    box-sizing: border-box;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    margin: 10px;
 }

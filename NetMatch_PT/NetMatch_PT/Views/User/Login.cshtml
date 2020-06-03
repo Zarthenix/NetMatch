@@ -8,16 +8,15 @@
 </head>
 
 <center>
-    <h1>Login</h1>
     <div class="box">
         <form asp-action="Login" method="post">
-            <input type="text" name="Email" asp-for="@Model.Email" placeholder="Email"/>
+            <input type="text" name="Email" asp-for="@Model.Email" placeholder="Email" />
             <input type="password" name="Password" asp-for="@Model.Password" placeholder="Password" />
             <input type="submit" onclick="CheckNullOrEmpty()" value="Login" />
             <h1>@Html.ViewData["Message"]</h1>
         </form>
+    </div>
 </center>
-</div>
 
 <script>
     function CheckNullOrEmpty() {

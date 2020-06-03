@@ -13,7 +13,6 @@
 
     .grid-item {
         background-color: #ffffff;
-        border: 1px solid rgba(0, 0, 0, 0.8);
         padding: 20px;
         font-size: 30px;
         text-align: center;
@@ -59,7 +58,7 @@
     <div class="populairheader">
         <p> Populaire vakanties</p>
     </div>
-    <div class="grid-container">
+    <div class="grid-container" style="border: none !important;">
         <div class="grid-item">
             <div class="row justify-content-around">
                 @foreach (var a in Model.Accommodations)
