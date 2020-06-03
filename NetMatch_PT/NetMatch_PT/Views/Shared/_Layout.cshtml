@@ -66,17 +66,28 @@
                         Zaterdag 10:00 - 15:00<br />
                         Zondag gesloten
                     </div>
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <div>
-                            @if (User.Identity.Name != "")
-                            {
-                                <h1>I'm logged in with @User.Identity.Name</h1>
-                                @Html.ActionLink("Log out", "Logout", new { })
-                            }
-                        </div>
-                    }
-
+                    <style>
+                        .dom {
+                            margin-left: 30px;
+                            background: #ffffff;
+                            text-align: center;
+                            box-sizing: border-box;
+                            box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+                            border: #00BFFF;
+                        }
+                    </style>
+                    <div class="dom">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <div>
+                                @if (User.Identity.Name != "")
+                                {
+                                    <p>I'm logged in with @User.Identity.Name</p>
+                                    @Html.ActionLink("Log out", "Logout", new { })
+                                }
+                            </div>
+                        }
+                    </div>
                 </div>
             </div>
 
