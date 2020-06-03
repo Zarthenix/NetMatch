@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: white;
+}
+
+h1 {
+    text-align: center;
+    font-family: 'Times New Roman';
+    font-size: 4rem;
+    font-weight: bold;
+    border-bottom: solid 1px #000000;
+}
+
+h2 {
+    text-align: center;
+    font-family: 'Times New Roman';
+    font-size: 4rem;
+    font-weight: bold;
+    border-bottom: solid 1px #000000;
+}
+
+.tekst {
+    text-align: left;
+    background: #fff;
+    border-radius: 2px;
+    display: inline-block;
+    height: 300px;
+    margin: 1rem;
+    position: relative;
+    width: 1000px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    overflow: auto;
+}
+
+p {
+    margin-left: 30px;
+}
