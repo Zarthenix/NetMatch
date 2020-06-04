@@ -45,6 +45,8 @@
 
             doc.save('Bevestiging_Factuur.pdf')
         }
+
+       
     </script>
 </head>
 
@@ -74,12 +76,20 @@
         var telefoonnr = localStorage['telnr'];
         var nationaliteit = localStorage['nationality'];
 
+        var reizigerfname = localStorage['NameReiziger'];
+        var reizigerlname = localStorage['AchternaamReiziger'];
+        var reizigerstraat = localStorage['StrReiziger'];
+        var reiszigerwoonplaats = localStorage['WpReiziger'];
+
+
         @*var Prijs = @Model.Price;
         var prijsMetKorting = Prijs;*@
     </script>
 
     <div id="toPDF">
         <center><h1>Factuur bevestiging</h1></center>
+        <br />
+        <h1>Persoonsgegevens</h1>
         <br />
         <center>
             <p>
@@ -117,7 +127,27 @@
                 <script>document.write(email)</script>
             </p>
 
-            <br /><br /><br />
+            <h1>Persoonsgegevens reisgezelschap</h1>
+
+            <p>
+                Voornaam:
+                <script>document.write(reizigerfname)</script>
+            </p>
+            <p>
+                Achternaam:
+                <script>document.write(reizigerlname)</script>
+            </p>
+            <p>
+                Woonplaats:
+                <script>document.write(reiszigerwoonplaats)</script>,&nbsp;
+                
+            </p>
+            <p>
+                Adres:
+                <script>document.write(reizigerstraat)</script>,&nbsp;
+               
+            </p>
+            <br />
             <table style="height: 160px; width: 100%; font-size:9px;" class="table">
                 <tbody>
                     <tr class="thead-dark">
@@ -130,7 +160,9 @@
                         <td style="width: 150px;"></td>
                         <td style="width: 150px;"></td>
                         <td style="width: 150px;"></td>
-                        <td style="width: 150px;"> <script>document.write(prijsMetKorting)</script></td>
+                        <td style="width: 150px;">
+                            <script>document.write(prijsMetKorting)</script>
+                        </td>
                     </tr>
                     <tr>
                         <td style="width: 150px;"></td>
@@ -140,23 +172,60 @@
                     </tr>
                 </tbody>
             </table>
-            
+
         </center>
 
     </div>
 
     <center><a class="btn-outline-primary" href="javascript:HTMLtoPDF()">Download PDF</a></center>
+    <br />
 
+    <script type="text/javascript">
+        function send_data() {
+            var fname = localStorage['firstName'];
+            var lname = localStorage['lastName'];
+            var birthdate = localStorage['birthDate'];
+            var wplaats = localStorage['wplaats'];
+            var huisnr = localStorage['huisnr'];
+            var straat = localStorage['strnaam'];
+            var postcode = localStorage['postcode'];
+            var email = localStorage['email'];
+            var telefoonnr = localStorage['telnr'];
+            var nationaliteit = localStorage['nationality'];
+
+            var reizigerfname = localStorage['NameReiziger'];
+            var reizigerlname = localStorage['AchternaamReiziger'];
+            var reizigerstraat = localStorage['StrReiziger'];
+            var reiszigerwoonplaats = localStorage['WpReiziger'];
+
+                $(document).ready(function() {
+                    //function will be called on button click having id btnsave
+                    $("#btnboeken").click(function () {
+                        $.ajax({
+                            type: "POST", //HTTP POST Method
+                            url: '/Home/InsertRoleList', // Controller/View
+                            data: { //Passing data
+                                Name: $("#Name").val(), //Reading text box values using Jquery
+                                Role: $("#Role").val(),
+                            }
+                        });
+                    });
+        });
+        }
+    </script>
+    <form>
+        <div style="" class="ja">
+            <button class="btn-primary" id="btnboeken" style="right:100px; position:absolute; width:200px; height:100px; font-size:larger;"> Boeken </button>
+        </div>
+    </form>
     <br /> <br /> <br /> <br /> <br /> <br /><br /> <br /> <br /> <br /> <br /> <br /><br /> <br /> <br /> <br /> <br /> <br /><br /> <br /> <br /> <br /> <br /> <br />
 
-    <div style="" class="pdfDownload-div">
-    </div>
+
     <br />
 </body>
 </html>
 <script>
-    var inputTest = localStorage['firstName'];
-    localStorage.removeItem('firstName');
+    
 </script>
 <style>
 </style>
