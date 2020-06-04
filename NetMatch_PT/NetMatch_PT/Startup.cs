@@ -32,10 +32,12 @@ namespace NetMatch_PT
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IAccommodationContext, SQLAccommodationContext>();
+            services.AddTransient<IBoekingContext, SQLBoekingContext>();
             services.AddTransient<IUserContainer, UserContainer>();
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddScoped<AccommodationRepo>();
+            services.AddScoped<BoekingRepository>();
 
             services.AddScoped<AccommodationDetailVmConverter>();
 
