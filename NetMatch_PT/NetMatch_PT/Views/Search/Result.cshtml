@@ -16,14 +16,12 @@
         background-color: #ffffff;
         border: 1px solid rgba(0, 0, 0, 0.8);
         padding: 20px;
-        font-size: 30px;
+        font-size: 24px;
         text-align: center;
-        max-height: 500px;
         max-width: 500px;
-        overflow: auto;
         box-sizing: border-box;
         box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
-        margin:10px;
+        margin: 20px;
     }
 </style>
 
@@ -33,7 +31,7 @@
         <form class="form-inline" method="get" asp-action="QuickSearch" asp-controller="Search">
             <div class="form-row">
                 <div class="col">
-                    <select asp-for="@Model.SearchVm.TravelType" class="form-control" placeholder="test">
+                    <select asp-for="@Model.SearchVm.TravelType" class="form-control">
                         <option value="null" selected disabled>Reistype</option>
                         @foreach (int x in Enum.GetValues(typeof(TravelTypes)))
                         {
@@ -67,18 +65,41 @@
         @foreach (AccommodationDetailVm item in Model.results)
         {
             <div class="grid-item">
-                <div class="card mb-3" style="background-color: rgba(77, 138, 235, 0.3);">
+                <div class="card mb-3" style="background-color: rgba(77, 138, 235, 0.3); height:750px">
                     <a href='@Url.Action("Detail", "Accommodation", new {id = item.Id})' style="text-decoration: none;">
-                        <img class="card-img-top" src="data:image/png;base64,@item.Image" alt=@item.Title foto />
-                        <div class="card-body">
+                        <img class="card-img-top" src="data:image/png;base64,@item.Image" alt=@item.Title foto style="height: 30%;"/>
+                        <div class="card-body" style="height:100%">
                             <h5 class="card-title">@item.Title</h5>
                             <p class="card-text"><small class="text-muted">@item.Country.ToString()</small></p>
                             <p class="card-text">@item.Description</p>
                             <p class="card-text">
                                 <ul class="list-group">
-                                    @foreach (var d in item.DatePrices)
+                                    @if (item.DatePrices.Count >= 3)
                                     {
-                                        <li class="list-group-item">@d.Date - @d.Price</li>
+
+                                        foreach (var dp in item.DatePrices.OrderBy(x => x.Date).ToList())
+                                        {
+                                            if (item.DatePrices.IndexOf(dp) == 3)
+                                            {
+                                                break;
+                                            }
+                                            <li class="list-group-item"><b>@dp.Date.ToShortDateString()</b> Vanaf: @dp.Price</li>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        var sortedList = item.DatePrices.OrderBy(y => y.Date).ToList();
+                                        for (int x = 0; x < 3; x++)
+                                        {
+                                            if (x > item.DatePrices.Count - 1)
+                                            {
+                                                <li class="list-group-item">Geen data gevonden.</li>
+                                            }
+                                            else
+                                            {
+                                                <li class="list-group-item"><b>@sortedList[x].Date.ToShortDateString()</b> <br/> Vanaf €@item.DatePrices[x].Price</li>
+                                            }
+                                        }
                                     }
                                 </ul>
                             </p>
