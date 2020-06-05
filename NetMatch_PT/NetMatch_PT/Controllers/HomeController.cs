@@ -67,7 +67,7 @@ namespace NetMatch_PT.Controllers
                 return RedirectToAction("FullSearch", "Search", new {searchTerm = ""});
             }
             BoekingVm boeking = new BoekingVm();
-            boeking.TravelOptions = _session.GetObjectFromJson<TravelOptionsVm>("TravelOptions");
+            boeking.TravelOptions = _session.GetObjectFromJson<TravelOptionsVm>("TravelOptionsVm");
             
             boeking.TravelOptions.Accommodation = _accoConverter.ModelToViewModel(_accoRepo.GetById(boeking.TravelOptions.AccommodationId));
             boeking.TravelCompanions = new List<TravelCompanionVm>();
