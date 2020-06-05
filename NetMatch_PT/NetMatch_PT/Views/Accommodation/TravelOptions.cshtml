@@ -10,20 +10,12 @@
 
 }
 
-<modal-content>
-    <modal-header>
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            <h4 class="modal-title" id="myModalLabel">Reisgezelschap kiezen</h4>
+<modal-content id="content">
+    <modal-body id="modalbody">
+        <div class="row">
+            <p style="text-align:center">@ViewData["Description"]</p>
         </div>
-    </modal-header>
-    <modal-body>
-        <form id="travelform" asp-action="TravelOptions" asp-controller="Accommodation" data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-update="#travelform">
-            <div class="row">
-                <p style="text-align:center">@ViewData["Description"]</p>
-            </div>
+        <form id="travelform" data-ajax-url="@Url.Action("TravelOptions","Accommodation")" data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-update="#content">
             <div class="row">
                 <div><img class="col-md-4" style="display:block; max-height:inherit" src="data:image/jpeg;base64, @Model.Accommodation.Image" /></div>
                 <div class="col-md-2">@Model.Accommodation.Title</div>
@@ -31,10 +23,8 @@
             </div>
             <div class="modal-body form-horizontal">
                 <div asp-validation-summary="All" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Adults" class="control-label"></label>
+                <div class="form-group" hidden="hidden">
                     <input asp-for="Adults" class="form-control" />
-                    <span asp-validation-for="Adults" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Children" class="control-label"></label>
@@ -54,7 +44,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <input id="confirm" type="submit" value="Bevestig keuzes" class="btn btn-default" />
+                <button id="confirm" class="btn btn-default">Bevestig Keuze</button>
             </div>
         </form>
     </modal-body>

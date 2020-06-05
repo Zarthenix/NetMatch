@@ -11,19 +11,14 @@ namespace NetMatch_PT.ViewModels.Converters
     {
         public TravelOptions ViewModelToModel(TravelOptionsVm vm)
         {
-            return new TravelOptions(vm.AccommodationId, vm.Adults, vm.SelectDate, vm.Children, vm.Rooms);
+            TravelOptions to = new TravelOptions(vm.AccommodationId, vm.SelectDate, vm.Children, vm.Rooms);
+            to.TravelPartners = to.Adults + to.Children;
+            return to;
         }
 
         public TravelOptionsVm ModelTViewoModel(TravelOptions to)
         {
-            return new TravelOptionsVm()
-            {
-                AccommodationId = to.AccommodationId,
-                Rooms = to.Rooms,
-                Children = to.Children,
-                Adults = to.Adults,
-                SelectDate = to.Date
-            };
+            return new TravelOptionsVm(to.AccommodationId, to.Children, to.Rooms, to.Date);
         }
     }
 }
