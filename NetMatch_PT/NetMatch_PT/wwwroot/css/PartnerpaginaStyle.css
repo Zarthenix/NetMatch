@@ -1,1 +1,20 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    background-color: #ffffff;
+}
 
+.grid-item {
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 30px;
+    text-align: center;
+    max-height: 500px;
+    max-width: 500px;
+    overflow: auto;
+    box-sizing: border-box;
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    margin: 10px;
+    object-fit: contain;
+}
