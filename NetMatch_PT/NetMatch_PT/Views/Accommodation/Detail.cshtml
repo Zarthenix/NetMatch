@@ -46,9 +46,7 @@
                         Boekingsopties
                     </button>
 
-                    <button class="btn btn-success">
-                        <a asp-controller="Home" asp-action="ReisBoeken" style="font-size:16pt; color: white; text-decoration: none;">Boeken</a>
-                    </button>
+                    <a asp-controller="Home" asp-action="ReisBoeken" class="btn btn-success" style="font-size:16pt; color: white; text-decoration: none;">Boeken</a>
                 </div>
             </div>
         </div>
@@ -75,7 +73,7 @@
 </body>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog" role="document" style="display: flex; align-items: center;">
         <div class="modal-content" id="myModalContent">
             <div class="modal-header">
                 <button type="button" id="closebtn" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using NetMatch_PT.Models;
@@ -20,10 +21,14 @@ namespace NetMatch_PT.Controllers
         private AccommodationRepo _accoRepo;
         private AccommodationDetailVmConverter _accoConverter = new AccommodationDetailVmConverter();
 
-        public HomeController(ILogger<HomeController> logger, AccommodationRepo accoRepo)
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private ISession _session => _httpContextAccessor.HttpContext.Session;
+
+        public HomeController(ILogger<HomeController> logger, AccommodationRepo accoRepo, IHttpContextAccessor httpContextAccessor)
         {
             _logger = logger;
             _accoRepo = accoRepo;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public IActionResult Index()
@@ -51,10 +56,26 @@ namespace NetMatch_PT.Controllers
         {
             return View();
         }
+
+        [HttpGet]
         public IActionResult ReisBoeken()
         {
-            return View();
+            if (_session.GetObjectFromJson<TravelOptionsVm>("TravelOptions") == null)
+            {
+                TempData["failed"] = "Graag eerst een accommodatie en bijbehorende reisopties te selecteren.";
+                return RedirectToAction("FullSearch", "Search", new {searchTerm = ""});
+            }
+            BoekingVm boeking = new BoekingVm();
+            boeking.TravelOptions = _session.GetObjectFromJson<TravelOptionsVm>("TravelOptions");
+            boeking.TravelCompanions = new List<TravelCompanionVm>((boeking.TravelOptions.Adults - 1) + boeking.TravelOptions.Children);
+            return View(boeking);
         }
+
+        //[HttpPost]
+        //public IActionResult ReisBoeken(BoekingVm vm)
+        //{
+
+        //}
 
         public IActionResult PDFboeking()
         {

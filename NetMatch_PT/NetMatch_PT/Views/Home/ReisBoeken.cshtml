@@ -1,11 +1,11 @@
 ﻿
-
-
 @{
     Layout = null;
+    @model BoekingVm
 }
 @using Microsoft.AspNetCore.Authorization
 @using Microsoft.AspNetCore.Identity
+@using NetMatch_PT.ViewModels
 
 
 <!DOCTYPE html>
@@ -20,641 +20,118 @@
     <script src="/path/to/jquery.cookie.js"></script>
     <script src="https://kit.fontawesome.com/590950580f.js" crossorigin="anonymous"></script>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script>
-
-    </script>
 </head>
 
 
-<body>
-
-    <header class="Header">
-        <div id="myMenu">
-            <div class="myWrapper">
-                <nav>
-                    <a href="/"><img id="imgComp" src="../images/PT_CompName.png" height="100" width="250" /></a>
-
-                </nav>
-            </div>
-        </div>
-    </header>
-    <br />
-
-    <div class="GegevensReiziger">
-
-        <h3 style="text-align:center; font-size:25px;">Naam/adres van de aanmelder/hoofdboeker</h3>
-        <p style="font-style: oblique;">* Verplicht veld</p>
-        <br />
-
-        <div class="PersoonlijkeDetails">
-            <div>
-                <label>Aanhef:</label><br /><select><option value="1"> Heer </option> <option value="2"> Mevrouw </option></select>
-                <br />
-                <label>Voornaam:*</label><br /><Input type="text" id="firstName" Name="FirstName" Size=15 Maxlength=15>
-                <br />
-                <label>Achternaam:*</label><br /><Input type="text" id="lastName" Name="Achternaam" Size=15 Maxlength=15>
-                <br />
-                <label>Geboortedatum:*</label><br /><Input type="text" id="birthDate" Name="Geboortedatum" Size=15 Maxlength=15>
-                <br />
-                <label>Woonplaats/Postcode:*</label><br /><Input type="text" id="wplaats" Name="Woonplaats" Size=15 Maxlength=15> <input id="postcode" class="postcode" type="text" />
-                <br />
-                <label>Straat/Huisnummer:*</label><br /><Input type="text" id="strnaam" Name="Straat" Size=15 Maxlength=15 /> <input id="huisnr" class="huisnr" type="text" />
-                <br />
-                <label>Nationaliteit:*</label><br /><select id="nationality" class="dropdown-menu-lg-right" name="nationality">
-                    <option value="">Kies je nationaliteit</option>
-                    <option value="afghan">Afghan</option>
-                    <option value="albanian">Albanian</option>
-                    <option value="algerian">Algerian</option>
-                    <option value="american">American</option>
-                    <option value="andorran">Andorran</option>
-                    <option value="angolan">Angolan</option>
-                    <option value="antiguans">Antiguans</option>
-                    <option value="argentinean">Argentinean</option>
-                    <option value="armenian">Armenian</option>
-                    <option value="australian">Australian</option>
-                    <option value="austrian">Austrian</option>
-                    <option value="azerbaijani">Azerbaijani</option>
-                    <option value="bahamian">Bahamian</option>
-                    <option value="bahraini">Bahraini</option>
-                    <option value="bangladeshi">Bangladeshi</option>
-                    <option value="barbadian">Barbadian</option>
-                    <option value="barbudans">Barbudans</option>
-                    <option value="batswana">Batswana</option>
-                    <option value="belarusian">Belarusian</option>
-                    <option value="belgian">Belgian</option>
-                    <option value="belizean">Belizean</option>
-                    <option value="beninese">Beninese</option>
-                    <option value="bhutanese">Bhutanese</option>
-                    <option value="bolivian">Bolivian</option>
-                    <option value="bosnian">Bosnian</option>
-                    <option value="brazilian">Brazilian</option>
-                    <option value="british">British</option>
-                    <option value="bruneian">Bruneian</option>
-                    <option value="bulgarian">Bulgarian</option>
-                    <option value="burkinabe">Burkinabe</option>
-                    <option value="burmese">Burmese</option>
-                    <option value="burundian">Burundian</option>
-                    <option value="cambodian">Cambodian</option>
-                    <option value="cameroonian">Cameroonian</option>
-                    <option value="canadian">Canadian</option>
-                    <option value="cape verdean">Cape Verdean</option>
-                    <option value="central african">Central African</option>
-                    <option value="chadian">Chadian</option>
-                    <option value="chilean">Chilean</option>
-                    <option value="chinese">Chinese</option>
-                    <option value="colombian">Colombian</option>
-                    <option value="comoran">Comoran</option>
-                    <option value="congolese">Congolese</option>
-                    <option value="costa rican">Costa Rican</option>
-                    <option value="croatian">Croatian</option>
-                    <option value="cuban">Cuban</option>
-                    <option value="cypriot">Cypriot</option>
-                    <option value="czech">Czech</option>
-                    <option value="danish">Danish</option>
-                    <option value="djibouti">Djibouti</option>
-                    <option value="dominican">Dominican</option>
-                    <option value="dutch">Dutch</option>
-                    <option value="east timorese">East Timorese</option>
-                    <option value="ecuadorean">Ecuadorean</option>
-                    <option value="egyptian">Egyptian</option>
-                    <option value="emirian">Emirian</option>
-                    <option value="equatorial guinean">Equatorial Guinean</option>
-                    <option value="eritrean">Eritrean</option>
-                    <option value="estonian">Estonian</option>
-                    <option value="ethiopian">Ethiopian</option>
-                    <option value="fijian">Fijian</option>
-                    <option value="filipino">Filipino</option>
-                    <option value="finnish">Finnish</option>
-                    <option value="french">French</option>
-                    <option value="gabonese">Gabonese</option>
-                    <option value="gambian">Gambian</option>
-                    <option value="georgian">Georgian</option>
-                    <option value="german">German</option>
-                    <option value="ghanaian">Ghanaian</option>
-                    <option value="greek">Greek</option>
-                    <option value="grenadian">Grenadian</option>
-                    <option value="guatemalan">Guatemalan</option>
-                    <option value="guinea-bissauan">Guinea-Bissauan</option>
-                    <option value="guinean">Guinean</option>
-                    <option value="guyanese">Guyanese</option>
-                    <option value="haitian">Haitian</option>
-                    <option value="herzegovinian">Herzegovinian</option>
-                    <option value="honduran">Honduran</option>
-                    <option value="hungarian">Hungarian</option>
-                    <option value="icelander">Icelander</option>
-                    <option value="indian">Indian</option>
-                    <option value="indonesian">Indonesian</option>
-                    <option value="iranian">Iranian</option>
-                    <option value="iraqi">Iraqi</option>
-                    <option value="irish">Irish</option>
-                    <option value="israeli">Israeli</option>
-                    <option value="italian">Italian</option>
-                    <option value="ivorian">Ivorian</option>
-                    <option value="jamaican">Jamaican</option>
-                    <option value="japanese">Japanese</option>
-                    <option value="jordanian">Jordanian</option>
-                    <option value="kazakhstani">Kazakhstani</option>
-                    <option value="kenyan">Kenyan</option>
-                    <option value="kittian and nevisian">Kittian and Nevisian</option>
-                    <option value="kuwaiti">Kuwaiti</option>
-                    <option value="kyrgyz">Kyrgyz</option>
-                    <option value="laotian">Laotian</option>
-                    <option value="latvian">Latvian</option>
-                    <option value="lebanese">Lebanese</option>
-                    <option value="liberian">Liberian</option>
-                    <option value="libyan">Libyan</option>
-                    <option value="liechtensteiner">Liechtensteiner</option>
-                    <option value="lithuanian">Lithuanian</option>
-                    <option value="luxembourger">Luxembourger</option>
-                    <option value="macedonian">Macedonian</option>
-                    <option value="malagasy">Malagasy</option>
-                    <option value="malawian">Malawian</option>
-                    <option value="malaysian">Malaysian</option>
-                    <option value="maldivan">Maldivan</option>
-                    <option value="malian">Malian</option>
-                    <option value="maltese">Maltese</option>
-                    <option value="marshallese">Marshallese</option>
-                    <option value="mauritanian">Mauritanian</option>
-                    <option value="mauritian">Mauritian</option>
-                    <option value="mexican">Mexican</option>
-                    <option value="micronesian">Micronesian</option>
-                    <option value="moldovan">Moldovan</option>
-                    <option value="monacan">Monacan</option>
-                    <option value="mongolian">Mongolian</option>
-                    <option value="moroccan">Moroccan</option>
-                    <option value="mosotho">Mosotho</option>
-                    <option value="motswana">Motswana</option>
-                    <option value="mozambican">Mozambican</option>
-                    <option value="namibian">Namibian</option>
-                    <option value="nauruan">Nauruan</option>
-                    <option value="nepalese">Nepalese</option>
-                    <option value="new zealander">New Zealander</option>
-                    <option value="ni-vanuatu">Ni-Vanuatu</option>
-                    <option value="nicaraguan">Nicaraguan</option>
-                    <option value="nigerien">Nigerien</option>
-                    <option value="north korean">North Korean</option>
-                    <option value="northern irish">Northern Irish</option>
-                    <option value="norwegian">Norwegian</option>
-                    <option value="omani">Omani</option>
-                    <option value="pakistani">Pakistani</option>
-                    <option value="palauan">Palauan</option>
-                    <option value="panamanian">Panamanian</option>
-                    <option value="papua new guinean">Papua New Guinean</option>
-                    <option value="paraguayan">Paraguayan</option>
-                    <option value="peruvian">Peruvian</option>
-                    <option value="polish">Polish</option>
-                    <option value="portuguese">Portuguese</option>
-                    <option value="qatari">Qatari</option>
-                    <option value="romanian">Romanian</option>
-                    <option value="russian">Russian</option>
-                    <option value="rwandan">Rwandan</option>
-                    <option value="saint lucian">Saint Lucian</option>
-                    <option value="salvadoran">Salvadoran</option>
-                    <option value="samoan">Samoan</option>
-                    <option value="san marinese">San Marinese</option>
-                    <option value="sao tomean">Sao Tomean</option>
-                    <option value="saudi">Saudi</option>
-                    <option value="scottish">Scottish</option>
-                    <option value="senegalese">Senegalese</option>
-                    <option value="serbian">Serbian</option>
-                    <option value="seychellois">Seychellois</option>
-                    <option value="sierra leonean">Sierra Leonean</option>
-                    <option value="singaporean">Singaporean</option>
-                    <option value="slovakian">Slovakian</option>
-                    <option value="slovenian">Slovenian</option>
-                    <option value="solomon islander">Solomon Islander</option>
-                    <option value="somali">Somali</option>
-                    <option value="south african">South African</option>
-                    <option value="south korean">South Korean</option>
-                    <option value="spanish">Spanish</option>
-                    <option value="sri lankan">Sri Lankan</option>
-                    <option value="sudanese">Sudanese</option>
-                    <option value="surinamer">Surinamer</option>
-                    <option value="swazi">Swazi</option>
-                    <option value="swedish">Swedish</option>
-                    <option value="swiss">Swiss</option>
-                    <option value="syrian">Syrian</option>
-                    <option value="taiwanese">Taiwanese</option>
-                    <option value="tajik">Tajik</option>
-                    <option value="tanzanian">Tanzanian</option>
-                    <option value="thai">Thai</option>
-                    <option value="togolese">Togolese</option>
-                    <option value="tongan">Tongan</option>
-                    <option value="trinidadian or tobagonian">Trinidadian or Tobagonian</option>
-                    <option value="tunisian">Tunisian</option>
-                    <option value="turkish">Turkish</option>
-                    <option value="tuvaluan">Tuvaluan</option>
-                    <option value="ugandan">Ugandan</option>
-                    <option value="ukrainian">Ukrainian</option>
-                    <option value="uruguayan">Uruguayan</option>
-                    <option value="uzbekistani">Uzbekistani</option>
-                    <option value="venezuelan">Venezuelan</option>
-                    <option value="vietnamese">Vietnamese</option>
-                    <option value="welsh">Welsh</option>
-                    <option value="yemenite">Yemenite</option>
-                    <option value="zambian">Zambian</option>
-                    <option value="zimbabwean">Zimbabwean</option>
-                </select>
-                <br />
-                <label>Telefoonnummer:*</label><br /><Input type="text" id="telnr" Name="Nationaliteit" Size=15 Maxlength=15>
-                <br />
-                <label>E-mail:*</label><br /><Input type="text" id="email" Name="email">
-                <br />
-                <input type="checkbox" class="custom-checkbox" id="reizigerconf" name="reizigerconf" value="reiziger">Aanmelder is ook reiziger.
-                <br />
-                <button class="btn-primary" type="submit" id="btnToevoegen" onclick=""> Doorgaan</button>
-                <br /> <br /><br /><br /><br /><br />
-            </div>
-        </div>
-    </div>
-
-    <br /><br /><br /><br /><br />
-    <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /><br />
-
-    <div style="" class="Reis-boeking">
-        <h3 style="text-align:center;">Reisgezelschap</h3>
-        <p style="font-style:oblique; text-align:center;">*Verplichte veld</p>
-        <div class="Reiziger1">
-            <div class="Reiziger1Box">
-                <div class="reizigergegevens1">
-                    <p style="font-size:medium; ">1e reiziger.</p>
-                    <br />
-
-                    <label id="aanhef">Aanhef:</label><br /><select id="aanhefCh"><option value="1"> Heer </option> <option value="2"> Mevrouw </option></select>
-                    <br />
-                    <br />
-                    <Input type="text" Name="Name" id="NameReiziger" placeholder="Voornaam*" Size=15 Maxlength=15> <Input type="text" Name="Achternaam" id="AchternaamReiziger" placeholder="Achternaam*" Size=15 Maxlength=15>
-                    <br />
-                    <br />
-                    <Input type="text" Name="Woonplaats" id="WpReiziger" placeholder="Woonplaats*" Size=15 Maxlength=15> <input class="postcode" id="PcReiziger" placeholder="Postcode*" type="text" />
-                    <br />
-                    <br />
-                    <Input type="text" Name="Straat" id="StrReiziger" placeholder="Straat*" Size=15 Maxlength=15 /> <input class="huisnr" id="HuisnrReiziger" placeholder="Huisnr*" type="text" />
-                    <br />
-                    <br /><select class="nationality" name="nationality">
-                        <option value="">Kies je nationaliteit</option>
-                        <option value="afghan">Afghan</option>
-                        <option value="albanian">Albanian</option>
-                        <option value="algerian">Algerian</option>
-                        <option value="american">American</option>
-                        <option value="andorran">Andorran</option>
-                        <option value="angolan">Angolan</option>
-                        <option value="antiguans">Antiguans</option>
-                        <option value="argentinean">Argentinean</option>
-                        <option value="armenian">Armenian</option>
-                        <option value="australian">Australian</option>
-                        <option value="austrian">Austrian</option>
-                        <option value="azerbaijani">Azerbaijani</option>
-                        <option value="bahamian">Bahamian</option>
-                        <option value="bahraini">Bahraini</option>
-                        <option value="bangladeshi">Bangladeshi</option>
-                        <option value="barbadian">Barbadian</option>
-                        <option value="barbudans">Barbudans</option>
-                        <option value="batswana">Batswana</option>
-                        <option value="belarusian">Belarusian</option>
-                        <option value="belgian">Belgian</option>
-                        <option value="belizean">Belizean</option>
-                        <option value="beninese">Beninese</option>
-                        <option value="bhutanese">Bhutanese</option>
-                        <option value="bolivian">Bolivian</option>
-                        <option value="bosnian">Bosnian</option>
-                        <option value="brazilian">Brazilian</option>
-                        <option value="british">British</option>
-                        <option value="bruneian">Bruneian</option>
-                        <option value="bulgarian">Bulgarian</option>
-                        <option value="burkinabe">Burkinabe</option>
-                        <option value="burmese">Burmese</option>
-                        <option value="burundian">Burundian</option>
-                        <option value="cambodian">Cambodian</option>
-                        <option value="cameroonian">Cameroonian</option>
-                        <option value="canadian">Canadian</option>
-                        <option value="cape verdean">Cape Verdean</option>
-                        <option value="central african">Central African</option>
-                        <option value="chadian">Chadian</option>
-                        <option value="chilean">Chilean</option>
-                        <option value="chinese">Chinese</option>
-                        <option value="colombian">Colombian</option>
-                        <option value="comoran">Comoran</option>
-                        <option value="congolese">Congolese</option>
-                        <option value="costa rican">Costa Rican</option>
-                        <option value="croatian">Croatian</option>
-                        <option value="cuban">Cuban</option>
-                        <option value="cypriot">Cypriot</option>
-                        <option value="czech">Czech</option>
-                        <option value="danish">Danish</option>
-                        <option value="djibouti">Djibouti</option>
-                        <option value="dominican">Dominican</option>
-                        <option value="dutch">Dutch</option>
-                        <option value="east timorese">East Timorese</option>
-                        <option value="ecuadorean">Ecuadorean</option>
-                        <option value="egyptian">Egyptian</option>
-                        <option value="emirian">Emirian</option>
-                        <option value="equatorial guinean">Equatorial Guinean</option>
-                        <option value="eritrean">Eritrean</option>
-                        <option value="estonian">Estonian</option>
-                        <option value="ethiopian">Ethiopian</option>
-                        <option value="fijian">Fijian</option>
-                        <option value="filipino">Filipino</option>
-                        <option value="finnish">Finnish</option>
-                        <option value="french">French</option>
-                        <option value="gabonese">Gabonese</option>
-                        <option value="gambian">Gambian</option>
-                        <option value="georgian">Georgian</option>
-                        <option value="german">German</option>
-                        <option value="ghanaian">Ghanaian</option>
-                        <option value="greek">Greek</option>
-                        <option value="grenadian">Grenadian</option>
-                        <option value="guatemalan">Guatemalan</option>
-                        <option value="guinea-bissauan">Guinea-Bissauan</option>
-                        <option value="guinean">Guinean</option>
-                        <option value="guyanese">Guyanese</option>
-                        <option value="haitian">Haitian</option>
-                        <option value="herzegovinian">Herzegovinian</option>
-                        <option value="honduran">Honduran</option>
-                        <option value="hungarian">Hungarian</option>
-                        <option value="icelander">Icelander</option>
-                        <option value="indian">Indian</option>
-                        <option value="indonesian">Indonesian</option>
-                        <option value="iranian">Iranian</option>
-                        <option value="iraqi">Iraqi</option>
-                        <option value="irish">Irish</option>
-                        <option value="israeli">Israeli</option>
-                        <option value="italian">Italian</option>
-                        <option value="ivorian">Ivorian</option>
-                        <option value="jamaican">Jamaican</option>
-                        <option value="japanese">Japanese</option>
-                        <option value="jordanian">Jordanian</option>
-                        <option value="kazakhstani">Kazakhstani</option>
-                        <option value="kenyan">Kenyan</option>
-                        <option value="kittian and nevisian">Kittian and Nevisian</option>
-                        <option value="kuwaiti">Kuwaiti</option>
-                        <option value="kyrgyz">Kyrgyz</option>
-                        <option value="laotian">Laotian</option>
-                        <option value="latvian">Latvian</option>
-                        <option value="lebanese">Lebanese</option>
-                        <option value="liberian">Liberian</option>
-                        <option value="libyan">Libyan</option>
-                        <option value="liechtensteiner">Liechtensteiner</option>
-                        <option value="lithuanian">Lithuanian</option>
-                        <option value="luxembourger">Luxembourger</option>
-                        <option value="macedonian">Macedonian</option>
-                        <option value="malagasy">Malagasy</option>
-                        <option value="malawian">Malawian</option>
-                        <option value="malaysian">Malaysian</option>
-                        <option value="maldivan">Maldivan</option>
-                        <option value="malian">Malian</option>
-                        <option value="maltese">Maltese</option>
-                        <option value="marshallese">Marshallese</option>
-                        <option value="mauritanian">Mauritanian</option>
-                        <option value="mauritian">Mauritian</option>
-                        <option value="mexican">Mexican</option>
-                        <option value="micronesian">Micronesian</option>
-                        <option value="moldovan">Moldovan</option>
-                        <option value="monacan">Monacan</option>
-                        <option value="mongolian">Mongolian</option>
-                        <option value="moroccan">Moroccan</option>
-                        <option value="mosotho">Mosotho</option>
-                        <option value="motswana">Motswana</option>
-                        <option value="mozambican">Mozambican</option>
-                        <option value="namibian">Namibian</option>
-                        <option value="nauruan">Nauruan</option>
-                        <option value="nepalese">Nepalese</option>
-                        <option value="new zealander">New Zealander</option>
-                        <option value="ni-vanuatu">Ni-Vanuatu</option>
-                        <option value="nicaraguan">Nicaraguan</option>
-                        <option value="nigerien">Nigerien</option>
-                        <option value="north korean">North Korean</option>
-                        <option value="northern irish">Northern Irish</option>
-                        <option value="norwegian">Norwegian</option>
-                        <option value="omani">Omani</option>
-                        <option value="pakistani">Pakistani</option>
-                        <option value="palauan">Palauan</option>
-                        <option value="panamanian">Panamanian</option>
-                        <option value="papua new guinean">Papua New Guinean</option>
-                        <option value="paraguayan">Paraguayan</option>
-                        <option value="peruvian">Peruvian</option>
-                        <option value="polish">Polish</option>
-                        <option value="portuguese">Portuguese</option>
-                        <option value="qatari">Qatari</option>
-                        <option value="romanian">Romanian</option>
-                        <option value="russian">Russian</option>
-                        <option value="rwandan">Rwandan</option>
-                        <option value="saint lucian">Saint Lucian</option>
-                        <option value="salvadoran">Salvadoran</option>
-                        <option value="samoan">Samoan</option>
-                        <option value="san marinese">San Marinese</option>
-                        <option value="sao tomean">Sao Tomean</option>
-                        <option value="saudi">Saudi</option>
-                        <option value="scottish">Scottish</option>
-                        <option value="senegalese">Senegalese</option>
-                        <option value="serbian">Serbian</option>
-                        <option value="seychellois">Seychellois</option>
-                        <option value="sierra leonean">Sierra Leonean</option>
-                        <option value="singaporean">Singaporean</option>
-                        <option value="slovakian">Slovakian</option>
-                        <option value="slovenian">Slovenian</option>
-                        <option value="solomon islander">Solomon Islander</option>
-                        <option value="somali">Somali</option>
-                        <option value="south african">South African</option>
-                        <option value="south korean">South Korean</option>
-                        <option value="spanish">Spanish</option>
-                        <option value="sri lankan">Sri Lankan</option>
-                        <option value="sudanese">Sudanese</option>
-                        <option value="surinamer">Surinamer</option>
-                        <option value="swazi">Swazi</option>
-                        <option value="swedish">Swedish</option>
-                        <option value="swiss">Swiss</option>
-                        <option value="syrian">Syrian</option>
-                        <option value="taiwanese">Taiwanese</option>
-                        <option value="tajik">Tajik</option>
-                        <option value="tanzanian">Tanzanian</option>
-                        <option value="thai">Thai</option>
-                        <option value="togolese">Togolese</option>
-                        <option value="tongan">Tongan</option>
-                        <option value="trinidadian or tobagonian">Trinidadian or Tobagonian</option>
-                        <option value="tunisian">Tunisian</option>
-                        <option value="turkish">Turkish</option>
-                        <option value="tuvaluan">Tuvaluan</option>
-                        <option value="ugandan">Ugandan</option>
-                        <option value="ukrainian">Ukrainian</option>
-                        <option value="uruguayan">Uruguayan</option>
-                        <option value="uzbekistani">Uzbekistani</option>
-                        <option value="venezuelan">Venezuelan</option>
-                        <option value="vietnamese">Vietnamese</option>
-                        <option value="welsh">Welsh</option>
-                        <option value="yemenite">Yemenite</option>
-                        <option value="zambian">Zambian</option>
-                        <option value="zimbabwean">Zimbabwean</option>
-                    </select>
-                    <br />
-                    <br /><Input type="text" Name="Nationaliteit" placeholder="Telefoonnummer" id="telefoonnr" Size=15 Maxlength=15>
-                    <br />
-                    <br /> <br /><button class="btn-outline-primary" id="btnToevoegen1"> Toevoegen </button>
+<body style="height: 100vh; overflow: hidden;">
+    <div class="container-fluid">
+        <div class="row">
+            <header class="Header">
+                <div id="myMenu">
+                    <div class="myWrapper">
+                        <nav>
+                            <a href="/"><img id="imgComp" src="../images/PT_CompName.png" height="100" width="250" /></a>
+                        </nav>
+                    </div>
                 </div>
-            </div>
+            </header>
         </div>
-    </div>
-    <br />
-
-    <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
-
-
-
-
-    @if (User.Identity.IsAuthenticated)
-    {
-<form action="/Home/PDFBoeking">
-    <div class="reisagent-div">
-        <center> <h2 id="reisAgentTitle" style="font-family:Cambria"> Reisagent </h2></center>
-        <center>
-            <p>
-
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="kortingChecked">
-                    <label class="form-check-label" for="materialUnchecked">5% korting</label>
+        <form asp-action="ReisBoeken" asp-controller="Home" method="post">
+            <div class="col-md-12">
+                <div id="firstOptions" class="selectionDiv">
+                    <h3>@Model.TravelOptions.Accommodation.Title</h3>
+                    <div class="form-group">
+                        <label asp-for="Vervoer"></label>
+                        <select asp-for="Vervoer" class="form-control">
+                            <option value="0">Eigen</option>
+                            <option value="1">Amsterdam</option>
+                            <option value="2">Rotterdam</option>
+                            <option value="3">Eindhoven</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AnnuleringsVerzekering"></label>
+                        <input asp-for="AnnuleringsVerzekering" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ReisVerzekering"></label>
+                        <input asp-for="ReisVerzekering" class="form-control" />
+                    </div>
+                    <button class="btn btn-primary" id="to2">Volgende</button>
+                </div>
+                <div id="secondOptions" class="selectionDiv">
+                    <h5>Hoofdreiziger:</h5>
+                    <div class="form-group">
+                        <label asp-for="Voornaam"></label>
+                        <input asp-for="Voornaam" class="form-control" />
+                        <span asp-validation-for="Voornaam"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Achternaam"></label>
+                        <input asp-for="Achternaam" class="form-control" />
+                        <span asp-validation-for="Achternaam"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="GeboorteDatum"></label>
+                        <input asp-for="GeboorteDatum" class="form-control" />
+                        <span asp-validation-for="GeboorteDatum"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TelefoonNummer"></label>
+                        <input asp-for="TelefoonNummer" class="form-control" />
+                        <span asp-validation-for="TelefoonNummer"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Adres"></label>
+                        <input asp-for="Adres" class="form-control" />
+                        <span asp-validation-for="Adres"></span>
+                    </div>
+                    <div class="row">
+                        @for (int x = 0; x < Model.TravelCompanions.Capacity; x++)
+                        {
+                            <div>
+                                <h5>Mede-reiziger @x:</h5>
+                                <div class="form-group">
+                                    <label asp-for="TravelCompanions[x].Voornaam"></label>
+                                    <input asp-for="TravelCompanions[x].Voornaam" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="TravelCompanions[x].Achternaam"></label>
+                                    <input asp-for="TravelCompanions[x].Achternaam" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="TravelCompanions[x].Geboortedatum"></label>
+                                    <input asp-for="TravelCompanions[x].Geboortedatum" class="form-control" />
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div class="form-group">
+                            <label asp-for="AgentKorting"></label>
+                            <input asp-for="AgentKorting" class="form-control" />
+                        </div>
+                    }
+                    <button type="submit" class="btn btn-primary">Volgende</button>
                 </div>
 
-            </p>
-            <br />
-            <p>
-                <h2>Hoe te handelen?</h2>
-                Wil je in aanmerking komen voor<br />
-                de agentenkorting? Stuur dan, na het definitief maken <br />
-                van jouw boeking, een mail naar sales@cyouat.nl o.v.v. <br />
-                jouw reserveringsnummer. Vanaf dat moment gaan wij kijken wat wij <br />
-                voor jou kunnen en mogen betekenen.<br />
-            </p>
-        </center>
-
-        <button type="submit" class="btn-outline-primary" id="btnBoekingOpslaan" onclick="store_data(), addGegevensToDb()" href="/Home/PDFboeking"> Boeking opslaan </button>
-
-    </div>
-</form>
-    }
-    @if (!User.Identity.IsAuthenticated)
-    {
-        <form action="/Home/PDFBoeking">
-            <button type="submit" class="btn-outline-primary" id="btnBoekingOpslaan" onclick="addGegevensToDb()" href="/Home/PDFboeking" style="margin-left:1300px; margin-top:350px; "> Boeking opslaan </button>
+            </div>
         </form>
-    }
-   
-    <br />
-    
-
-
+    </div>
 </body>
 </html>
 
-<script type="text/javascript" >
-    var node = document.getElementById("Reis-boeking").lastChild;
-    document.getElementById("myList1").appendChild(node);
 
-    document.getElementById("btnToevoegen1").onclick = function () {
-        var ok = true;
-
-        if (ok === true) {
-            var div = document.createElement('div');
-
-            div.className = 'Reis-boeking';
-            //div.style.backgroundColor = "black";
-
-            document.getElementsByTagName('body')[0].appendChild(div);
-        }
-</script>
-
-<script type="text/javascript">
-    var fname = document.getElementById('firstName');
-    var lname = document.getElementById('lastName');
-    var birthdate = document.getElementById('birthDate');
-    var woonplaats = document.getElementById('wplaats');
-    var adres = document.getElementById('strnaam');
-    var huisnr = document.getElementById('huisnr');
-    var postcode = document.getElementById('postcode');
-    var telefoonnr = document.getElementById('telnr');
-    var email = document.getElementById('email');
-        var nationaliteit = document.getElementById('nationality');
-
-        var reizigerfname = document.getElementById('NameReiziger');
-        var reizigerlname = document.getElementById('AchternaamReiziger');
-        var reiszigerwoonplaats = document.getElementById('WpReiziger');
-        var reizigerstraat = document.getElementById('StrReiziger');
-
-    add.addEventListener('click', function (e) {
-        store_data();
-        addGegevensToDb();
-    });
-
-        function store_data() { // Store value from input field to local store
-            localStorage.setItem('firstName', fname.value);
-            localStorage.setItem('lastName', lname.value);
-            localStorage.setItem('birthDate', birthdate.value);
-            localStorage.setItem('wplaats', woonplaats.value);
-            localStorage.setItem('strnaam', adres.value);
-            localStorage.setItem('huisnr', huisnr.value);
-            localStorage.setItem('postcode', postcode.value);
-            localStorage.setItem('email', email.value);
-            localStorage.setItem('telnr', telefoonnr.value);
-            localStorage.setItem('nationality', nationaliteit.value);
-
-            localStorage.setItem('NameReiziger', reizigerfname.value);
-            localStorage.setItem('AchternaamReiziger', reizigerlname.value);
-            localStorage.setItem('WpReiziger', reiszigerwoonplaats.value);
-            localStorage.setItem('StrReiziger', reizigerstraat.value);
-
-        }
-        $(document).ready(function () {
-            $("#btnBoekingOpslaan").click(function () {
-                var f = {};
-                f.url = '@Url.Action("PDFBoeking", "Home")';
-                f.type = "POST";
-                f.dataType = "json";
-                f.data = JSON.stringify({ FName: fname.value, LName: lname.value, NReizeiger: reizigerfname.value, ANReiziger: reiziger lname.value });
-                f.contentType = "application/json";
-                f.success = function (response) {
-                    alert("success");
-                };
-                f.error = function (response) {
-                    alert("failed");
-                };
-                $.ajax(f);
-            });
+<script>
+    $("#to2").on('click',
+        function () {
+            window.location.hash = '#secondOptions';
         });
-
-
-
-            $(document).ready(function () {
-                $("#btnBoekingOpslaan").click(function () {
-                    $.ajax(
-                        {
-
-                            type: "POST", //HTTP POST Method
-                            url: "Home/PDFBoeking", // Controller/View
-                            data: { //Passing data
-                                Voornaam: $("#firstName").val(), //Reading text box values using Jquery
-                                Achternaam: $("#lastName").val(),
-                                //Birthdate: $("#birthDate").val()
-                                //Wplaats: $("#wplaats").val()
-                                //Strnaam: $("#strnaam").val()
-                                //Huisnr: $("#huisnr").val()
-                                //Postcode: $("#postcode").val()
-                                //Email: $("#email").val()
-                                //Telnr: $("#telnr").val()
-                                //Nationaliteit: $("#nationality").val()
-                                VoornaamReiziger: $("#NameReiziger").val(),
-                                AchternaamReiziger: $("#AchternaamReiziger").val()
-                                //WpReiziger: $("#WpReiziger").val()
-                                //StrReiziger: $("#StrReiziger").val()
-                            }
-
-                        });
-
-                });
-            });
-        }
-
-
-
-
 </script>
-
 
