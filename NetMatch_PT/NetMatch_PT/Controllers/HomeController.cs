@@ -61,28 +61,15 @@ namespace NetMatch_PT.Controllers
         [HttpGet]
         public IActionResult ReisBoeken()
         {
-            /*if (_session.GetObjectFromJson<TravelOptionsVm>("TravelOptions") == null)
+            if (_session.GetObjectFromJson<TravelOptionsVm>("TravelOptions") == null)
             {
                 TempData["failed"] = "Graag eerst een accommodatie en bijbehorende reisopties te selecteren.";
                 return RedirectToAction("FullSearch", "Search", new {searchTerm = ""});
-            }*/
+            }
             BoekingVm boeking = new BoekingVm();
             boeking.TravelOptions = _session.GetObjectFromJson<TravelOptionsVm>("TravelOptions");
-            boeking.TravelOptions = new TravelOptionsVm()
-            {
-                Accommodation = new AccommodationDetailVm()
-                {
-                    Country = Countries.Frankrijk,
-                    KidsPrice = 100,
-                    Price = 150,
-                    Title = "Frank"
-                },
-                AccommodationId = 2,
-                Children = 1,
-                Rooms = 2,
-                SelectDate = DateTime.Now
-            };
-            //boeking.TravelOptions.Accommodation = _accoConverter.ModelToViewModel(_accoRepo.GetById(boeking.TravelOptions.AccommodationId));
+            
+            boeking.TravelOptions.Accommodation = _accoConverter.ModelToViewModel(_accoRepo.GetById(boeking.TravelOptions.AccommodationId));
             boeking.TravelCompanions = new List<TravelCompanionVm>();
             int medeReizigers = (boeking.TravelOptions.Adults - 1) + boeking.TravelOptions.Children;
             for (int x = 0; x < medeReizigers; x++)
