@@ -1,13 +1,12 @@
-﻿@using Microsoft.AspNetCore.Http
-@using NetMatch_PT.ViewModels
-@model NetMatch_PT.ViewModels.AccommodationDetailVm;
+﻿@model NetMatch_PT.ViewModels.AccommodationDetailVm;
 @{
     ViewData["Title"] = "Voorbeeld Accommodatie";
     <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <link rel="stylesheet" href="~/css/AccomodationStyle.css" />
+    <link rel="stylesheet" href="~/css/AccommodationStyle.css" />
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-
+    @using Microsoft.AspNetCore.Http
+    @using NetMatch_PT.ViewModels
     @inject IHttpContextAccessor HttpContextAccessor
 }
 
@@ -29,11 +28,11 @@
 
                     <div class="col-md-4 offset-md-1">
                         <h3>Datums:</h3>
-                        <select id="dateSelector">
+                        <select id="dateSelector" onchange="GetSelectedValue()">
                             <option value="null" selected disabled>Kies een datum</option>
                             @foreach (var item in Model.DatePrices)
                             {
-                                <option value="@item.Date">@item.Date.ToShortDateString()</option>
+                                <option value="@item.Date.ToString()">@item.Date.ToShortDateString()</option>
                             }
                         </select>
                     </div>
@@ -46,6 +45,13 @@
                         Boekingsopties
                     </button>
 
+                    @if (HttpContextAccessor.HttpContext.Session.GetObjectFromJson<TravelOptions>("TravelOptions") != null)
+                    {
+                        <button class="btn btn-primary GetAll" id="Receiptbtn" style="font-size: 16pt; color: white; text-decoration: none;">
+                            Bekijk bonnetje
+                        </button>
+                    }
+
                     <button class="btn btn-success">
                         <a asp-controller="Home" asp-action="ReisBoeken" style="font-size:16pt; color: white; text-decoration: none;">Boeken</a>
                     </button>
@@ -54,35 +60,31 @@
         </div>
     </div>
 
-    <div class="container">
+    @*<div class="container">
         <div class="col-md-12 border-box">
-            @if (HttpContextAccessor.HttpContext.Session.GetObjectFromJson<TravelOptionsVm>("TravelOptions") != null)
+            @if (HttpContextAccessor.HttpContext.Session.GetObjectFromJson<TravelOptions>("TravelOptions") != null)
             {
                 <div class="row">
                     <div class="col-2"></div>
-                    <div class="col-8">
-                        @{
-                            {
-                                await Html.RenderPartialAsync("Receipt", HttpContextAccessor.HttpContext.Session.GetObjectFromJson<TravelOptionsVm>("TravelOptions"));
-                            }
-                        }
+                    <div class="col-8" id="bonnetje" onload="RenderReceipt()">
                     </div>
                     <div class="col-2"></div>
                 </div>
             }
         </div>
-    </div>
+    </div>*@
+
+
 </body>
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog">
         <div class="modal-content" id="myModalContent">
             <div class="modal-header">
-                <button type="button" id="closebtn" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                <button type="button" onclick="javascript:window.location.reload()" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel" style="text-align:left">Reisgezelschap kiezen</h4>
             </div>
-
-            <div class="modal-body">
+            <div class="modal-body" id="myModalBody">
             </div>
             <div class="modal-footer">
             </div>
@@ -90,12 +92,26 @@
     </div>
 </div>
 
+<div class="modal fade" id="receiptModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content" id="receiptContent">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel" style="text-align:left">Reisgezelschap kiezen</h4>
+            </div>
+            <div class="modal-body" id="receiptBody">
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
     $('#Optionsbtn').on('click',
         function () {
             var ajaxCallURL = '/Accommodation/TravelOptions';
-            var options = { "backdrop": "true", keyboard: true };
+            var options = { "backdrop": "static", keyboard: false };
                 $.ajax({
                     type: "GET",
                     url: ajaxCallURL,
@@ -105,7 +121,7 @@
                     },
                     contentType: "application/json; charset=utf-8",
                     success: function (data) {
-                        $('#myModalContent').html(data);
+                        $('#myModalBody').html(data);
                         $('#myModal').modal(options);
                         $('#myModal').modal('show');
                     },
@@ -115,21 +131,37 @@
                 });
         });
 
-    $('#myModal').on('hidden.bs.modal',
-        function() {
-            location.reload();
+    $('#Receiptbtn').on('click',
+        function () {
+            var ajaxCallURL = '/Accommodation/Receipt';
+            var options = { "backdrop": "static", keyboard: true };
+                $.ajax({
+                    type: "GET",
+                    url: ajaxCallURL,
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        $('#receiptBody').html(data);
+                        $('#receiptModal').modal(options);
+                        $('#receiptModal').modal('show');
+                    },
+                    error: function () {
+                        alert("Content load failed.");
+                    }
+                });
         });
 
-    $('select').on('change',
-        function() {
-            $('#Optionsbtn').prop("disabled", "");
-        });
+        $('select').on('change',
+            function () {
+                $('#Optionsbtn').prop("disabled", "");
+            });
 
-    function GetSelectedValue() {
-        var e = document.getElementById("dateSelector");
-        var result = e.options[e.selectedIndex].value;
-        return result;
-    }
+        function GetSelectedValue() {
+            var e = document.getElementById("dateSelector");
+            var result = e.options[e.selectedIndex].value;
+            return result;
+        }
+
+        $(function RenderReceipt() {
+                $("#bonnetje").load('/Accommodation/Receipt');
+        });
 </script>
-
-

@@ -46,29 +46,33 @@ namespace NetMatch_PT.Controllers
         }
 
 
+        [HttpGet]
         public IActionResult Receipt()
         {
-            TravelOptionsVm to = new TravelOptionsVm();
+            TravelOptionsVm vm = new TravelOptionsVm();
 
-            if (_session.GetObjectFromJson<TravelOptionsVm>("TravelOptions") != null)
+            if (_session.GetObjectFromJson<TravelOptions>("TravelOptions") != null)
             {
-                to = (_session.GetObjectFromJson<TravelOptionsVm>("TravelOptions"));
-                to.Accommodation = _accommodationDetailVmConverter.ModelToViewModel(_accommodationRepo.GetById(to.AccommodationId));
+                TravelOptions to = (_session.GetObjectFromJson<TravelOptions>("TravelOptions"));
+                vm = _travelOptionsVmConverter.ModelTViewoModel(to);
+                vm.Accommodation = _accommodationDetailVmConverter.ModelToViewModel(_accommodationRepo.GetById(to.AccommodationId));
             }
 
-            return PartialView(to);
+            return PartialView(vm);
         }
 
         [HttpGet]
-        public IActionResult TravelOptions(int id, DateTime bookingsdate)
+        public IActionResult TravelOptions(int id, string bookingsdate)
         {
             ViewData["Description"] = (string)ContentHandler.GetJson<string>("TravelCompanyPickerDescription");
-            TravelOptionsVm vm = new TravelOptionsVm(id, bookingsdate);
-            if (_session.GetObjectFromJson<TravelOptionsVm>("TravelOptions") != null)
+            TravelOptions to = new TravelOptions(id, Convert.ToDateTime(bookingsdate));
+            if (_session.GetObjectFromJson<TravelOptions>("TravelOptions") != null)
             {
-                vm = (_session.GetObjectFromJson<TravelOptionsVm>("TravelOptions"));
-                vm.SelectDate = bookingsdate;
+                to = (_session.GetObjectFromJson<TravelOptions>("TravelOptions"));
+                to.AccommodationId = id;
+                to.Date = Convert.ToDateTime(bookingsdate);
             }
+            TravelOptionsVm vm = _travelOptionsVmConverter.ModelTViewoModel(to);
             vm.Accommodation = _accommodationDetailVmConverter.ModelToViewModel(_accommodationRepo.GetById(id));
             return PartialView(vm);
         }
@@ -77,6 +81,7 @@ namespace NetMatch_PT.Controllers
         public IActionResult TravelOptions(TravelOptionsVm vm)
         {
             vm.Accommodation = _accommodationDetailVmConverter.ModelToViewModel(_accommodationRepo.GetById(vm.AccommodationId));
+            TravelOptions to = _travelOptionsVmConverter.ViewModelToModel(vm);
 
             if (!ModelState.IsValid)
             {
@@ -98,8 +103,9 @@ namespace NetMatch_PT.Controllers
                 return PartialView(vm);
             }
 
-            _session.SetObjectAsJson("TravelOptions", vm);
-            return RedirectToAction("Receipt", vm);
+            _session.SetObjectAsJson("TravelOptions", to);
+            _session.SetObjectAsJson("TravelOptionsVm", vm);
+            return RedirectToAction("Receipt", to);
         }
     }
 }

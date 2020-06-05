@@ -6,6 +6,7 @@ using NetMatch_PT.Models;
 using System.Data;
 using Microsoft.CodeAnalysis.CSharp;
 using NetMatch_PT.Models.Enums;
+using System.Globalization;
 
 namespace NetMatch_PT.Contexts.Parsers
 {
@@ -27,6 +28,7 @@ namespace NetMatch_PT.Contexts.Parsers
             return new AccommodationPrices()
             {
                 Date = Convert.ToDateTime(set.Tables[0].Rows[rowIndex][0]),
+                //Date = DateTime.ParseExact((string)set.Tables[0].Rows[rowIndex][0], "dd/MM/yyyy hh:mm:ss", CultureInfo.InvariantCulture),
                 Price = (decimal) set.Tables[0].Rows[rowIndex][1]
             };
         }

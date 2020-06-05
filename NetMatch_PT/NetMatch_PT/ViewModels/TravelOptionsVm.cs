@@ -18,12 +18,13 @@ namespace NetMatch_PT.ViewModels
         [DataType(DataType.DateTime)]
         public DateTime SelectDate { get; set; }
         [Required]
-        [Range(1, 1, ErrorMessage = "Reisgezelschap moet altijd uit 2 volwassenen bestaan")]
-        public int Adults { get; set; } = 1;
+        public int Adults { get; } = 2;
         [Required]
+        [DisplayName("Aantal Kinderen")]
         [Range(0, 2, ErrorMessage = "Reisgezalschap bestaat uit 0, 1 of 2 kinderen")]
         public int Children { get; set; }
         [Required]
+        [DisplayName("Aantal Kamers")]
         [Range(1, 3, ErrorMessage = "Een reis beschikt over 1, 2 of 3 kamers")]
         public int Rooms { get; set; }
 
@@ -37,18 +38,19 @@ namespace NetMatch_PT.ViewModels
         {
             AccommodationId = id;
             SelectDate = date;
+            Adults = 2;
         }
         public TravelOptionsVm()
         {
 
         }
 
-        public TravelOptionsVm(int id, int adults, int children, int rooms)
+        public TravelOptionsVm(int id, int children, int rooms, DateTime date)
         {
             AccommodationId = id;
-            Adults = adults;
             Children = children;
             Rooms = rooms;
+            SelectDate = date;
         }
     }
 }
