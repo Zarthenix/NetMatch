@@ -1,9 +1,9 @@
 ﻿@model NetMatch_PT.ViewModels.AccommodationDetailVm
 
 <div class="column">
-    <div class="price" style="">V.a. €@Model.DatePrices.Min(n=>n.Price)</div>
+    <div class="price">V.a. €@Model.DatePrices.Min(n=>n.Price)</div>
     <div class="accommodationimagehome">
-        <a asp-area="" asp-controller="Accommodation" asp-action="Detail" asp-route-id="@Model.Id"><img src="data:image/png;base64,@Model.Image" alt="Accommodation Image." /></a>
+        <a asp-area="" asp-controller="Accommodation" asp-action="Detail" asp-route-id="@Model.Id"><img src="data:image/png;base64,@Model.Image" alt="Accommodation Image." style="height: 500px;"/></a>
         <p class="caption">@Model.Title</p>
     </div>
 </div>

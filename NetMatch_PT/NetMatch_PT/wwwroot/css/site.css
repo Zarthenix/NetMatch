@@ -157,6 +157,7 @@ main {
     font-weight: bold;
     color: white;
     font-size: 35px;
+    background-color: rgba(75, 136, 235, 0.8);
 }
 
 .selector-container{

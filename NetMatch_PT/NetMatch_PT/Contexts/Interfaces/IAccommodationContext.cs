@@ -12,7 +12,7 @@ namespace NetMatch_PT.Contexts.Interfaces
         Accommodation GetById(int id);
         List<Accommodation> GetAll();
         List<Accommodation> Search(string searchTerm);
-
+        Accommodation GetPrices(Accommodation a);
         List<Accommodation> QuickSearch(SearchVm search);
     }
 }

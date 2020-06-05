@@ -23,23 +23,18 @@
 </head>
 
 
-<body style="height: 100vh; overflow: hidden;">
+<body style="height: 100%; overflow: hidden;">
     <div class="container-fluid">
-        <div class="row">
-            <header class="Header">
-                <div id="myMenu">
-                    <div class="myWrapper">
-                        <nav>
-                            <a href="/"><img id="imgComp" src="../images/PT_CompName.png" height="100" width="250" /></a>
-                        </nav>
-                    </div>
-                </div>
-            </header>
+        <div class="row" style="height: 10vh; width: 100vw;position: absolute; top: 0; display: flex; justify-items: center;">
+            <div style="height: 100%; width: 100%; position: absolute; left: 45%;">
+                <a href="/"><img src="../images/PT_CompName.png" style="height: 100%;" /></a>
+            </div>
         </div>
         <form asp-action="ReisBoeken" asp-controller="Home" method="post">
-            <div class="col-md-12">
-                <div id="firstOptions" class="selectionDiv">
-                    <h3>@Model.TravelOptions.Accommodation.Title</h3>
+            <input type="hidden" asp-for="@Model.TravelOptions.AccommodationId" value ="@Model.TravelOptions.AccommodationId"/>
+            <div class="row" style="height: 90vh; position: absolute; top: 10vh;">
+                <div id="firstOptions" class="selectionDiv col-md-8 offset-md-2">
+                    <h3>Vul uw gegevens in voor uw reis naar: @Model.TravelOptions.Accommodation.Title</h3>
                     <div class="form-group">
                         <label asp-for="Vervoer"></label>
                         <select asp-for="Vervoer" class="form-control">
@@ -50,77 +45,89 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label asp-for="Tickets"></label>
+                        <input asp-for="Tickets" class="form-control"/>
+                    </div>
+                    <div class="form-group">
                         <label asp-for="AnnuleringsVerzekering"></label>
-                        <input asp-for="AnnuleringsVerzekering" class="form-control" />
+                        <input asp-for="AnnuleringsVerzekering" class="form-control"/>
                     </div>
                     <div class="form-group">
                         <label asp-for="ReisVerzekering"></label>
-                        <input asp-for="ReisVerzekering" class="form-control" />
+                        <input asp-for="ReisVerzekering" class="form-control"/>
                     </div>
-                    <button class="btn btn-primary" id="to2">Volgende</button>
+                    <a href="#focus" class="btn btn-primary">Stap 2</a>
                 </div>
-                <div id="secondOptions" class="selectionDiv">
-                    <h5>Hoofdreiziger:</h5>
-                    <div class="form-group">
-                        <label asp-for="Voornaam"></label>
-                        <input asp-for="Voornaam" class="form-control" />
-                        <span asp-validation-for="Voornaam"></span>
+            </div>
+            <div class="col-md-12" id="secondOptions" style="position: absolute; top: 130%;">
+                <div class="row" style="height: 10vh; width: 100vw; position: absolute; top: 0; display: flex; justify-items: center;">
+                    <div style="height: 100%; width: 100%; position: absolute; left: 45%;">
+                        <a href="/"><img src="../images/PT_CompName.png" style="height: 100%;"/></a>
                     </div>
-                    <div class="form-group">
-                        <label asp-for="Achternaam"></label>
-                        <input asp-for="Achternaam" class="form-control" />
-                        <span asp-validation-for="Achternaam"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="GeboorteDatum"></label>
-                        <input asp-for="GeboorteDatum" class="form-control" />
-                        <span asp-validation-for="GeboorteDatum"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="TelefoonNummer"></label>
-                        <input asp-for="TelefoonNummer" class="form-control" />
-                        <span asp-validation-for="TelefoonNummer"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Email"></label>
-                        <input asp-for="Email" class="form-control" />
-                        <span asp-validation-for="Email"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Adres"></label>
-                        <input asp-for="Adres" class="form-control" />
-                        <span asp-validation-for="Adres"></span>
-                    </div>
-                    <div class="row">
-                        @for (int x = 0; x < Model.TravelCompanions.Capacity; x++)
+                </div>
+                <div class="row" style="position: absolute; top: 10vh; height: 90vh;">
+                    <div class="selectionDiv col-md-8 offset-md-2">
+                        <h5>Hoofdreiziger:</h5>
+                        <div class="form-group">
+                            <label asp-for="Voornaam"></label>
+                            <input asp-for="Voornaam" class="form-control"/>
+                            <span asp-validation-for="Voornaam"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Achternaam"></label>
+                            <input asp-for="Achternaam" class="form-control"/>
+                            <span asp-validation-for="Achternaam"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="GeboorteDatum"></label>
+                            <input asp-for="GeboorteDatum" class="form-control"/>
+                            <span asp-validation-for="GeboorteDatum"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="TelefoonNummer"></label>
+                            <input asp-for="TelefoonNummer" class="form-control"/>
+                            <span asp-validation-for="TelefoonNummer"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Email"></label>
+                            <input asp-for="Email" class="form-control"/>
+                            <span asp-validation-for="Email"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Adres"></label>
+                            <input asp-for="Adres" class="form-control"/>
+                            <span asp-validation-for="Adres"></span>
+                        </div>
+                        <div class="row" style="display: flex; justify-content: space-around; margin-top: 5%;">
+                            @for (int x = 0; x < Model.TravelCompanions.Count; x++)
+                            {
+                                <div>
+                                    <h5>Mede-reiziger @(x + 1):</h5>
+                                    <div class="form-group">
+                                        <label asp-for="TravelCompanions[x].Voornaam"></label>
+                                        <input asp-for="TravelCompanions[x].Voornaam" class="form-control"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="TravelCompanions[x].Achternaam"></label>
+                                        <input asp-for="TravelCompanions[x].Achternaam" class="form-control"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="TravelCompanions[x].Geboortedatum"></label>
+                                        <input asp-for="TravelCompanions[x].Geboortedatum" class="form-control"/>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        @if (User.Identity.IsAuthenticated)
                         {
-                            <div>
-                                <h5>Mede-reiziger @x:</h5>
-                                <div class="form-group">
-                                    <label asp-for="TravelCompanions[x].Voornaam"></label>
-                                    <input asp-for="TravelCompanions[x].Voornaam" class="form-control" />
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="TravelCompanions[x].Achternaam"></label>
-                                    <input asp-for="TravelCompanions[x].Achternaam" class="form-control" />
-                                </div>
-                                <div class="form-group">
-                                    <label asp-for="TravelCompanions[x].Geboortedatum"></label>
-                                    <input asp-for="TravelCompanions[x].Geboortedatum" class="form-control" />
-                                </div>
+                            <div class="form-group">
+                                <label asp-for="AgentKorting"></label>
+                                <input asp-for="AgentKorting" class="form-control"/>
                             </div>
                         }
+                        <button type="submit" id="focus" class="btn btn-primary">Stap 3</button>
                     </div>
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <div class="form-group">
-                            <label asp-for="AgentKorting"></label>
-                            <input asp-for="AgentKorting" class="form-control" />
-                        </div>
-                    }
-                    <button type="submit" class="btn btn-primary">Volgende</button>
                 </div>
-
             </div>
         </form>
     </div>
@@ -129,9 +136,8 @@
 
 
 <script>
-    $("#to2").on('click',
-        function () {
-            window.location.hash = '#secondOptions';
-        });
+    function ToTwo() {
+        window.location.hash = '#secondOptions';
+    }
 </script>
 

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using NetMatch_PT.Models;
+using NetMatch_PT.Models.Enums;
 using NetMatch_PT.Repositories;
 using NetMatch_PT.ViewModels;
 using NetMatch_PT.ViewModels.Converters;
@@ -60,22 +61,50 @@ namespace NetMatch_PT.Controllers
         [HttpGet]
         public IActionResult ReisBoeken()
         {
-            if (_session.GetObjectFromJson<TravelOptionsVm>("TravelOptions") == null)
+            /*if (_session.GetObjectFromJson<TravelOptionsVm>("TravelOptions") == null)
             {
                 TempData["failed"] = "Graag eerst een accommodatie en bijbehorende reisopties te selecteren.";
                 return RedirectToAction("FullSearch", "Search", new {searchTerm = ""});
-            }
+            }*/
             BoekingVm boeking = new BoekingVm();
             boeking.TravelOptions = _session.GetObjectFromJson<TravelOptionsVm>("TravelOptions");
-            boeking.TravelCompanions = new List<TravelCompanionVm>((boeking.TravelOptions.Adults - 1) + boeking.TravelOptions.Children);
+            boeking.TravelOptions = new TravelOptionsVm()
+            {
+                Accommodation = new AccommodationDetailVm()
+                {
+                    Country = Countries.Frankrijk,
+                    KidsPrice = 100,
+                    Price = 150,
+                    Title = "Frank"
+                },
+                AccommodationId = 2,
+                Children = 1,
+                Rooms = 2,
+                SelectDate = DateTime.Now
+            };
+            //boeking.TravelOptions.Accommodation = _accoConverter.ModelToViewModel(_accoRepo.GetById(boeking.TravelOptions.AccommodationId));
+            boeking.TravelCompanions = new List<TravelCompanionVm>();
+            int medeReizigers = (boeking.TravelOptions.Adults - 1) + boeking.TravelOptions.Children;
+            for (int x = 0; x < medeReizigers; x++)
+            {
+                boeking.TravelCompanions.Add(new TravelCompanionVm());
+            }
+
             return View(boeking);
         }
 
-        //[HttpPost]
-        //public IActionResult ReisBoeken(BoekingVm vm)
-        //{
+        [HttpPost]
+        public IActionResult ReisBoeken(BoekingVm vm)
+        {
+            Accommodation a = _accoRepo.GetById(vm.TravelOptions.AccommodationId);
+            List<AccommodationPrices> ap = _accoRepo.GetPrices(a); 
+            decimal prijs = ap.First(n => DateTime.Compare(vm.TravelOptions.SelectDate, n.Date) == 0).Price;
 
-        //}
+            //berekeningen
+            //convert naar overzichtviewmodel
+
+            return View("BoekingOverzicht", vm);
+        }
 
         public IActionResult PDFboeking()
         {

@@ -20,6 +20,8 @@ namespace NetMatch_PT.ViewModels
         public bool AnnuleringsVerzekering { get; set; }
         public bool ReisVerzekering { get; set; }
 
+        public int Tickets { get; set; }
+
         [Required(ErrorMessage = "Voornaam is vereist")]
         public string Voornaam { get; set; }
         [Required(ErrorMessage = "Achternaam is vereist")]

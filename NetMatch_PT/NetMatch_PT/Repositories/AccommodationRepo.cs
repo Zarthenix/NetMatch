@@ -38,5 +38,10 @@ namespace NetMatch_PT.Repositories
         {
             return _context.GetAll();
         }
+
+        public List<AccommodationPrices> GetPrices(Accommodation a)
+        {
+            return _context.GetPrices(a).DatePrices;
+        }
     }
 }

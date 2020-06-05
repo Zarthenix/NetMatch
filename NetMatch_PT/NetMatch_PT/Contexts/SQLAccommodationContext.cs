@@ -33,7 +33,7 @@ namespace NetMatch_PT.Contexts
                 DataSet results = ExecuteSql(sql, parameters);
                 Accommodation a = DataSetParser.DataSetToAccommodation(results, 0);
                 
-                return GetAccommodationPrices(a);
+                return GetPrices(a);
             }
             catch
             {
@@ -54,7 +54,7 @@ namespace NetMatch_PT.Contexts
                 for (int x = 0; x < results.Tables[0].Rows.Count; x++)
                 {
                     Accommodation a = DataSetParser.DataSetToAccommodation(results, x);
-                    accommodationList.Add(GetAccommodationPrices(a));
+                    accommodationList.Add(GetPrices(a));
                 }
                 return accommodationList;
             }
@@ -63,6 +63,7 @@ namespace NetMatch_PT.Contexts
                 throw;
             }
         }
+
 
         public List<Accommodation> Search(string searchTerm)
         {
@@ -83,7 +84,7 @@ namespace NetMatch_PT.Contexts
                 for (int x = 0; x < results.Tables[0].Rows.Count; x++)
                 {
                     Accommodation a = DataSetParser.DataSetToAccommodation(results, x);
-                    accommodationList.Add(GetAccommodationPrices(a));
+                    accommodationList.Add(GetPrices(a));
                 }
 
                 return accommodationList;
@@ -129,7 +130,7 @@ namespace NetMatch_PT.Contexts
             for (int x = 0; x < results.Tables[0].Rows.Count; x++)
             {
                 Accommodation a = DataSetParser.DataSetToAccommodation(results, x);
-                result.Add(GetAccommodationPrices(a));
+                result.Add(GetPrices(a));
             }
 
             if (sm.TravelType == TravelTypes.Zomer)
@@ -150,7 +151,7 @@ namespace NetMatch_PT.Contexts
             return result;
         }
 
-        private Accommodation GetAccommodationPrices(Accommodation a)
+        public Accommodation GetPrices(Accommodation a)
         {
             try
             {
