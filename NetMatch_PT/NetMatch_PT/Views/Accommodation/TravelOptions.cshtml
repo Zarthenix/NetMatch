@@ -7,45 +7,75 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
 
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-
+    <link rel="stylesheet" href="~/css/AccommodationStyle.css" />
 }
 
 <modal-content id="content">
     <modal-body id="modalbody">
-        <div class="row">
-            <p style="text-align:center">@ViewData["Description"]</p>
-        </div>
-        <form id="travelform" data-ajax-url="@Url.Action("TravelOptions","Accommodation")" data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-update="#content">
+        <div class="container border-box">
             <div class="row">
-                <div><img class="col-md-4" style="display:block; max-height:inherit" src="data:image/jpeg;base64, @Model.Accommodation.Image" /></div>
-                <div class="col-md-2">@Model.Accommodation.Title</div>
-                <div class="col-md-2">@Model.SelectDate.ToShortDateString()</div>
+                <div class="col-1"></div>
+                <div class="col-10 centermodalcolom">
+                    <p class="centermodalcolom">@ViewData["Description"]</p>
+                </div>
+                <div class="col-1"></div>
             </div>
-            <div class="modal-body form-horizontal">
-                <div asp-validation-summary="All" class="text-danger"></div>
-                <div class="form-group" hidden="hidden">
-                    <input asp-for="Adults" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label asp-for="Children" class="control-label"></label>
-                    <input asp-for="Children" class="form-control" />
-                    <span asp-validation-for="Children" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Rooms" class="control-label"></label>
-                    <input asp-for="Rooms" class="form-control" />
-                    <span asp-validation-for="Rooms" class="text-danger"></span>
-                </div>
-                <div class="form-group" hidden="hidden">
-                    <input asp-for="AccommodationId" class="form-control" />
-                </div>
-                <div class="form-group" hidden="hidden">
-                    <input asp-for="SelectDate" class="form-control" />
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <img style="display:block; max-height:inherit" src="data:image/jpeg;base64, @Model.Accommodation.Image" />
                 </div>
             </div>
-            <div class="modal-footer">
-                <button id="confirm" class="btn btn-default">Bevestig Keuze</button>
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-4 centermodalcolom">
+                    Gekozen accommodatie:
+                </div>
+                <div class="col-4 centermodalcolom">
+                    @Model.Accommodation.Title
+                </div>
             </div>
-        </form>
+            </br>
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-4 centermodalcolom">
+                    Gekozen vertrekdatum:
+                </div>
+                <div class="col-4 centermodalcolom">
+                    @Model.SelectDate.ToShortDateString()
+                </div>
+            </div>
+        </div>
+        </br>
+            <form class="border-box" id="travelform" data-ajax-url="@Url.Action("TravelOptions","Accommodation")" data-ajax="true" data-ajax-method="POST" data-ajax-mode="replace" data-ajax-update="#content">
+                <div class="modal-body form-horizontal">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="form-group" hidden="hidden">
+                        <input asp-for="Adults" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Children" class="control-label"></label>
+                        <input asp-for="Children" class="form-control" />
+                        <span asp-validation-for="Children" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Rooms" class="control-label"></label>
+                        <input asp-for="Rooms" class="form-control" />
+                        <span asp-validation-for="Rooms" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" hidden="hidden">
+                        <input asp-for="AccommodationId" class="form-control" />
+                    </div>
+                    <div class="form-group" hidden="hidden">
+                        <input asp-for="SelectDate" class="form-control" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-4 centermodalcolom">
+                        <button id="confirm" class="btn btn-default">Bevestig Keuze</button>
+                    </div>
+                </div>
+            </form>
     </modal-body>
 </modal-content>
