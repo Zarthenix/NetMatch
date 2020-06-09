@@ -32,16 +32,17 @@
         </div>
         <form asp-action="ReisBoeken" asp-controller="Home" method="post">
             <input type="hidden" asp-for="@Model.TravelOptions.AccommodationId" value ="@Model.TravelOptions.AccommodationId"/>
+            <input type="hidden" asp-for="@Model.TravelOptions.SelectDate" value="@Model.TravelOptions.SelectDate" />
             <div class="row" style="height: 90vh; position: absolute; top: 10vh;">
                 <div id="firstOptions" class="selectionDiv col-md-8 offset-md-2">
                     <h3>Vul uw gegevens in voor uw reis naar: @Model.TravelOptions.Accommodation.Title</h3>
                     <div class="form-group">
                         <label asp-for="Vervoer"></label>
                         <select asp-for="Vervoer" class="form-control">
-                            <option value="0">Eigen</option>
-                            <option value="1">Amsterdam</option>
-                            <option value="2">Rotterdam</option>
-                            <option value="3">Eindhoven</option>
+                            <option value="Eigen">Eigen</option>
+                            <option value="Amsterdam">Amsterdam</option>
+                            <option value="Rotterdam">Rotterdam</option>
+                            <option value="Eindhoven">Eindhoven</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -80,7 +81,7 @@
                         </div>
                         <div class="form-group">
                             <label asp-for="GeboorteDatum"></label>
-                            <input asp-for="GeboorteDatum" class="form-control"/>
+                            <input asp-for="GeboorteDatum" class="form-control" type="date"/>
                             <span asp-validation-for="GeboorteDatum"></span>
                         </div>
                         <div class="form-group">
@@ -113,7 +114,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label asp-for="TravelCompanions[x].Geboortedatum"></label>
-                                        <input asp-for="TravelCompanions[x].Geboortedatum" class="form-control"/>
+                                        <input asp-for="TravelCompanions[x].Geboortedatum" class="form-control" type="date"/>
                                     </div>
                                 </div>
                             }

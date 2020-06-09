@@ -29,10 +29,6 @@ namespace NetMatch_PT.Controllers
            
         }
 
-        public ActionResult Index()
-        {
-            return View();
-        }
 
 
         [HttpGet]

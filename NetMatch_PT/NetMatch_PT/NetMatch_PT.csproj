@@ -3,6 +3,10 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
+  
+  <PropertyGroup>
+  <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
+</PropertyGroup>
 
   <ItemGroup>
     <None Include="wwwroot\css\AccomodationStyle.css" />

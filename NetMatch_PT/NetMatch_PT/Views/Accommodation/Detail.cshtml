@@ -1,13 +1,13 @@
-﻿@model NetMatch_PT.ViewModels.AccommodationDetailVm;
+﻿@using Microsoft.AspNetCore.Http
+@model NetMatch_PT.ViewModels.AccommodationDetailVm;
 @{
     ViewData["Title"] = "Voorbeeld Accommodatie";
     <script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <link rel="stylesheet" href="~/css/AccommodationStyle.css" />
     <script src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
-    @using Microsoft.AspNetCore.Http
-    @using NetMatch_PT.ViewModels
-    @inject IHttpContextAccessor HttpContextAccessor
+
+@inject IHttpContextAccessor HttpContextAccessor
 }
 
 <body>

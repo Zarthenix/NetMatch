@@ -30,10 +30,6 @@ namespace NetMatch_PT.Controllers
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
 
         public IActionResult Detail(int id)
         {

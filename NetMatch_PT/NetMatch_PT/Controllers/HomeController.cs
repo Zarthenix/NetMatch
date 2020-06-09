@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using NetMatch_PT.Calculation;
 using NetMatch_PT.Models;
 using NetMatch_PT.Models.Enums;
 using NetMatch_PT.Repositories;
@@ -31,8 +32,8 @@ namespace NetMatch_PT.Controllers
             _accoRepo = accoRepo;
             _httpContextAccessor = httpContextAccessor;
         }
-
-        public IActionResult Index()
+#nullable enable
+        public IActionResult Index(string? msg)
         {
             int[] popularAccommodations = (int[])ContentHandler.GetJson<int[]>("popularAccommodations");
             List<AccommodationDetailVm> accommodations = new List<AccommodationDetailVm>();
@@ -43,6 +44,11 @@ namespace NetMatch_PT.Controllers
                 {
                     accommodations.Add(_accoConverter.ModelToViewModel(_accoRepo.GetById(i)));
                 }
+            }
+
+            if (msg != null)
+            {
+                ViewData["msg"] = "Uw boeking is geslaagd!";
             }
 
             HomepageVm vm = new HomepageVm
@@ -84,12 +90,12 @@ namespace NetMatch_PT.Controllers
         public IActionResult ReisBoeken(BoekingVm vm)
         {
             Accommodation a = _accoRepo.GetById(vm.TravelOptions.AccommodationId);
-            List<AccommodationPrices> ap = _accoRepo.GetPrices(a); 
-            decimal prijs = ap.First(n => DateTime.Compare(vm.TravelOptions.SelectDate, n.Date) == 0).Price;
+            List<AccommodationPrices> ap = _accoRepo.GetPrices(a);
+            decimal prijs = ap.First(n => DateTime.Compare(Convert.ToDateTime(vm.TravelOptions.SelectDate.ToShortDateString()), Convert.ToDateTime(n.Date.ToShortDateString())) == 0).Price;
+            double totalPrijs = PriceCalculation.TotalPrice(vm, Convert.ToDouble(prijs));
+            vm.TotalePrijs = totalPrijs + (double)prijs;
 
-            //berekeningen
-            //convert naar overzichtviewmodel
-
+            vm.TravelOptions.Accommodation = _accoConverter.ModelToViewModel(a);
             return View("BoekingOverzicht", vm);
         }
 

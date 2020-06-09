@@ -17,7 +17,9 @@ namespace NetMatch_PT.ViewModels
 
         public string Vervoer { get; set; }
 
+        [Display(Name="Annuleringsverzekering")]
         public bool AnnuleringsVerzekering { get; set; }
+        [Display(Name = "Reisverzekering")]
         public bool ReisVerzekering { get; set; }
 
         public int Tickets { get; set; }
@@ -27,12 +29,16 @@ namespace NetMatch_PT.ViewModels
         [Required(ErrorMessage = "Achternaam is vereist")]
         public string Achternaam { get; set; }
         [Required(ErrorMessage = "Geboortedatum is vereist")]
+        [Display(Name = "Geboortedatum")]
         public DateTime GeboorteDatum { get; set; }
         [Required(ErrorMessage = "Adres is vereist")]
         public string Adres { get; set; }
         [Required(ErrorMessage = "Tel. nummer is vereist")]
+        [Display(Name = "Telefoonnummer")]
         public string TelefoonNummer { get; set; }
         [Required(ErrorMessage = "Email is vereist")]
         public string Email { get; set; }
+
+        public double TotalePrijs { get; set; }
     }
 }
